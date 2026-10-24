@@ -37,12 +37,21 @@
         extend: {
           colors: {
             plum: {
-              DEFAULT: '#56325f',
-              dark: '#2d1833',
-              deep: '#180c1c',
-              soft: '#f4edf5',
-              whisper: 'rgba(86, 50, 95, 0.05)',
-              glow: 'rgba(86, 50, 95, 0.25)'
+              DEFAULT: 'rgb(var(--color-plum) / <alpha-value>)',
+              dark: 'rgb(var(--color-plum-dark) / <alpha-value>)',
+              deep: 'rgb(var(--color-plum-deep) / <alpha-value>)',
+              soft: 'rgb(var(--color-plum-soft) / <alpha-value>)',
+              whisper: 'var(--color-plum-whisper)',
+              glow: 'var(--color-plum-glow)'
+            },
+            coffee: {
+              DEFAULT: '#432817',
+              dark: '#2c180d',
+              deep: '#1c0e07',
+              mocha: '#5c3820',
+              caramel: '#b07d4b',
+              light: '#c49a6c',
+              latte: '#f7f1ea'
             },
             gold: {
               DEFAULT: '#e2c85b',
@@ -161,20 +170,82 @@
     .delay-400 { transition-delay: 400ms; }
 
     /* ========================================================================= */
-    /* LUXURY GRADIENT LOOK: NORMALLY (LIGHT MODE) & SPECIALLY IN DARK MODE     */
+    /* COLOR THEME VARIABLES (COFFEE / LIGHT BROWN IN LIGHT MODE, PURPLE IN DARK)*/
+    /* ========================================================================= */
+    :root {
+      /* Warm Brownish Coffee & Light Brown for Light Mode */
+      --color-plum: 67 40 23;            /* #432817: Rich artisanal roast coffee */
+      --color-plum-dark: 44 24 13;       /* #2c180d: Deep espresso */
+      --color-plum-deep: 28 14 7;        /* #1c0e07: Dark coffee bean */
+      --color-plum-soft: 247 241 234;    /* #f7f1ea: Latte froth / creamy milk coffee */
+      --color-plum-whisper: rgba(67, 40, 23, 0.06);
+      --color-plum-glow: rgba(67, 40, 23, 0.22);
+    }
+
+    html.dark {
+      /* 100% UNTOUCHED ORIGINAL PURPLE FOR DARK MODE */
+      --color-plum: 86 50 95;            /* #56325f: Original royal plum */
+      --color-plum-dark: 45 24 51;       /* #2d1833: Original plum dark */
+      --color-plum-deep: 24 12 28;       /* #180c1c: Original plum deep */
+      --color-plum-soft: 244 237 245;    /* #f4edf5: Original plum soft */
+      --color-plum-whisper: rgba(86, 50, 95, 0.05);
+      --color-plum-glow: rgba(86, 50, 95, 0.25);
+    }
+
+    /* Light Mode Explicit Brownish Coffee & Light Brown Utility Overrides */
+    html:not(.dark) .bg-plum {
+      background-color: #432817 !important;
+    }
+    html:not(.dark) .bg-plum-dark {
+      background-color: #2c180d !important;
+    }
+    html:not(.dark) .hover\:bg-plum:hover {
+      background-color: #432817 !important;
+    }
+    html:not(.dark) .hover\:bg-plum-dark:hover {
+      background-color: #2c180d !important;
+    }
+    html:not(.dark) .text-plum,
+    html:not(.dark) .text-plum-dark {
+      color: #432817 !important;
+    }
+    html:not(.dark) .hover\:text-plum:hover {
+      color: #432817 !important;
+    }
+    html:not(.dark) .group:hover .group-hover\:text-plum {
+      color: #432817 !important;
+    }
+    html:not(.dark) .border-plum {
+      border-color: #432817 !important;
+    }
+    html:not(.dark) .hover\:border-plum:hover {
+      border-color: #432817 !important;
+    }
+    html:not(.dark) .focus\:border-plum:focus {
+      border-color: #432817 !important;
+    }
+    html:not(.dark) .accent-plum {
+      accent-color: #432817 !important;
+    }
+    html:not(.dark) .ring-plum:focus {
+      --tw-ring-color: #432817 !important;
+    }
+
+    /* ========================================================================= */
+    /* LUXURY GRADIENT LOOK: COFFEE LIGHT MODE & UNTOUCHED NOCTURNE IN DARK MODE */
     /* ========================================================================= */
     
-    /* Normal Light Gradient Mesh */
+    /* Normal Light Gradient Mesh (Warm Coffee & Light Brown Cream) */
     body {
-      background: radial-gradient(circle at 15% 10%, rgba(247, 239, 230, 0.9) 0%, transparent 40%),
+      background: radial-gradient(circle at 15% 10%, rgba(247, 239, 230, 0.95) 0%, transparent 40%),
                   radial-gradient(circle at 85% 30%, rgba(226, 200, 91, 0.08) 0%, transparent 45%),
-                  radial-gradient(circle at 50% 85%, rgba(86, 50, 95, 0.04) 0%, transparent 50%),
-                  #faf7f2;
-      color: #141017;
+                  radial-gradient(circle at 50% 85%, rgba(67, 40, 23, 0.04) 0%, transparent 50%),
+                  #faf6f0;
+      color: #1a1410;
       transition: background 0.8s ease, color 0.8s ease, border-color 0.8s ease;
     }
 
-    /* Dark Mode: Deep Atmospheric Nocturnal Luxury Mesh Gradient */
+    /* Dark Mode: Deep Atmospheric Nocturnal Luxury Mesh Gradient (100% UNTOUCHED) */
     html.dark body {
       background: radial-gradient(circle at 85% 15%, rgba(226, 200, 91, 0.16) 0%, transparent 45%),
                   radial-gradient(circle at 15% 45%, rgba(86, 50, 95, 0.45) 0%, transparent 55%),
@@ -183,33 +254,101 @@
       color: #f1ecf7 !important;
     }
 
-    /* Seamless obsidian black strip with floating purple/gold ambient glow spots */
-    #lower-nocturne-wrapper {
+    /* ========================================================================= */
+    /* LOWER NOCTURNE REALM — DARK MODE (100% UNTOUCHED OBSIDIAN CANVAS)        */
+    /* ========================================================================= */
+    html.dark #lower-nocturne-wrapper {
       background-color: #060408 !important;
       color: #ffffff;
       position: relative;
     }
-    #lower-nocturne-wrapper .act-card,
-    #lower-nocturne-wrapper .ritual-card,
-    #lower-nocturne-wrapper .hub-card,
-    #lower-nocturne-wrapper .story-card,
-    #lower-nocturne-wrapper .faq-card,
-    #lower-nocturne-wrapper .nocturne-glass-card {
+    html.dark #lower-nocturne-wrapper .act-card,
+    html.dark #lower-nocturne-wrapper .ritual-card,
+    html.dark #lower-nocturne-wrapper .hub-card,
+    html.dark #lower-nocturne-wrapper .story-card,
+    html.dark #lower-nocturne-wrapper .faq-card,
+    html.dark #lower-nocturne-wrapper .nocturne-glass-card {
       background: rgba(255, 255, 255, 0.03) !important;
       backdrop-filter: blur(24px) saturate(160%) !important;
       -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
       border: 1px solid rgba(255, 255, 255, 0.08) !important;
       box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.7) !important;
     }
-    #lower-nocturne-wrapper .act-card:hover,
-    #lower-nocturne-wrapper .ritual-card:hover,
-    #lower-nocturne-wrapper .hub-card:hover,
-    #lower-nocturne-wrapper .story-card:hover,
-    #lower-nocturne-wrapper .faq-card:hover,
-    #lower-nocturne-wrapper .nocturne-glass-card:hover {
+    html.dark #lower-nocturne-wrapper .act-card:hover,
+    html.dark #lower-nocturne-wrapper .ritual-card:hover,
+    html.dark #lower-nocturne-wrapper .hub-card:hover,
+    html.dark #lower-nocturne-wrapper .story-card:hover,
+    html.dark #lower-nocturne-wrapper .faq-card:hover,
+    html.dark #lower-nocturne-wrapper .nocturne-glass-card:hover {
       background: rgba(255, 255, 255, 0.055) !important;
       border-color: rgba(226, 200, 91, 0.45) !important;
       box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 35px rgba(226, 200, 91, 0.1) !important;
+    }
+
+    /* ========================================================================= */
+    /* LOWER REALM — LIGHT MODE (COFFEE & LIGHT BROWN FROSTED CRYSTAL GLASS)     */
+    /* ========================================================================= */
+    html:not(.dark) #lower-nocturne-wrapper {
+      background: radial-gradient(circle at 85% 10%, rgba(226, 200, 91, 0.14) 0%, transparent 45%),
+                  radial-gradient(circle at 15% 30%, rgba(140, 98, 57, 0.10) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 60%, rgba(176, 125, 75, 0.12) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 85%, rgba(226, 200, 91, 0.12) 0%, transparent 45%),
+                  #f7f2ea !important;
+      color: #1a1410 !important;
+      position: relative;
+      border-top: 1px solid rgba(67, 40, 23, 0.08);
+    }
+    html:not(.dark) .nocturne-ambient-orb {
+      opacity: 0.18 !important;
+      filter: blur(140px) !important;
+      background: radial-gradient(circle, rgba(140, 98, 57, 0.45) 0%, rgba(176, 125, 75, 0.22) 50%, transparent 75%) !important;
+    }
+    html:not(.dark) #lower-nocturne-wrapper .act-card,
+    html:not(.dark) #lower-nocturne-wrapper .ritual-card,
+    html:not(.dark) #lower-nocturne-wrapper .hub-card,
+    html:not(.dark) #lower-nocturne-wrapper .story-card,
+    html:not(.dark) #lower-nocturne-wrapper .faq-card,
+    html:not(.dark) #lower-nocturne-wrapper .nocturne-glass-card {
+      background: rgba(255, 255, 255, 0.78) !important;
+      backdrop-filter: blur(20px) saturate(180%) !important;
+      -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.95) !important;
+      box-shadow: 0 16px 40px -12px rgba(67, 40, 23, 0.07), 0 2px 6px rgba(0, 0, 0, 0.02), inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+    }
+    html:not(.dark) #lower-nocturne-wrapper .act-card:hover,
+    html:not(.dark) #lower-nocturne-wrapper .ritual-card:hover,
+    html:not(.dark) #lower-nocturne-wrapper .hub-card:hover,
+    html:not(.dark) #lower-nocturne-wrapper .story-card:hover,
+    html:not(.dark) #lower-nocturne-wrapper .faq-card:hover,
+    html:not(.dark) #lower-nocturne-wrapper .nocturne-glass-card:hover {
+      background: rgba(255, 255, 255, 0.94) !important;
+      border-color: rgba(176, 125, 75, 0.5) !important;
+      box-shadow: 0 22px 50px -10px rgba(67, 40, 23, 0.12), 0 0 25px rgba(226, 200, 91, 0.16), inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+    }
+    html:not(.dark) #lower-nocturne-wrapper h2,
+    html:not(.dark) #lower-nocturne-wrapper h3,
+    html:not(.dark) #lower-nocturne-wrapper h4 {
+      color: #1a1410;
+    }
+    html:not(.dark) #lower-nocturne-wrapper .text-stone-300,
+    html:not(.dark) #lower-nocturne-wrapper .text-stone-400 {
+      color: #5c4a3d;
+    }
+    html:not(.dark) #lower-nocturne-wrapper .text-white {
+      color: #1a1410;
+    }
+
+    /* Calculator Payout Inner Card — Frosted Obsidian in Dark Mode, Soft Cream in Light */
+    html.dark .calculator-payout-card {
+      background: rgba(255, 255, 255, 0.04) !important;
+      background-image: none !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5) !important;
+    }
+    html:not(.dark) .calculator-payout-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(253, 248, 238, 0.95) 100%) !important;
+      border: 1px solid rgba(176, 125, 75, 0.25) !important;
+      box-shadow: 0 10px 30px -5px rgba(67, 40, 23, 0.06) !important;
     }
 
     /* Apple Ultra-Glass Translucent Navbar */
@@ -356,7 +495,19 @@
     }
 
     #collection-sheet {
-      background: #faf7f2;
+      background: radial-gradient(circle at 10% 20%, rgba(247, 239, 230, 0.95) 0%, transparent 40%),
+                  radial-gradient(circle at 90% 15%, rgba(226, 200, 91, 0.08) 0%, transparent 45%),
+                  radial-gradient(circle at 50% 90%, rgba(67, 40, 23, 0.04) 0%, transparent 50%),
+                  #faf6f0;
+      border-top: 1px solid rgba(67, 40, 23, 0.08);
+      box-shadow: 0 -25px 60px rgba(67, 40, 23, 0.04);
+    }
+
+    #sideDrawer,
+    #bagDrawer {
+      background-color: #faf6f0;
+      color: #1a1410;
+      border-left: 1px solid rgba(67, 40, 23, 0.12);
     }
 
     html.dark #circular-ritual h3,
@@ -414,6 +565,21 @@
       border-color: rgba(226, 200, 91, 0.6);
       pointer-events: none;
     }
+
+    /* Floating Notification Toast System */
+    #toastNotification {
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    #toastNotification.toast-hidden {
+      opacity: 0 !important;
+      pointer-events: none !important;
+      transform: translateY(-24px) scale(0.95) !important;
+    }
+    #toastNotification.toast-visible {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      transform: translateY(0) scale(1) !important;
+    }
   </style>
 </head>
 <body class="font-sans antialiased selection:bg-plum selection:text-gold min-h-screen relative overflow-x-hidden">
@@ -422,9 +588,9 @@
   <div id="zenCursor" class="zen-cursor rounded-full border border-gold/50 bg-gold/20 backdrop-blur-sm hidden md:block"></div>
 
   <!-- Notification Toast Banner -->
-  <div id="toastNotification" class="fixed top-6 right-6 z-50 bg-ink text-white px-5 py-3.5 rounded-2xl shadow-floating border border-gold/30 flex items-center gap-3 translate-y-[-150%] transition-transform duration-300">
-    <span class="w-2 h-2 rounded-full bg-gold animate-ping"></span>
-    <span id="toastMessage" class="text-xs font-mono">Outfit added to Custody Bag</span>
+  <div id="toastNotification" class="toast-hidden fixed top-24 right-6 sm:right-10 z-[100] bg-white/95 dark:bg-[#130912]/95 text-stone-800 dark:text-stone-100 px-5 py-3.5 rounded-2xl shadow-xl dark:shadow-[0_10px_30px_rgba(0,0,0,0.6)] border border-[#b07d4b]/30 dark:border-gold/30 backdrop-blur-md flex items-center gap-3 pointer-events-none">
+    <span class="w-2 h-2 rounded-full bg-plum dark:bg-gold animate-ping"></span>
+    <span id="toastMessage" class="text-xs font-mono font-medium"></span>
   </div>
 
   <!-- ========================================================================= -->
@@ -448,8 +614,9 @@
       <!-- Center: Brand Mark & Atelier Badge (Strictly Centered in Viewport) -->
       <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center shrink-0 z-10 pointer-events-auto">
         <a href="#home" class="group flex flex-col items-center">
-          <img src="assets/logo.svg" alt="Wedelia" class="h-8 sm:h-9 w-auto rounded-xl filter contrast-125 transition-all duration-600 ease-out group-hover:scale-[1.02] shadow-sm group-hover:shadow-[0_0_12px_rgba(242,217,92,0.22)] group-hover:drop-shadow-[0_0_6px_rgba(245,220,88,0.25)]">
-          <span class="text-[8px] font-mono tracking-whisper text-plum/60 dark:text-gold/70 uppercase mt-1 text-center whitespace-nowrap transition-colors duration-600 group-hover:text-gold">ARCHIVE APPAREL ATELIER</span>
+          <img src="assets/logo-light.svg" alt="Wedelia" class="dark:hidden h-8 sm:h-9 w-auto rounded-xl filter contrast-125 transition-all duration-600 ease-out group-hover:scale-[1.02] shadow-sm group-hover:shadow-[0_0_12px_rgba(242,217,92,0.22)] group-hover:drop-shadow-[0_0_6px_rgba(245,220,88,0.25)]">
+          <img src="assets/logo.svg" alt="Wedelia" class="hidden dark:inline h-8 sm:h-9 w-auto rounded-xl filter contrast-125 transition-all duration-600 ease-out group-hover:scale-[1.02] shadow-sm group-hover:shadow-[0_0_12px_rgba(242,217,92,0.22)] group-hover:drop-shadow-[0_0_6px_rgba(245,220,88,0.25)]">
+          <span class="text-[8px] font-mono tracking-whisper text-plum/60 dark:text-gold/70 uppercase mt-1 text-center whitespace-nowrap transition-colors duration-600 group-hover:text-gold">WEAR BEAUTIFUL , WEAR AGAIN</span>
         </a>
       </div>
 
@@ -858,34 +1025,34 @@
   <!-- ========================================================================= -->
   <!-- LOWER NOCTURNE REALM (UNIFIED DEEP BLACKISH CANVAS FROM 3 ACTS TO FOOTER)  -->
   <!-- ========================================================================= -->
-  <div id="lower-nocturne-wrapper" class="w-full text-white relative overflow-hidden">
+  <div id="lower-nocturne-wrapper" class="w-full text-stone-900 dark:text-white relative overflow-hidden">
 
-    <!-- Big Soft Vibrant Purple & Amber Glow Spots across the seamless black backdrop -->
-    <div class="absolute top-12 right-[-80px] w-[650px] h-[650px] bg-[#6d257a]/35 rounded-full blur-[170px] pointer-events-none"></div>
-    <div class="absolute top-44 left-[-80px] w-[500px] h-[500px] bg-gold/10 rounded-full blur-[160px] pointer-events-none"></div>
-    <div class="absolute top-[800px] left-[-80px] w-[650px] h-[650px] bg-[#581c66]/30 rounded-full blur-[170px] pointer-events-none"></div>
-    <div class="absolute top-[1400px] right-[-60px] w-[700px] h-[700px] bg-[#702082]/35 rounded-full blur-[180px] pointer-events-none"></div>
-    <div class="absolute top-[2050px] left-[-60px] w-[650px] h-[650px] bg-[#5c246e]/30 rounded-full blur-[170px] pointer-events-none"></div>
-    <div class="absolute top-[2700px] right-10 w-[680px] h-[680px] bg-[#682479]/32 rounded-full blur-[180px] pointer-events-none"></div>
-    <div class="absolute bottom-16 left-1/4 w-[600px] h-[600px] bg-[#581c66]/25 rounded-full blur-[170px] pointer-events-none"></div>
+    <!-- Big Soft Vibrant Purple & Amber Glow Spots across the seamless backdrop -->
+    <div class="nocturne-ambient-orb absolute top-12 right-[-80px] w-[650px] h-[650px] bg-[#6d257a]/35 rounded-full blur-[170px] pointer-events-none"></div>
+    <div class="nocturne-ambient-orb absolute top-44 left-[-80px] w-[500px] h-[500px] bg-gold/10 rounded-full blur-[160px] pointer-events-none"></div>
+    <div class="nocturne-ambient-orb absolute top-[800px] left-[-80px] w-[650px] h-[650px] bg-[#581c66]/30 rounded-full blur-[170px] pointer-events-none"></div>
+    <div class="nocturne-ambient-orb absolute top-[1400px] right-[-60px] w-[700px] h-[700px] bg-[#702082]/35 rounded-full blur-[180px] pointer-events-none"></div>
+    <div class="nocturne-ambient-orb absolute top-[2050px] left-[-60px] w-[650px] h-[650px] bg-[#5c246e]/30 rounded-full blur-[170px] pointer-events-none"></div>
+    <div class="nocturne-ambient-orb absolute top-[2700px] right-10 w-[680px] h-[680px] bg-[#682479]/32 rounded-full blur-[180px] pointer-events-none"></div>
+    <div class="nocturne-ambient-orb absolute bottom-16 left-1/4 w-[600px] h-[600px] bg-[#581c66]/25 rounded-full blur-[170px] pointer-events-none"></div>
 
   <!-- ========================================================================= -->
   <!-- THE 3 ACTS CINEMATIC RUNWAY (DEEP NOCTURNAL GRADIENT SECTION)             -->
   <!-- ========================================================================= -->
-  <section id="three-acts" class="bg-transparent text-white py-24 sm:py-28 relative z-10 overflow-hidden">
+  <section id="three-acts" class="bg-transparent text-stone-900 dark:text-white py-24 sm:py-28 relative z-10 overflow-hidden">
 
     <div class="max-w-7xl mx-auto px-6 lg:px-12 space-y-16 relative z-10">
       
       <div class="max-w-2xl space-y-3 reveal-up">
-        <div class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] text-gold">
-          <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+        <div class="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] text-plum-dark dark:text-gold">
+          <span class="w-2 h-2 rounded-full bg-plum-dark dark:bg-gold animate-pulse"></span>
           <span>THE CINEMA HORIZON · CAMPUS TRIPTYCH</span>
         </div>
-        <h2 class="font-cormorant text-4xl sm:text-6xl font-light leading-tight">
+        <h2 class="font-cormorant text-4xl sm:text-6xl font-light leading-tight text-stone-900 dark:text-white">
           Three Acts of College Life.<br>
-          <em class="italic text-gold font-normal">From Campus Sunset to After-Hours Party.</em>
+          <em class="italic text-plum-dark dark:text-gold font-normal">From Campus Sunset to After-Hours Party.</em>
         </h2>
-        <p class="text-stone-300 text-sm font-sans leading-relaxed font-light">
+        <p class="text-stone-600 dark:text-stone-300 text-sm font-sans leading-relaxed font-light">
           Great outfits belong to unforgettable unforgettable nights — not sitting forgotten in your wardrobe after one Instagram dump. Why spend thousands when you can rent, stun, and swap?
         </p>
       </div>
@@ -895,48 +1062,48 @@
         <!-- Act I -->
         <div class="act-card group relative p-8 rounded-3xl space-y-4 reveal-up delay-100 overflow-hidden cursor-pointer" onclick="filterCategory('corset', document.querySelectorAll('.filter-btn')[1]); document.getElementById('collection-sheet').scrollIntoView({ behavior: 'smooth' });">
           <div class="flex justify-between items-center text-xs font-mono">
-            <span class="text-gold font-bold">ACT I</span>
-            <span class="text-stone-400">16:00 — GOLDEN HOUR &amp; CAFÉ PLANS</span>
+            <span class="text-plum-dark dark:text-gold font-bold">ACT I</span>
+            <span class="text-stone-500 dark:text-stone-400">16:00 — GOLDEN HOUR &amp; CAFÉ PLANS</span>
           </div>
-          <h3 class="font-cormorant text-3xl font-light text-white group-hover:text-gold transition-colors">Parisian Corsets &amp; Boho Co-ords</h3>
-          <p class="text-xs text-stone-300 font-sans leading-relaxed font-light">
+          <h3 class="font-cormorant text-3xl font-light text-stone-900 dark:text-white group-hover:text-plum dark:group-hover:text-gold transition-colors">Parisian Corsets &amp; Boho Co-ords</h3>
+          <p class="text-xs text-stone-600 dark:text-stone-300 font-sans leading-relaxed font-light">
             Breathable floral corset tops, flowy ruffle skirts, and breezy cottagecore sets for campus lawn hangs, coffee dates, and golden hour reels.
           </p>
           <div class="flex justify-between items-center pt-2">
-            <span class="inline-block text-[10px] font-mono text-gold tracking-widest uppercase">3200K GOLDEN HOUR AMBIENCE</span>
-            <span class="text-xs font-mono text-gold opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all">Explore ↗</span>
+            <span class="inline-block text-[10px] font-mono text-plum-dark dark:text-gold tracking-widest uppercase">3200K GOLDEN HOUR AMBIENCE</span>
+            <span class="text-xs font-mono text-plum dark:text-gold opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all">Explore ↗</span>
           </div>
         </div>
 
         <!-- Act II -->
         <div class="act-card group relative p-8 rounded-3xl space-y-4 reveal-up delay-200 overflow-hidden cursor-pointer" onclick="filterCategory('fest', document.querySelectorAll('.filter-btn')[4]); document.getElementById('collection-sheet').scrollIntoView({ behavior: 'smooth' });">
           <div class="flex justify-between items-center text-xs font-mono">
-            <span class="text-gold font-bold">ACT II</span>
-            <span class="text-stone-400">20:00 — FEST NIGHTS &amp; CLUBBING</span>
+            <span class="text-plum-dark dark:text-gold font-bold">ACT II</span>
+            <span class="text-stone-500 dark:text-stone-400">20:00 — FEST NIGHTS &amp; CLUBBING</span>
           </div>
-          <h3 class="font-cormorant text-3xl font-light text-white group-hover:text-gold transition-colors">Y2K Fits &amp; Dark Romance Leather</h3>
-          <p class="text-xs text-stone-300 font-sans leading-relaxed font-light">
+          <h3 class="font-cormorant text-3xl font-light text-stone-900 dark:text-white group-hover:text-plum dark:group-hover:text-gold transition-colors">Y2K Fits &amp; Dark Romance Leather</h3>
+          <p class="text-xs text-stone-600 dark:text-stone-300 font-sans leading-relaxed font-light">
             Statement ruched corset tops, soft goth lace, pleated minis, and bold western styling ready for university headliners, club bashes, and dancefloors.
           </p>
           <div class="flex justify-between items-center pt-2">
-            <span class="inline-block text-[10px] font-mono text-gold tracking-widest uppercase">HEADLINER SPOTLIGHTS</span>
-            <span class="text-xs font-mono text-gold opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all">Explore ↗</span>
+            <span class="inline-block text-[10px] font-mono text-plum-dark dark:text-gold tracking-widest uppercase">HEADLINER SPOTLIGHTS</span>
+            <span class="text-xs font-mono text-plum dark:text-gold opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all">Explore ↗</span>
           </div>
         </div>
 
         <!-- Act III -->
         <div class="act-card group relative p-8 rounded-3xl space-y-4 reveal-up delay-300 overflow-hidden cursor-pointer" onclick="document.getElementById('circular-ritual').scrollIntoView({ behavior: 'smooth' });">
           <div class="flex justify-between items-center text-xs font-mono">
-            <span class="text-gold font-bold">ACT III</span>
-            <span class="text-stone-400">10:00 AM — ZERO LAUNDRY RETURN</span>
+            <span class="text-plum-dark dark:text-gold font-bold">ACT III</span>
+            <span class="text-stone-500 dark:text-stone-400">10:00 AM — ZERO LAUNDRY RETURN</span>
           </div>
-          <h3 class="font-cormorant text-3xl font-light text-white group-hover:text-gold transition-colors">Zero Cleaning Burden</h3>
-          <p class="text-xs text-stone-300 font-sans leading-relaxed font-light">
+          <h3 class="font-cormorant text-3xl font-light text-stone-900 dark:text-white group-hover:text-plum dark:group-hover:text-gold transition-colors">Zero Cleaning Burden</h3>
+          <p class="text-xs text-stone-600 dark:text-stone-300 font-sans leading-relaxed font-light">
             No morning laundry burden. Slide the fit into the prepaid courier bag. We conduct medical-grade ozone sanitization while you sleep in after the night out.
           </p>
           <div class="flex justify-between items-center pt-2">
-            <span class="inline-block text-[10px] font-mono text-gold tracking-widest uppercase">ZERO WASHING BURDEN</span>
-            <span class="text-xs font-mono text-gold opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all">View Ritual ↗</span>
+            <span class="inline-block text-[10px] font-mono text-plum-dark dark:text-gold tracking-widest uppercase">ZERO WASHING BURDEN</span>
+            <span class="text-xs font-mono text-plum dark:text-gold opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all">View Ritual ↗</span>
           </div>
         </div>
 
@@ -955,36 +1122,36 @@
       <!-- Editorial Section Header with Status Pill & Runway Meta -->
       <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-16 sm:mb-20 gap-8 reveal-up">
         <div class="max-w-2xl space-y-4">
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/5 border border-gold/30 text-[10px] font-mono uppercase tracking-[0.25em] text-gold shadow-sm backdrop-blur-sm">
-            <span class="w-1.5 h-1.5 rounded-full bg-gold animate-ping"></span>
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-stone-100/80 dark:bg-white/5 border border-plum/20 dark:border-gold/30 text-[10px] font-mono uppercase tracking-[0.25em] text-plum-dark dark:text-gold shadow-sm backdrop-blur-sm">
+            <span class="w-1.5 h-1.5 rounded-full bg-plum-dark dark:bg-gold animate-ping"></span>
             <span>CIRCULAR PROTOCOL · THE 4-STAGE CUSTODY RITUAL</span>
           </div>
-          <h2 class="font-cormorant text-4xl sm:text-6xl font-light leading-[1.05] text-white">
+          <h2 class="font-cormorant text-4xl sm:text-6xl font-light leading-[1.05] text-stone-900 dark:text-white">
             Four Steps to Zero-Guilt<br>
-            <span class="italic text-gold font-normal">Campus Glamour.</span>
+            <span class="italic text-plum-dark dark:text-gold font-normal">Campus Glamour.</span>
           </h2>
-          <p class="text-stone-300 text-xs sm:text-sm font-sans font-light max-w-xl leading-relaxed">
+          <p class="text-stone-600 dark:text-stone-300 text-xs sm:text-sm font-sans font-light max-w-xl leading-relaxed">
             A continuous loop engineered for college budgets, effortless speed, ozone hygiene, and zero laundry guilt.
           </p>
         </div>
 
         <!-- Horizontal Fluid Milestones Tracker (Desktop) -->
-        <div class="hidden lg:flex items-center gap-3 text-[10px] font-mono text-stone-400 bg-white/5 border border-white/10 px-5 py-3 rounded-full backdrop-blur-md shadow-subtle">
-          <span class="text-gold font-bold flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-gold"></span> 01 Discover
+        <div class="hidden lg:flex items-center gap-3 text-[10px] font-mono text-stone-500 dark:text-stone-400 bg-white/70 dark:bg-white/5 border border-stone-200/80 dark:border-white/10 px-5 py-3 rounded-full backdrop-blur-md shadow-subtle">
+          <span class="text-plum-dark dark:text-gold font-bold flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-plum-dark dark:bg-gold"></span> 01 Discover
           </span>
-          <span class="text-stone-600">──→</span>
-          <span class="text-stone-300 font-medium">02 Doorstep Drop</span>
-          <span class="text-stone-600">──→</span>
-          <span class="text-stone-300 font-medium">03 Fest &amp; Party</span>
-          <span class="text-stone-600">──→</span>
-          <span class="text-stone-300 font-medium">04 Unwashed Return</span>
+          <span class="text-stone-400 dark:text-stone-600">──→</span>
+          <span class="text-stone-700 dark:text-stone-300 font-medium">02 Doorstep Drop</span>
+          <span class="text-stone-400 dark:text-stone-600">──→</span>
+          <span class="text-stone-700 dark:text-stone-300 font-medium">03 Fest &amp; Party</span>
+          <span class="text-stone-400 dark:text-stone-600">──→</span>
+          <span class="text-stone-700 dark:text-stone-300 font-medium">04 Unwashed Return</span>
         </div>
       </div>
 
       <!-- Connecting Filament Line (Desktop visual guide across steps) -->
       <div class="hidden lg:block relative mb-6">
-        <div class="h-px w-full bg-gradient-to-r from-transparent via-gold/35 to-transparent"></div>
+        <div class="h-px w-full bg-gradient-to-r from-transparent via-plum/25 dark:via-gold/35 to-transparent"></div>
       </div>
 
       <!-- 4 Elevated Fluid Glassmorphism Cards -->
@@ -994,22 +1161,22 @@
         <div class="ritual-card group relative rounded-3xl p-8 flex flex-col justify-between space-y-8 reveal-up delay-100 overflow-hidden">
           <div class="space-y-4">
             <div class="flex justify-between items-center">
-              <span class="px-3 py-1 rounded-full bg-white/5 border border-gold/30 text-[10px] font-mono font-bold tracking-widest text-gold">
+              <span class="px-3 py-1 rounded-full bg-stone-100/90 dark:bg-white/5 border border-plum/20 dark:border-gold/30 text-[10px] font-mono font-bold tracking-widest text-plum-dark dark:text-gold">
                 STAGE 01
               </span>
-              <span class="text-lg text-gold/70 group-hover:text-gold group-hover:scale-110 transition-transform">✦</span>
+              <span class="text-lg text-plum/70 dark:text-gold/70 group-hover:text-plum dark:group-hover:text-gold group-hover:scale-110 transition-transform">✦</span>
             </div>
-            <h3 class="font-cormorant text-2xl sm:text-3xl font-medium tracking-tight text-white group-hover:text-gold transition-colors">
+            <h3 class="font-cormorant text-2xl sm:text-3xl font-medium tracking-tight text-stone-900 dark:text-white group-hover:text-plum dark:group-hover:text-gold transition-colors">
               Raid Campus Closets
             </h3>
-            <p class="text-xs font-sans text-stone-300 leading-relaxed font-light">
+            <p class="text-xs font-sans text-stone-600 dark:text-stone-300 leading-relaxed font-light">
               Filter aesthetic corsets, fest outfits, Y2K fits, and dresses listed by stylish students across your campus and nearby university hubs.
             </p>
           </div>
 
-          <div class="pt-4 border-t border-white/10 flex justify-between items-center text-[10px] font-mono text-stone-400">
+          <div class="pt-4 border-t border-stone-200/80 dark:border-white/10 flex justify-between items-center text-[10px] font-mono text-stone-500 dark:text-stone-400">
             <span>DISCOVERY PROTOCOL</span>
-            <span class="text-gold font-bold">VERIFIED FITS ↗</span>
+            <span class="text-plum-dark dark:text-gold font-bold">VERIFIED FITS ↗</span>
           </div>
         </div>
 
@@ -1017,22 +1184,22 @@
         <div class="ritual-card group relative rounded-3xl p-8 flex flex-col justify-between space-y-8 reveal-up delay-200 overflow-hidden">
           <div class="space-y-4">
             <div class="flex justify-between items-center">
-              <span class="px-3 py-1 rounded-full bg-white/5 border border-gold/30 text-[10px] font-mono font-bold tracking-widest text-gold">
+              <span class="px-3 py-1 rounded-full bg-stone-100/90 dark:bg-white/5 border border-plum/20 dark:border-gold/30 text-[10px] font-mono font-bold tracking-widest text-plum-dark dark:text-gold">
                 STAGE 02
               </span>
-              <span class="text-lg text-gold/70 group-hover:text-gold group-hover:scale-110 transition-transform">◈</span>
+              <span class="text-lg text-plum/70 dark:text-gold/70 group-hover:text-plum dark:group-hover:text-gold group-hover:scale-110 transition-transform">◈</span>
             </div>
-            <h3 class="font-cormorant text-2xl sm:text-3xl font-medium tracking-tight text-white group-hover:text-gold transition-colors">
+            <h3 class="font-cormorant text-2xl sm:text-3xl font-medium tracking-tight text-stone-900 dark:text-white group-hover:text-plum dark:group-hover:text-gold transition-colors">
               Hostel &amp; Doorstep Drop
             </h3>
-            <p class="text-xs font-sans text-stone-300 leading-relaxed font-light">
+            <p class="text-xs font-sans text-stone-600 dark:text-stone-300 leading-relaxed font-light">
               Collect your freshly steamed outfit in our signature protective satchel directly at your hostel gate, PG entrance, or college apartment.
             </p>
           </div>
 
-          <div class="pt-4 border-t border-white/10 flex justify-between items-center text-[10px] font-mono text-stone-400">
+          <div class="pt-4 border-t border-stone-200/80 dark:border-white/10 flex justify-between items-center text-[10px] font-mono text-stone-500 dark:text-stone-400">
             <span>CAMPUS LOGISTICS</span>
-            <span class="text-gold font-bold">EXPRESS SATCHEL ↗</span>
+            <span class="text-plum-dark dark:text-gold font-bold">EXPRESS SATCHEL ↗</span>
           </div>
         </div>
 
@@ -1040,22 +1207,22 @@
         <div class="ritual-card group relative rounded-3xl p-8 flex flex-col justify-between space-y-8 reveal-up delay-300 overflow-hidden">
           <div class="space-y-4">
             <div class="flex justify-between items-center">
-              <span class="px-3 py-1 rounded-full bg-white/5 border border-gold/30 text-[10px] font-mono font-bold tracking-widest text-gold">
+              <span class="px-3 py-1 rounded-full bg-stone-100/90 dark:bg-white/5 border border-plum/20 dark:border-gold/30 text-[10px] font-mono font-bold tracking-widest text-plum-dark dark:text-gold">
                 STAGE 03
               </span>
-              <span class="text-lg text-gold/70 group-hover:text-gold group-hover:scale-110 transition-transform">✧</span>
+              <span class="text-lg text-plum/70 dark:text-gold/70 group-hover:text-plum dark:group-hover:text-gold group-hover:scale-110 transition-transform">✧</span>
             </div>
-            <h3 class="font-cormorant text-2xl sm:text-3xl font-medium tracking-tight text-white group-hover:text-gold transition-colors">
+            <h3 class="font-cormorant text-2xl sm:text-3xl font-medium tracking-tight text-stone-900 dark:text-white group-hover:text-plum dark:group-hover:text-gold transition-colors">
               72-Hour Full Custody
             </h3>
-            <p class="text-xs font-sans text-stone-300 leading-relaxed font-light">
+            <p class="text-xs font-sans text-stone-600 dark:text-stone-300 leading-relaxed font-light">
               Wear across fest weekends, club nights, and shoots with zero stress. Accidental party drink spills and minor scuffs are 100% insured.
             </p>
           </div>
 
-          <div class="pt-4 border-t border-white/10 flex justify-between items-center text-[10px] font-mono text-stone-400">
+          <div class="pt-4 border-t border-stone-200/80 dark:border-white/10 flex justify-between items-center text-[10px] font-mono text-stone-500 dark:text-stone-400">
             <span>ZERO ANXIETY SHIELD</span>
-            <span class="text-gold font-bold">100% INSURED ↗</span>
+            <span class="text-plum-dark dark:text-gold font-bold">100% INSURED ↗</span>
           </div>
         </div>
 
@@ -1063,22 +1230,22 @@
         <div class="ritual-card group relative rounded-3xl p-8 flex flex-col justify-between space-y-8 reveal-up delay-400 overflow-hidden">
           <div class="space-y-4">
             <div class="flex justify-between items-center">
-              <span class="px-3 py-1 rounded-full bg-white/5 border border-gold/30 text-[10px] font-mono font-bold tracking-widest text-gold">
+              <span class="px-3 py-1 rounded-full bg-stone-100/90 dark:bg-white/5 border border-plum/20 dark:border-gold/30 text-[10px] font-mono font-bold tracking-widest text-plum-dark dark:text-gold">
                 STAGE 04
               </span>
-              <span class="text-lg text-gold/70 group-hover:text-gold group-hover:scale-110 transition-transform">⟲</span>
+              <span class="text-lg text-plum/70 dark:text-gold/70 group-hover:text-plum dark:group-hover:text-gold group-hover:scale-110 transition-transform">⟲</span>
             </div>
-            <h3 class="font-cormorant text-2xl sm:text-3xl font-medium tracking-tight text-white group-hover:text-gold transition-colors">
+            <h3 class="font-cormorant text-2xl sm:text-3xl font-medium tracking-tight text-stone-900 dark:text-white group-hover:text-plum dark:group-hover:text-gold transition-colors">
               Hand Over Unwashed
             </h3>
-            <p class="text-xs font-sans text-stone-300 leading-relaxed font-light">
+            <p class="text-xs font-sans text-stone-600 dark:text-stone-300 leading-relaxed font-light">
               Never stress over dorm sink washing or dry cleaners. Pack into the prepaid satchel for courier pickup. We ozone sanitize every piece before the next wearer.
             </p>
           </div>
 
-          <div class="pt-4 border-t border-white/10 flex justify-between items-center text-[10px] font-mono text-stone-400">
+          <div class="pt-4 border-t border-stone-200/80 dark:border-white/10 flex justify-between items-center text-[10px] font-mono text-stone-500 dark:text-stone-400">
             <span>OZONE STERILIZATION</span>
-            <span class="text-gold font-bold">ZERO LAUNDRY ↗</span>
+            <span class="text-plum-dark dark:text-gold font-bold">ZERO LAUNDRY ↗</span>
           </div>
         </div>
 
@@ -1094,57 +1261,57 @@
 
     <div class="max-w-5xl mx-auto px-6 relative z-10">
       <!-- Super Glassmorphic Card -->
-      <div class="p-8 sm:p-14 rounded-3xl nocturne-glass-card text-white relative overflow-hidden reveal-scale shadow-2xl">
+      <div class="p-8 sm:p-14 rounded-3xl nocturne-glass-card text-stone-900 dark:text-white relative overflow-hidden reveal-scale shadow-2xl">
 
         <div class="max-w-2xl space-y-4 relative z-10">
-          <span class="text-[10px] font-mono uppercase tracking-widest text-gold block">CAMPUS WARDROBE GUILD</span>
-          <h2 class="font-cormorant text-4xl sm:text-5xl font-light text-white">
+          <span class="text-[10px] font-mono uppercase tracking-widest text-plum-dark dark:text-gold block">CAMPUS WARDROBE GUILD</span>
+          <h2 class="font-cormorant text-4xl sm:text-5xl font-light text-stone-900 dark:text-white">
             Turn Your Closet Into College Pocket Money
           </h2>
-          <p class="text-stone-300 text-xs font-sans leading-relaxed font-light">
+          <p class="text-stone-600 dark:text-stone-300 text-xs font-sans leading-relaxed font-light">
             That aesthetic corset, fest dress, or statement jacket sitting unworn in your cupboard? Lend it to fellow college girls for weekends and university fests. We handle insured doorstep pickups, hospital sanitization, and direct weekly UPI payouts.
           </p>
         </div>
 
-        <div class="mt-10 pt-10 border-t border-white/10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
+        <div class="mt-10 pt-10 border-t border-stone-200/80 dark:border-white/10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10">
           
           <div class="md:col-span-7 space-y-6">
             <div>
               <div class="flex justify-between text-xs font-mono mb-2">
-                <span class="text-stone-300">Fits in your closet to lend:</span>
-                <span id="garmentCountDisplay" class="text-gold font-bold text-sm">3 Fits</span>
+                <span class="text-stone-700 dark:text-stone-300">Fits in your closet to lend:</span>
+                <span id="garmentCountDisplay" class="text-plum-dark dark:text-gold font-bold text-sm">3 Fits</span>
               </div>
-              <input id="garmentSlider" type="range" min="1" max="10" value="3" class="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-gold" oninput="updateEarnings(this.value)">
-              <div class="flex justify-between text-[10px] font-mono text-stone-400 mt-1">
+              <input id="garmentSlider" type="range" min="1" max="10" value="3" class="w-full h-2 bg-stone-200 dark:bg-white/10 rounded-lg appearance-none cursor-pointer accent-plum dark:accent-gold" oninput="updateEarnings(this.value)">
+              <div class="flex justify-between text-[10px] font-mono text-stone-500 dark:text-stone-400 mt-1">
                 <span>1 Fit</span>
                 <span>5 Fits</span>
                 <span>10 Fits</span>
               </div>
             </div>
 
-            <div class="text-[11px] font-mono text-stone-300 space-y-2.5">
+            <div class="text-[11px] font-mono text-stone-700 dark:text-stone-300 space-y-2.5">
               <div class="flex items-center gap-2.5">
-                <span class="text-gold font-bold">✓</span>
+                <span class="text-plum-dark dark:text-gold font-bold">✓</span>
                 <span>70% direct dividend paid every Monday morning via UPI (GPay / PhonePe)</span>
               </div>
               <div class="flex items-center gap-2.5">
-                <span class="text-gold font-bold">✓</span>
+                <span class="text-plum-dark dark:text-gold font-bold">✓</span>
                 <span>100% garment replacement security guarantee backed by peer insurance</span>
               </div>
               <div class="flex items-center gap-2.5">
-                <span class="text-gold font-bold">✓</span>
+                <span class="text-plum-dark dark:text-gold font-bold">✓</span>
                 <span>Zero cleaning hassle: free medical ozone sterilization after every rental</span>
               </div>
             </div>
           </div>
 
           <!-- Glass Inner Payout Pill -->
-          <div class="md:col-span-5 bg-white/[0.04] border border-white/10 backdrop-blur-xl p-8 rounded-2xl text-center space-y-4 shadow-xl">
-            <span class="text-[10px] font-mono uppercase tracking-widest text-stone-400 block">ESTIMATED MONTHLY POCKET MONEY</span>
-            <div class="font-cormorant text-5xl sm:text-6xl font-light text-gold" id="calculatedEarnings">
-              ₹4,500<span class="text-sm font-sans text-stone-300">/mo</span>
+          <div class="calculator-payout-card md:col-span-5 backdrop-blur-xl p-8 rounded-2xl text-center space-y-4">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-stone-500 dark:text-stone-400 block">ESTIMATED MONTHLY POCKET MONEY</span>
+            <div class="font-cormorant text-5xl sm:text-6xl font-light text-plum-dark dark:text-gold" id="calculatedEarnings">
+              ₹4,500<span class="text-sm font-sans text-stone-500 dark:text-stone-300">/mo</span>
             </div>
-            <button onclick="openLenderModal()" class="w-full py-3.5 rounded-full bg-gold text-ink font-mono text-xs uppercase tracking-widest font-bold hover:bg-gold-warm transition-all shadow-md cursor-pointer">
+            <button onclick="openLenderModal()" class="w-full py-3.5 rounded-full bg-plum text-gold hover:bg-plum-dark dark:bg-gold dark:text-ink dark:hover:bg-gold-warm font-mono text-xs uppercase tracking-widest font-bold transition-all shadow-md cursor-pointer">
               List Your Fits ↗
             </button>
           </div>
@@ -1159,12 +1326,12 @@
   <!-- ========================================================================= -->
   <section id="lockers" class="w-full relative py-16 z-10">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-      <div class="flex justify-between items-baseline mb-8 pb-3 border-b border-white/10">
+      <div class="flex justify-between items-baseline mb-8 pb-3 border-b border-stone-200/80 dark:border-white/10">
       <div>
-        <span class="text-[10px] font-mono uppercase tracking-widest text-gold block font-bold">SANCTUARY ATELIERS &amp; HUBS</span>
-        <h2 class="font-cormorant text-3xl sm:text-4xl font-light text-white">Doorstep &amp; Campus Studio Hubs</h2>
+        <span class="text-[10px] font-mono uppercase tracking-widest text-plum-dark dark:text-gold block font-bold">SANCTUARY ATELIERS &amp; HUBS</span>
+        <h2 class="font-cormorant text-3xl sm:text-4xl font-light text-stone-900 dark:text-white">Doorstep &amp; Campus Studio Hubs</h2>
       </div>
-      <span class="text-xs font-mono text-stone-400">EXPRESS SATCHEL SERVICE</span>
+      <span class="text-xs font-mono text-stone-500 dark:text-stone-400">EXPRESS SATCHEL SERVICE</span>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -1172,38 +1339,38 @@
       <!-- Hub 1 -->
       <div class="hub-card group relative p-8 rounded-3xl space-y-4 reveal-up delay-100 cursor-pointer overflow-hidden" onclick="openConciergeBooking('Central & South Delhi Studios')">
         <div class="flex justify-between items-center text-xs font-mono">
-          <span class="px-3 py-1 rounded-full bg-white/5 border border-gold/30 text-gold font-bold">DELHI NCR STUDIOS</span>
-          <span class="flex items-center gap-1.5 text-emerald-400 font-semibold">
+          <span class="px-3 py-1 rounded-full bg-stone-100/90 dark:bg-white/5 border border-plum/20 dark:border-gold/30 text-plum-dark dark:text-gold font-bold">DELHI NCR STUDIOS</span>
+          <span class="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-semibold">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             2-HOUR EXPRESS COURIER READY
           </span>
         </div>
-        <h3 class="font-cormorant text-2xl sm:text-3xl font-semibold text-white group-hover:text-gold transition-colors">Kamla Nagar, Hauz Khas &amp; South Ex</h3>
-        <p class="text-xs text-stone-300 font-sans leading-relaxed font-light">
+        <h3 class="font-cormorant text-2xl sm:text-3xl font-semibold text-stone-900 dark:text-white group-hover:text-plum dark:group-hover:text-gold transition-colors">Kamla Nagar, Hauz Khas &amp; South Ex</h3>
+        <p class="text-xs text-stone-600 dark:text-stone-300 font-sans leading-relaxed font-light">
           Serving fashion enthusiasts across Delhi NCR with express 2-hour courier dispatch. Includes 2-hour express dispatch for same-day fest emergencies, steamed handover, and scheduled Monday pickups.
         </p>
-        <div class="pt-2 flex justify-between items-center text-[11px] font-mono text-stone-400 border-t border-white/10">
+        <div class="pt-2 flex justify-between items-center text-[11px] font-mono text-stone-500 dark:text-stone-400 border-t border-stone-200/80 dark:border-white/10">
           <span>HOURS: 09:00 — 21:00</span>
-          <span class="text-gold font-bold group-hover:translate-x-1 transition-transform">SCHEDULE COURIER ↗</span>
+          <span class="text-plum-dark dark:text-gold font-bold group-hover:translate-x-1 transition-transform">SCHEDULE COURIER ↗</span>
         </div>
       </div>
 
       <!-- Hub 2 -->
       <div class="hub-card group relative p-8 rounded-3xl space-y-4 reveal-up delay-200 cursor-pointer overflow-hidden" onclick="openConciergeBooking('Mumbai & Bangalore Campus Enclaves')">
         <div class="flex justify-between items-center text-xs font-mono">
-          <span class="px-3 py-1 rounded-full bg-white/5 border border-gold/30 text-gold font-bold">MUMBAI &amp; BANGALORE HUBS</span>
-          <span class="flex items-center gap-1.5 text-emerald-400 font-semibold">
+          <span class="px-3 py-1 rounded-full bg-stone-100/90 dark:bg-white/5 border border-plum/20 dark:border-gold/30 text-plum-dark dark:text-gold font-bold">MUMBAI &amp; BANGALORE HUBS</span>
+          <span class="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-semibold">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             SAME-DAY HOSTEL DROP READY
           </span>
         </div>
-        <h3 class="font-cormorant text-2xl sm:text-3xl font-semibold text-white group-hover:text-gold transition-colors">Bandra West &amp; Koramangala Enclaves</h3>
-        <p class="text-xs text-stone-300 font-sans leading-relaxed font-light">
+        <h3 class="font-cormorant text-2xl sm:text-3xl font-semibold text-stone-900 dark:text-white group-hover:text-plum dark:group-hover:text-gold transition-colors">Bandra West &amp; Koramangala Enclaves</h3>
+        <p class="text-xs text-stone-600 dark:text-stone-300 font-sans leading-relaxed font-light">
           Dedicated peer fashion hubs serving style collectives in Mumbai &amp; Bangalore. Fast hostel gate drop-offs, pre-paid return satchels, and zero-deposit student custody passes.
         </p>
-        <div class="pt-2 flex justify-between items-center text-[11px] font-mono text-stone-400 border-t border-white/10">
+        <div class="pt-2 flex justify-between items-center text-[11px] font-mono text-stone-500 dark:text-stone-400 border-t border-stone-200/80 dark:border-white/10">
           <span>HOURS: 10:00 — 20:00</span>
-          <span class="text-gold font-bold group-hover:translate-x-1 transition-transform">SCHEDULE COURIER ↗</span>
+          <span class="text-plum-dark dark:text-gold font-bold group-hover:translate-x-1 transition-transform">SCHEDULE COURIER ↗</span>
         </div>
       </div>
 
@@ -1217,42 +1384,42 @@
   <section id="stories" class="w-full relative py-16 z-10">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       <div class="max-w-2xl mb-12 space-y-2 reveal-up">
-        <span class="text-[10px] font-mono uppercase tracking-widest text-gold block font-bold">VERIFIED STUDENT VOICES</span>
-        <h2 class="font-cormorant text-4xl sm:text-5xl font-light text-white">Stories From Festivals &amp; Weekend Nights</h2>
+        <span class="text-[10px] font-mono uppercase tracking-widest text-plum-dark dark:text-gold block font-bold">VERIFIED STUDENT VOICES</span>
+        <h2 class="font-cormorant text-4xl sm:text-5xl font-light text-stone-900 dark:text-white">Stories From Festivals &amp; Weekend Nights</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
         <div class="story-card group relative p-8 rounded-3xl space-y-4 reveal-up delay-100 cursor-pointer overflow-hidden" onclick="showToast('Style Review · Maya S. (Dark Aesthetic Edit)')">
-          <div class="flex text-gold text-sm group-hover:scale-105 transition-transform origin-left">★★★★★</div>
-          <p class="text-xs text-stone-300 font-sans leading-relaxed font-light italic group-hover:text-white transition-colors">
+          <div class="flex text-amber-500 dark:text-gold text-sm group-hover:scale-105 transition-transform origin-left">★★★★★</div>
+          <p class="text-xs text-stone-700 dark:text-stone-300 font-sans leading-relaxed font-light italic group-hover:text-stone-900 dark:group-hover:text-white transition-colors">
             "Rented the Dark Romance Goth Set for a warehouse gig. The boning and floral lace details were immaculate! Paid ₹289 instead of buying a luxury goth ensemble I&#39;d only wear once. Handover took seconds."
           </p>
-          <div class="pt-2 border-t border-white/10 flex justify-between items-center text-[11px] font-mono">
-            <span class="font-bold text-gold">Maya S.</span>
-            <span class="text-stone-400">Verified Member · Goth &amp; Grunge Wardrobe</span>
+          <div class="pt-2 border-t border-stone-200/80 dark:border-white/10 flex justify-between items-center text-[11px] font-mono">
+            <span class="font-bold text-plum-dark dark:text-gold">Maya S.</span>
+            <span class="text-stone-500 dark:text-stone-400">Verified Member · Goth &amp; Grunge Wardrobe</span>
           </div>
         </div>
 
         <div class="story-card group relative p-8 rounded-3xl space-y-4 reveal-up delay-200 cursor-pointer overflow-hidden" onclick="showToast('Lender Review · Aarohi K. (Y2K & Corset Vault)')">
-          <div class="flex text-gold text-sm group-hover:scale-105 transition-transform origin-left">★★★★★</div>
-          <p class="text-xs text-stone-300 font-sans leading-relaxed font-light italic group-hover:text-white transition-colors">
+          <div class="flex text-amber-500 dark:text-gold text-sm group-hover:scale-105 transition-transform origin-left">★★★★★</div>
+          <p class="text-xs text-stone-700 dark:text-stone-300 font-sans leading-relaxed font-light italic group-hover:text-stone-900 dark:group-hover:text-white transition-colors">
             "I listed 4 of my concert fits and Y2K corset tops on Wedelia. Made ₹9,600 last month from people borrowing them for music festivals and weekend events. My wardrobe literally pays for my weekend plans."
           </p>
-          <div class="pt-2 border-t border-white/10 flex justify-between items-center text-[11px] font-mono">
-            <span class="font-bold text-gold">Aarohi K.</span>
-            <span class="text-stone-400">Verified Lender · Y2K &amp; Corset Archive</span>
+          <div class="pt-2 border-t border-stone-200/80 dark:border-white/10 flex justify-between items-center text-[11px] font-mono">
+            <span class="font-bold text-plum-dark dark:text-gold">Aarohi K.</span>
+            <span class="text-stone-500 dark:text-stone-400">Verified Lender · Y2K &amp; Corset Archive</span>
           </div>
         </div>
 
         <div class="story-card group relative p-8 rounded-3xl space-y-4 reveal-up delay-300 cursor-pointer overflow-hidden" onclick="showToast('Celebration Review · Devika M. (Minimalist Chic)')">
-          <div class="flex text-gold text-sm group-hover:scale-105 transition-transform origin-left">★★★★★</div>
-          <p class="text-xs text-stone-300 font-sans leading-relaxed font-light italic group-hover:text-white transition-colors">
+          <div class="flex text-amber-500 dark:text-gold text-sm group-hover:scale-105 transition-transform origin-left">★★★★★</div>
+          <p class="text-xs text-stone-700 dark:text-stone-300 font-sans leading-relaxed font-light italic group-hover:text-stone-900 dark:group-hover:text-white transition-colors">
             "Needed an outfit for an evening gala dinner on short notice. The Liquid Satin Slip arrived steamed and ready at my doorstep. Fit like a glove and looked 10/10 in all the pictures."
           </p>
-          <div class="pt-2 border-t border-white/10 flex justify-between items-center text-[11px] font-mono">
-            <span class="font-bold text-gold">Devika M.</span>
-            <span class="text-stone-400">Verified Member · Minimalist Evening Edit</span>
+          <div class="pt-2 border-t border-stone-200/80 dark:border-white/10 flex justify-between items-center text-[11px] font-mono">
+            <span class="font-bold text-plum-dark dark:text-gold">Devika M.</span>
+            <span class="text-stone-500 dark:text-stone-400">Verified Member · Minimalist Evening Edit</span>
           </div>
         </div>
 
@@ -1266,8 +1433,8 @@
   <section id="faq" class="w-full relative py-16 z-10">
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center max-w-xl mx-auto mb-12 space-y-2 reveal-up">
-        <span class="text-[10px] font-mono uppercase tracking-widest text-gold block font-bold">KNOWLEDGE BASE</span>
-        <h2 class="font-cormorant text-4xl font-light text-white">Frequently Asked Questions</h2>
+        <span class="text-[10px] font-mono uppercase tracking-widest text-plum-dark dark:text-gold block font-bold">KNOWLEDGE BASE</span>
+        <h2 class="font-cormorant text-4xl font-light text-stone-900 dark:text-white">Frequently Asked Questions</h2>
       </div>
 
     <div class="space-y-4">
@@ -1275,12 +1442,12 @@
       <!-- FAQ Item 1 -->
       <div class="faq-card group p-6 sm:p-7 rounded-2xl cursor-pointer transition-all duration-400 hover:shadow-floating reveal-up delay-100" onclick="toggleFaq(this)">
         <div class="flex justify-between items-center select-none">
-          <span class="font-cormorant text-2xl sm:text-3xl font-medium text-white group-hover:text-gold transition-colors">How does the 72-hour rental custody window work?</span>
-          <span class="faq-icon w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-mono text-base text-gold group-hover:border-gold transition-transform duration-400 select-none flex-shrink-0 ml-4">+</span>
+          <span class="font-cormorant text-2xl sm:text-3xl font-medium text-stone-900 dark:text-white group-hover:text-plum dark:group-hover:text-gold transition-colors">How does the 72-hour rental custody window work?</span>
+          <span class="faq-icon w-8 h-8 rounded-full border border-stone-300 dark:border-white/20 flex items-center justify-center font-mono text-base text-plum-dark dark:text-gold group-hover:border-plum dark:group-hover:border-gold transition-transform duration-400 select-none flex-shrink-0 ml-4">+</span>
         </div>
         <div class="faq-body transition-all duration-500 ease-in-out overflow-hidden" style="max-height: 0px; opacity: 0;">
-          <div class="pt-4 mt-4 border-t border-white/10">
-            <p class="text-xs sm:text-sm font-sans text-stone-300 leading-relaxed font-light">
+          <div class="pt-4 mt-4 border-t border-stone-200/80 dark:border-white/10">
+            <p class="text-xs sm:text-sm font-sans text-stone-600 dark:text-stone-300 leading-relaxed font-light">
               Your custody begins the moment our courier delivers the garment capsule to your hostel gate, dorm, or doorstep. You retain custody for seventy-two continuous hours, across fests, concerts, and weekend bashes. Simply place the unwashed piece back into our return satchel for courier pickup before the window concludes.
             </p>
           </div>
@@ -1290,12 +1457,12 @@
       <!-- FAQ Item 2 -->
       <div class="faq-card group p-6 sm:p-7 rounded-2xl cursor-pointer transition-all duration-400 hover:shadow-floating reveal-up delay-200" onclick="toggleFaq(this)">
         <div class="flex justify-between items-center select-none">
-          <span class="font-cormorant text-2xl sm:text-3xl font-medium text-white group-hover:text-gold transition-colors">What happens if someone spills a drink during a party or fest?</span>
-          <span class="faq-icon w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-mono text-base text-gold group-hover:border-gold transition-transform duration-400 select-none flex-shrink-0 ml-4">+</span>
+          <span class="font-cormorant text-2xl sm:text-3xl font-medium text-stone-900 dark:text-white group-hover:text-plum dark:group-hover:text-gold transition-colors">What happens if someone spills a drink during a party or fest?</span>
+          <span class="faq-icon w-8 h-8 rounded-full border border-stone-300 dark:border-white/20 flex items-center justify-center font-mono text-base text-plum-dark dark:text-gold group-hover:border-plum dark:group-hover:border-gold transition-transform duration-400 select-none flex-shrink-0 ml-4">+</span>
         </div>
         <div class="faq-body transition-all duration-500 ease-in-out overflow-hidden" style="max-height: 0px; opacity: 0;">
-          <div class="pt-4 mt-4 border-t border-white/10">
-            <p class="text-xs sm:text-sm font-sans text-stone-300 leading-relaxed font-light">
+          <div class="pt-4 mt-4 border-t border-stone-200/80 dark:border-white/10">
+            <p class="text-xs sm:text-sm font-sans text-stone-600 dark:text-stone-300 leading-relaxed font-light">
               Every pass includes complimentary accidental party spill coverage! Never attempt to rub or wash delicate fabrics in a hostel sink. Our medical-grade ozone and specialized cleansing chambers treat standard party blemishes without any extra charge to you.
             </p>
           </div>
@@ -1305,12 +1472,12 @@
       <!-- FAQ Item 3 -->
       <div class="faq-card group p-6 sm:p-7 rounded-2xl cursor-pointer transition-all duration-400 hover:shadow-floating reveal-up delay-300" onclick="toggleFaq(this)">
         <div class="flex justify-between items-center select-none">
-          <span class="font-cormorant text-2xl sm:text-3xl font-medium text-white group-hover:text-gold transition-colors">How are corsets, co-ords, and dresses sanitized?</span>
-          <span class="faq-icon w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-mono text-base text-gold group-hover:border-gold transition-transform duration-400 select-none flex-shrink-0 ml-4">+</span>
+          <span class="font-cormorant text-2xl sm:text-3xl font-medium text-stone-900 dark:text-white group-hover:text-plum dark:group-hover:text-gold transition-colors">How are corsets, co-ords, and dresses sanitized?</span>
+          <span class="faq-icon w-8 h-8 rounded-full border border-stone-300 dark:border-white/20 flex items-center justify-center font-mono text-base text-plum-dark dark:text-gold group-hover:border-plum dark:group-hover:border-gold transition-transform duration-400 select-none flex-shrink-0 ml-4">+</span>
         </div>
         <div class="faq-body transition-all duration-500 ease-in-out overflow-hidden" style="max-height: 0px; opacity: 0;">
-          <div class="pt-4 mt-4 border-t border-white/10">
-            <p class="text-xs sm:text-sm font-sans text-stone-300 leading-relaxed font-light">
+          <div class="pt-4 mt-4 border-t border-stone-200/80 dark:border-white/10">
+            <p class="text-xs sm:text-sm font-sans text-stone-600 dark:text-stone-300 leading-relaxed font-light">
               We use 100% medical-grade ozone gas sterilization chambers. Ozone gas destroys 99.9% of bacteria, viruses, and odors without any harsh water immersion or abrasive friction, preserving the fabrics, boning, and delicate lace in pristine condition.
             </p>
           </div>
@@ -1320,12 +1487,12 @@
       <!-- FAQ Item 4 -->
       <div class="faq-card group p-6 sm:p-7 rounded-2xl cursor-pointer transition-all duration-400 hover:shadow-floating reveal-up delay-400" onclick="toggleFaq(this)">
         <div class="flex justify-between items-center select-none">
-          <span class="font-cormorant text-2xl sm:text-3xl font-medium text-white group-hover:text-gold transition-colors">When and how do college closet lenders receive their payouts?</span>
-          <span class="faq-icon w-8 h-8 rounded-full border border-white/20 flex items-center justify-center font-mono text-base text-gold group-hover:border-gold transition-transform duration-400 select-none flex-shrink-0 ml-4">+</span>
+          <span class="font-cormorant text-2xl sm:text-3xl font-medium text-stone-900 dark:text-white group-hover:text-plum dark:group-hover:text-gold transition-colors">When and how do college closet lenders receive their payouts?</span>
+          <span class="faq-icon w-8 h-8 rounded-full border border-stone-300 dark:border-white/20 flex items-center justify-center font-mono text-base text-plum-dark dark:text-gold group-hover:border-plum dark:group-hover:border-gold transition-transform duration-400 select-none flex-shrink-0 ml-4">+</span>
         </div>
         <div class="faq-body transition-all duration-500 ease-in-out overflow-hidden" style="max-height: 0px; opacity: 0;">
-          <div class="pt-4 mt-4 border-t border-white/10">
-            <p class="text-xs sm:text-sm font-sans text-stone-300 leading-relaxed font-light">
+          <div class="pt-4 mt-4 border-t border-stone-200/80 dark:border-white/10">
+            <p class="text-xs sm:text-sm font-sans text-stone-600 dark:text-stone-300 leading-relaxed font-light">
               Lenders receive a flat 70% direct dividend of every rental fee, transferred automatically to their registered UPI (GPay/PhonePe/Paytm) every Monday morning. You can track your garment&#39;s rental history in real-time through your vault dashboard.
             </p>
           </div>
@@ -1343,28 +1510,28 @@
     <div class="max-w-5xl mx-auto px-6">
       <div class="nocturne-glass-card rounded-3xl p-8 sm:p-12 space-y-6 shadow-floating relative reveal-up">
       
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center text-[10px] font-mono border-b border-white/10 pb-3 gap-2">
-        <span class="font-bold tracking-widest text-gold">★ GAZETTE DISPATCH // THE SARTORIAL TELEGRAPH ★</span>
-        <span class="text-stone-400">DISPATCH NO. MMXXVI · WEEKLY WIRE</span>
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center text-[10px] font-mono border-b border-stone-200/80 dark:border-white/10 pb-3 gap-2">
+        <span class="font-bold tracking-widest text-plum-dark dark:text-gold">★ GAZETTE DISPATCH // THE SARTORIAL TELEGRAPH ★</span>
+        <span class="text-stone-500 dark:text-stone-400">DISPATCH NO. MMXXVI · WEEKLY WIRE</span>
       </div>
 
       <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
         <div class="space-y-2 max-w-xl">
-          <h4 class="font-cormorant text-3xl font-semibold text-white">Subscribe to The Weekly Drop Wire</h4>
-          <p class="text-xs text-stone-300 font-sans leading-relaxed font-light">
+          <h4 class="font-cormorant text-3xl font-semibold text-stone-900 dark:text-white">Subscribe to The Weekly Drop Wire</h4>
+          <p class="text-xs text-stone-600 dark:text-stone-300 font-sans leading-relaxed font-light">
             Be first to know when campus curators drop fresh festival corsets, Y2K fits, and party pieces for upcoming fest seasons and weekend plans.
           </p>
         </div>
 
         <form onsubmit="event.preventDefault(); showToast('Subscribed to Gazette Telegraph Wire!');" class="flex gap-2 w-full lg:w-auto">
-          <input type="email" required placeholder="Enter your email address" class="px-4 py-3 border border-white/15 rounded-xl text-xs font-mono placeholder:text-stone-500 flex-1 sm:w-64 focus:outline-none focus:ring-1 focus:ring-gold bg-white/5 text-white">
-          <button type="submit" class="px-6 py-3 bg-gold text-ink font-mono text-xs uppercase font-bold tracking-wider hover:bg-gold-warm transition-colors whitespace-nowrap rounded-xl shadow-md cursor-pointer">
+          <input type="email" required placeholder="Enter your email address" class="px-4 py-3 border border-stone-300 dark:border-white/15 rounded-xl text-xs font-mono placeholder:text-stone-400 dark:placeholder:text-stone-500 flex-1 sm:w-64 focus:outline-none focus:ring-1 focus:ring-plum dark:focus:ring-gold bg-white dark:bg-white/5 text-stone-900 dark:text-white shadow-xs">
+          <button type="submit" class="px-6 py-3 bg-plum text-gold hover:bg-plum-dark dark:bg-gold dark:text-ink dark:hover:bg-gold-warm font-mono text-xs uppercase font-bold tracking-wider transition-colors whitespace-nowrap rounded-xl shadow-md cursor-pointer">
             Join Wire ↗
           </button>
         </form>
       </div>
 
-      <div class="border-t border-white/10 pt-3 flex justify-between text-[10px] font-mono text-stone-400">
+      <div class="border-t border-stone-200/80 dark:border-white/10 pt-3 flex justify-between text-[10px] font-mono text-stone-500 dark:text-stone-400">
         <span>NATIONWIDE CONCIERGE · ZERO SPAM GUARANTEE</span>
         <span>MMXXVI EDITION</span>
       </div>
@@ -1375,48 +1542,49 @@
   <!-- ========================================================================= -->
   <!-- 4-COLUMN LUXURY FOOTER                                                    -->
   <!-- ========================================================================= -->
-  <footer class="bg-transparent text-stone-300 pt-16 pb-12 px-6 lg:px-12 border-t border-white/10 text-xs z-10 relative">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+  <footer class="bg-transparent text-stone-600 dark:text-stone-300 pt-16 pb-12 px-6 lg:px-12 border-t border-stone-200/80 dark:border-white/10 text-xs z-10 relative">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-stone-200/80 dark:border-white/10">
       
       <!-- Brand & Mission Column -->
       <div class="md:col-span-5 space-y-4">
         <div class="flex items-center gap-3">
-          <img src="assets/logo.svg" alt="Wedelia Logo" class="h-9 w-auto rounded-xl transition-all duration-600 ease-out hover:scale-[1.02] hover:shadow-[0_0_12px_rgba(242,217,92,0.22)] hover:drop-shadow-[0_0_6px_rgba(245,220,88,0.25)] cursor-pointer">
+          <img src="assets/logo-light.svg" alt="Wedelia Logo" class="dark:hidden h-9 w-auto rounded-xl transition-all duration-600 ease-out hover:scale-[1.02] hover:shadow-[0_0_12px_rgba(242,217,92,0.22)] hover:drop-shadow-[0_0_6px_rgba(245,220,88,0.25)] cursor-pointer">
+          <img src="assets/logo.svg" alt="Wedelia Logo" class="hidden dark:inline h-9 w-auto rounded-xl transition-all duration-600 ease-out hover:scale-[1.02] hover:shadow-[0_0_12px_rgba(242,217,92,0.22)] hover:drop-shadow-[0_0_6px_rgba(245,220,88,0.25)] cursor-pointer">
         </div>
-        <p class="text-stone-400 text-xs leading-relaxed max-w-sm font-light">
+        <p class="text-stone-600 dark:text-stone-400 text-xs leading-relaxed max-w-sm font-light">
           WEDELIA is a curated peer wardrobe rental collective for college girls. Western corsets, Y2K fits, fest outfits &amp; party aesthetics with 72-hour doorstep custody and ozone sanitization.
         </p>
-        <span class="inline-block px-3 py-1 rounded bg-white/5 text-[10px] font-mono text-gold border border-gold/20">
+        <span class="inline-block px-3 py-1 rounded bg-stone-100/90 dark:bg-white/5 text-[10px] font-mono text-plum-dark dark:text-gold border border-plum/20 dark:border-gold/20">
           The Definitive Edition MMXXVI
         </span>
       </div>
 
       <!-- Curations Column -->
       <div class="md:col-span-2 space-y-2 font-mono">
-        <strong class="text-gold uppercase text-[11px] block tracking-wider">Curations</strong>
-        <ul class="space-y-1.5 text-stone-400">
-          <li><a href="#collection-sheet" class="hover:text-white transition-colors">Western Corsets</a></li>
-          <li><a href="#collection-sheet" class="hover:text-white transition-colors">Boho Ruffle Skirts</a></li>
-          <li><a href="#collection-sheet" class="hover:text-white transition-colors">Y2K Party Sets</a></li>
-          <li><a href="#collection-sheet" class="hover:text-white transition-colors">Festival Fits</a></li>
+        <strong class="text-plum-dark dark:text-gold uppercase text-[11px] block tracking-wider">Curations</strong>
+        <ul class="space-y-1.5 text-stone-600 dark:text-stone-400">
+          <li><a href="#collection-sheet" class="hover:text-plum dark:hover:text-white transition-colors">Western Corsets</a></li>
+          <li><a href="#collection-sheet" class="hover:text-plum dark:hover:text-white transition-colors">Boho Ruffle Skirts</a></li>
+          <li><a href="#collection-sheet" class="hover:text-plum dark:hover:text-white transition-colors">Y2K Party Sets</a></li>
+          <li><a href="#collection-sheet" class="hover:text-plum dark:hover:text-white transition-colors">Festival Fits</a></li>
         </ul>
       </div>
 
       <!-- Protocol Column -->
       <div class="md:col-span-2 space-y-2 font-mono">
-        <strong class="text-gold uppercase text-[11px] block tracking-wider">Custody Code</strong>
-        <ul class="space-y-1.5 text-stone-400">
-          <li><a href="#circular-ritual" class="hover:text-white transition-colors">72-Hour Fit Pass</a></li>
-          <li><a href="#calculator" class="hover:text-white transition-colors">Closet Earnings</a></li>
-          <li><a href="#faq" class="hover:text-white transition-colors">Ozone Hygiene Code</a></li>
-          <li><a href="#faq" class="hover:text-white transition-colors">Spill Shield</a></li>
+        <strong class="text-plum-dark dark:text-gold uppercase text-[11px] block tracking-wider">Custody Code</strong>
+        <ul class="space-y-1.5 text-stone-600 dark:text-stone-400">
+          <li><a href="#circular-ritual" class="hover:text-plum dark:hover:text-white transition-colors">72-Hour Fit Pass</a></li>
+          <li><a href="#calculator" class="hover:text-plum dark:hover:text-white transition-colors">Closet Earnings</a></li>
+          <li><a href="#faq" class="hover:text-plum dark:hover:text-white transition-colors">Ozone Hygiene Code</a></li>
+          <li><a href="#faq" class="hover:text-plum dark:hover:text-white transition-colors">Spill Shield</a></li>
         </ul>
       </div>
 
       <!-- Sanctuary Hubs Column -->
       <div class="md:col-span-3 space-y-3 font-mono">
-        <strong class="text-gold uppercase text-[11px] block tracking-wider">Concierge Studios</strong>
-        <p class="text-stone-400 text-[11px] leading-relaxed font-light">
+        <strong class="text-plum-dark dark:text-gold uppercase text-[11px] block tracking-wider">Concierge Studios</strong>
+        <p class="text-stone-600 dark:text-stone-400 text-[11px] leading-relaxed font-light">
           Delhi NCR: Hauz Khas &amp; Central Delhi Studios<br>
           Mumbai: Bandra Enclave<br>
           Bangalore: Koramangala Hub<br>
@@ -1424,14 +1592,14 @@
         </p>
 
         <!-- Created by Srijani Singha Signature Block -->
-        <div class="pt-3 border-t border-white/5">
+        <div class="pt-3 border-t border-stone-200/80 dark:border-white/5">
           <span class="text-[10px] tracking-widest text-stone-500 uppercase block font-sans">Created by</span>
           <div class="relative inline-block mt-0.5">
-            <span class="font-signature text-3xl sm:text-4xl text-gold/90 dark:text-gold block tracking-wide select-none transform -rotate-2 origin-left hover:scale-105 transition-transform">
+            <span class="font-signature text-3xl sm:text-4xl text-plum dark:text-gold block tracking-wide select-none transform -rotate-2 origin-left hover:scale-105 transition-transform">
               Srijani Singha
             </span>
             <!-- Subtle Signature Underscore flourish -->
-            <div class="h-[1px] w-full bg-gradient-to-r from-gold/70 via-gold/40 to-transparent mt-[-4px]"></div>
+            <div class="h-[1px] w-full bg-gradient-to-r from-plum/50 via-gold/50 to-transparent dark:from-gold/70 dark:via-gold/40 dark:to-transparent mt-[-4px]"></div>
           </div>
         </div>
       </div>
@@ -1441,7 +1609,7 @@
     <div class="max-w-7xl mx-auto pt-6 flex flex-col sm:flex-row justify-between items-center text-[11px] text-stone-500 font-mono gap-4">
       <span>© 2026 WEDELIA ATELIER. THE DEFINITIVE EDITION. ALL RIGHTS RESERVED.</span>
       <div class="flex gap-6">
-        <a href="#home" class="hover:text-gold transition-colors">Back To Top ↑</a>
+        <a href="#home" class="hover:text-plum dark:hover:text-gold transition-colors">Back To Top ↑</a>
       </div>
     </div>
   </footer>
@@ -1796,7 +1964,6 @@
       localStorage.setItem('wedelia_theme', isDark ? 'dark' : 'light');
       updateThemeButton(isDark);
       updateThemeColor(isDark);
-      showToast(isDark ? 'Nocturne Dark Mode Activated ☾' : 'Warm Daylight Mode Activated ☀');
     }
 
     function updateThemeButton(isDark) {
@@ -1808,7 +1975,9 @@
 
     function updateThemeColor(isDark) {
       const meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute('content', isDark ? '#0c0811' : '#faf7f2');
+      if (meta) meta.setAttribute('content', isDark ? '#0c0811' : '#faf6f0');
+      const favicon = document.querySelector('link[rel="icon"]');
+      if (favicon) favicon.setAttribute('href', isDark ? 'assets/girl.png' : 'assets/girl-gold.png');
     }
 
     initTheme();
@@ -1934,16 +2103,24 @@
     function updateEarnings(val) {
       document.getElementById('garmentCountDisplay').innerText = val + (val == 1 ? ' Fit' : ' Fits');
       const monthly = val * 1500;
-      document.getElementById('calculatedEarnings').innerHTML = '₹' + monthly.toLocaleString('en-IN') + '<span class="text-sm font-sans text-stone-300">/mo</span>';
+      document.getElementById('calculatedEarnings').innerHTML = '₹' + monthly.toLocaleString('en-IN') + '<span class="text-sm font-sans text-stone-500 dark:text-stone-300">/mo</span>';
     }
 
     // 9. Toast System
+    let toastTimeout = null;
     function showToast(message) {
       const toast = document.getElementById('toastNotification');
-      document.getElementById('toastMessage').innerText = message;
-      toast.classList.remove('translate-y-[-150%]');
-      setTimeout(() => {
-        toast.classList.add('translate-y-[-150%]');
+      if (!toast) return;
+      const msgEl = document.getElementById('toastMessage');
+      if (msgEl) msgEl.innerText = message;
+      
+      toast.classList.remove('toast-hidden');
+      toast.classList.add('toast-visible');
+      
+      if (toastTimeout) clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('toast-visible');
+        toast.classList.add('toast-hidden');
       }, 3500);
     }
 

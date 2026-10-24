@@ -1518,6 +1518,99 @@
     </div>
   </div>
 
+  <!-- ========================================================================= -->
+  <!-- IIEST VERIFICATION QUESTION MODAL                                         -->
+  <!-- ========================================================================= -->
+  <div id="iiestModalOverlay" class="fixed inset-0 bg-black/45 dark:bg-black/60 backdrop-blur-[4px] z-[80] opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4" onclick="closeIiestModal()">
+    <div id="iiestModalCard" class="relative w-full max-w-sm rounded-3xl apple-glass p-7 text-center transform scale-95 opacity-0 transition-all duration-300 space-y-6" onclick="event.stopPropagation()">
+      
+      <!-- Close Button -->
+      <button onclick="closeIiestModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 border border-black/5 dark:border-white/10 flex items-center justify-center text-stone-600 dark:text-stone-300 hover:text-ink dark:hover:text-white transition-all text-xs cursor-pointer shadow-sm" title="Close">
+        ✕
+      </button>
+
+      <!-- Campus Badge -->
+      <div class="pt-2">
+        <span class="text-[10px] font-mono tracking-whisper uppercase text-plum/70 dark:text-gold/70 block mb-1">CAMPUS VERIFICATION · HOWRAH</span>
+        <h3 class="font-cormorant text-2xl sm:text-3xl font-medium text-ink dark:text-white">
+          Are you from IIEST?
+        </h3>
+        <p class="text-xs font-mono text-stone-500 dark:text-stone-400 mt-1">
+          Indian Institute of Engineering Science and Technology, Shibpur
+        </p>
+      </div>
+
+      <!-- Action Choice Buttons -->
+      <div class="flex items-center justify-center gap-4 pt-2">
+        <button onclick="handleIiestAnswer(true)" class="flex-1 py-3 px-5 rounded-2xl bg-plum dark:bg-gold text-gold dark:text-ink font-mono font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-all shadow-md cursor-pointer">
+          Yes
+        </button>
+        <button onclick="handleIiestAnswer(false)" class="flex-1 py-3 px-5 rounded-2xl bg-black/5 dark:bg-white/10 border border-black/5 dark:border-white/10 text-stone-700 dark:text-stone-200 font-mono font-bold text-xs uppercase tracking-wider hover:bg-black/10 dark:hover:bg-white/20 transition-all cursor-pointer">
+          No
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MS. SRIJANI SPECIAL CELEBRATION MODAL (CONTACT US STYLE)                  -->
+  <!-- ========================================================================= -->
+  <div id="srijaniModalOverlay" class="fixed inset-0 bg-black/50 dark:bg-black/65 backdrop-blur-[4px] z-[90] opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4" onclick="closeSrijaniModal()">
+    <div id="srijaniModalCard" class="relative w-full max-w-md rounded-3xl apple-glass p-8 sm:p-9 text-center transform scale-95 opacity-0 transition-all duration-300 space-y-6" onclick="event.stopPropagation()">
+      
+      <!-- Close Button -->
+      <button onclick="closeSrijaniModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 border border-black/5 dark:border-white/10 flex items-center justify-center text-stone-600 dark:text-stone-300 hover:text-ink dark:hover:text-white transition-all text-xs cursor-pointer shadow-sm" title="Close">
+        ✕
+      </button>
+
+      <!-- Ambient Luxury Soft Glow Orbs -->
+      <div class="absolute -top-12 -right-12 w-36 h-36 bg-gold/25 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-12 -left-12 w-36 h-36 bg-plum/30 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Sparkle Icon & Header -->
+      <div class="pt-1">
+        <span class="text-3xl animate-bounce inline-block">✨</span>
+        <h2 class="font-cormorant text-3xl sm:text-4xl font-normal text-ink dark:text-white block mt-1">
+          congratulationsss
+        </h2>
+        <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-2"></div>
+      </div>
+
+      <!-- Ms. Srijani VIP Title -->
+      <div>
+        <p class="font-cormorant text-3xl sm:text-4xl font-medium text-shine tracking-wide">
+          Ms. Srijani
+        </p>
+        <p class="font-cormorant text-xl sm:text-2xl text-stone-700 dark:text-stone-200 mt-2 italic">
+          you get all products for free
+        </p>
+      </div>
+
+      <!-- Apple Glass Info Pill -->
+      <div class="apple-glass-card py-4 px-5 rounded-2xl border border-gold/40 bg-gold/10 dark:bg-gold/15">
+        <span class="text-[10px] font-mono uppercase tracking-widest text-plum dark:text-gold block font-bold">ALL ATELIER PIECES UNLOCKED</span>
+        <span class="font-mono text-2xl font-bold text-plum dark:text-gold">₹0</span>
+        <span class="text-xs font-mono text-stone-500 block mt-0.5">Complimentary Pass Applied</span>
+      </div>
+
+      <!-- Action Button -->
+      <div>
+        <button onclick="closeSrijaniModal()" class="w-full py-3.5 px-6 rounded-2xl bg-plum dark:bg-gold text-gold dark:text-ink font-mono font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-all shadow-lg cursor-pointer">
+          Claim Fits Now →
+        </button>
+      </div>
+
+      <!-- Warm Closing Sign-off -->
+      <div class="pt-3 border-t border-black/5 dark:border-white/10">
+        <p class="font-cormorant text-xl sm:text-2xl italic text-plum-dark dark:text-gold font-normal">
+          Shine On. We love you
+        </p>
+      </div>
+
+    </div>
+  </div>
+
   <!-- Slide-out Garment Details Modal Drawer -->
   <div id="drawerOverlay" class="fixed inset-0 bg-ink/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeAllDrawers()"></div>
   <aside id="sideDrawer" class="fixed top-0 right-0 h-full w-full max-w-md shadow-drawer z-50 translate-x-full transition-transform duration-300 flex flex-col">
@@ -2015,6 +2108,16 @@
     }
 
     function selectCity(city) {
+      if (city.toLowerCase() === 'howrah') {
+        closeLocationModal();
+        openIiestModal();
+        return;
+      }
+
+      applyCitySelection(city);
+    }
+
+    function applyCitySelection(city) {
       currentSelectedCity = city;
       localStorage.setItem('wedelia_location', city);
       const label = document.getElementById('navLocationLabel');
@@ -2024,6 +2127,104 @@
       renderCities(CITIES);
       closeLocationModal();
       showToast(city === 'All Locations' ? 'Location set to Pan-India 📍' : `Location set to ${city} 📍`);
+    }
+
+    function openIiestModal() {
+      const overlay = document.getElementById('iiestModalOverlay');
+      const card = document.getElementById('iiestModalCard');
+      if (!overlay || !card) return;
+      document.body.classList.add('overflow-hidden');
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+
+    function closeIiestModal() {
+      const overlay = document.getElementById('iiestModalOverlay');
+      const card = document.getElementById('iiestModalCard');
+      if (!overlay || !card) return;
+      card.classList.remove('scale-100', 'opacity-100');
+      card.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        document.body.classList.remove('overflow-hidden');
+      }, 200);
+    }
+
+    function handleIiestAnswer(isIiest) {
+      closeIiestModal();
+      applyCitySelection('Howrah');
+      if (isIiest) {
+        setTimeout(() => {
+          openSrijaniModal();
+          applySrijaniFreePass();
+        }, 220);
+      }
+    }
+
+    function openSrijaniModal() {
+      const overlay = document.getElementById('srijaniModalOverlay');
+      const card = document.getElementById('srijaniModalCard');
+      if (!overlay || !card) return;
+      document.body.classList.add('overflow-hidden');
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+
+    function closeSrijaniModal() {
+      const overlay = document.getElementById('srijaniModalOverlay');
+      const card = document.getElementById('srijaniModalCard');
+      if (!overlay || !card) return;
+      card.classList.remove('scale-100', 'opacity-100');
+      card.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        document.body.classList.remove('overflow-hidden');
+      }, 200);
+    }
+
+    function applySrijaniFreePass() {
+      // 1. Update Hero featured card price
+      const heroPrice = document.querySelector('#home .font-mono.text-gold.font-bold');
+      if (heroPrice) heroPrice.innerText = '₹0';
+
+      // 2. Update all garment cards price displays
+      const garmentCards = document.querySelectorAll('.garment-card');
+      garmentCards.forEach(card => {
+        const priceEl = card.querySelector('.font-mono.font-bold.text-base');
+        if (priceEl) priceEl.innerText = '₹0';
+
+        // Update onclick to open drawer with ₹0
+        const currentClick = card.getAttribute('onclick');
+        if (currentClick) {
+          const updatedClick = currentClick.replace(/'₹\d+'/g, "'₹0'");
+          card.setAttribute('onclick', updatedClick);
+        }
+      });
+
+      // 3. Update active drawer if open or cached
+      const drawerPrice = document.getElementById('drawerPrice');
+      if (drawerPrice) drawerPrice.innerText = '₹0';
+      if (currentGarment) {
+        currentGarment.price = '₹0';
+        currentGarment.numericPrice = 0;
+      }
+
+      // 4. Update cart contents and total to 0
+      if (cart && cart.length > 0) {
+        cart.forEach(item => {
+          item.price = '₹0';
+          item.numericPrice = 0;
+        });
+        updateCartUI();
+      }
+
+      showToast('VIP Privilege Applied: All Products ₹0 for Ms. Srijani 🎉');
     }
 
     function openContactModal() {
@@ -2083,6 +2284,8 @@
       if (e.key === 'Escape') {
         closeContactModal();
         closeLocationModal();
+        closeIiestModal();
+        closeSrijaniModal();
         closeAllDrawers();
       }
     });

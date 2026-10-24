@@ -272,11 +272,11 @@
         <label class="flex flex-col gap-[6px] text-[10px] font-bold text-[#4a3d4d]">Occasion
           <select name="occasion" required class="w-full border border-[#ded3df] bg-white p-[11px_12px] rounded-[3px] outline-none text-[12px] text-ink min-h-[42px] focus:border-plum focus:ring-2 focus:ring-plum/10 transition-shadow">
             <option value="">Choose an occasion</option>
-            <option>College event / fest</option>
+            <option>College fest / culturals</option>
+            <option>Concert / gig / party</option>
+            <option>Cafe date / brunch</option>
             <option>Freshers / farewell</option>
-            <option>Puja / festival</option>
-            <option>Birthday / party</option>
-            <option>Wedding guest</option>
+            <option>Club night / afters</option>
             <option>Other</option>
           </select>
         </label>

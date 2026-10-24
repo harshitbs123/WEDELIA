@@ -273,6 +273,47 @@
       transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
     }
 
+    /* Apple-Style Glassmorphism & GPU-Accelerated Text Shine */
+    .apple-glass {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.15);
+    }
+    html.dark .apple-glass {
+      background: rgba(24, 18, 30, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.6);
+    }
+
+    .apple-glass-card {
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    html.dark .apple-glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Lightweight GPU-accelerated opacity pulse shine (Zero layout repaint / GPU light) */
+    .text-shine {
+      color: #7a5a1f;
+      animation: softShine 2.8s ease-in-out infinite alternate;
+      will-change: opacity;
+    }
+    html.dark .text-shine {
+      color: #e2c85b;
+      text-shadow: 0 0 16px rgba(226, 200, 91, 0.4);
+      animation: softShineDark 2.8s ease-in-out infinite alternate;
+    }
+    @keyframes softShine {
+      0% { opacity: 0.82; }
+      100% { opacity: 1; }
+    }
+    @keyframes softShineDark {
+      0% { opacity: 0.85; text-shadow: 0 0 8px rgba(226, 200, 91, 0.2); }
+      100% { opacity: 1; text-shadow: 0 0 18px rgba(226, 200, 91, 0.6); }
+    }
+
     #collection-sheet {
       background: #faf7f2;
     }
@@ -348,36 +389,52 @@
   <!-- ========================================================================= -->
   <!-- MINIMAL ZEN NAVIGATION (PROTOTYPE 2 STYLE, LOGO IN MIDDLE)                -->
   <!-- ========================================================================= -->
-  <header id="masterHeader" class="sticky top-0 z-50 bg-void/90 dark:bg-[#0c0811]/90 backdrop-blur-xl border-b border-stone-200/50 dark:border-white/10 px-6 sm:px-8 lg:px-16 xl:px-20 py-4 sm:py-5 flex items-center justify-between transition-all duration-300">
-    <div class="max-w-7xl mx-auto flex items-center justify-between w-full">
+  <header id="masterHeader" class="sticky top-0 z-50 bg-void/90 dark:bg-[#0c0811]/90 backdrop-blur-xl border-b border-stone-200/50 dark:border-white/10 px-6 sm:px-10 lg:px-14 xl:px-20 py-4 transition-all duration-300">
+    <div class="max-w-[1750px] mx-auto relative flex items-center justify-between w-full">
       
-      <!-- Left: Monastic Links (Prototype 2 Style) -->
-      <div class="w-1/3 flex items-center gap-6 sm:gap-8 text-[11px] font-serif uppercase tracking-monastic text-ash dark:text-stone-300">
+      <!-- Left: Monastic Editorial Links & Lend Box -->
+      <nav class="flex items-center gap-4 sm:gap-6 lg:gap-7 xl:gap-8 text-[11px] font-serif uppercase tracking-monastic text-ash dark:text-stone-300 shrink-0">
         <a href="#three-acts" class="hover:text-plum dark:hover:text-gold transition-colors shrink-0">The Ritual</a>
-        <a href="#collection-sheet" class="hover:text-plum dark:hover:text-gold transition-colors hidden sm:inline shrink-0">Campus Fits</a>
-        <a href="#circular-ritual" class="hover:text-plum dark:hover:text-gold transition-colors hidden xl:inline shrink-0">How It Works</a>
-      </div>
+        <a href="#collection-sheet" class="hover:text-plum dark:hover:text-gold transition-colors hidden sm:inline shrink-0">Outfits</a>
+        <a href="#circular-ritual" class="hover:text-plum dark:hover:text-gold transition-colors hidden md:inline shrink-0">How It Works</a>
+        
+        <!-- Lend Box (Beside How It Works) -->
+        <a href="#calculator" class="px-3.5 py-1.5 rounded-full border border-stone-300 dark:border-white/20 text-[11px] font-serif uppercase tracking-monastic hidden sm:inline-flex items-center hover:border-plum dark:hover:border-stone-400 hover:text-plum dark:hover:text-white transition-all bg-white/70 dark:bg-white/5 text-ash dark:text-stone-300 shrink-0 shadow-xs cursor-pointer" title="Lend Your Fits">
+          Lend
+        </a>
+      </nav>
 
-      <!-- Center: Brand Mark & Void Atelier Badge (Centered) -->
-      <div class="w-1/3 flex justify-center shrink-0">
+      <!-- Center: Brand Mark & Atelier Badge (Strictly Centered in Viewport) -->
+      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center shrink-0 z-10 pointer-events-auto">
         <a href="#home" class="group flex flex-col items-center">
           <img src="assets/logo.svg" alt="Wedelia" class="h-8 sm:h-9 w-auto rounded-xl filter contrast-125 transition-all duration-600 ease-out group-hover:scale-[1.02] shadow-sm group-hover:shadow-[0_0_12px_rgba(242,217,92,0.22)] group-hover:drop-shadow-[0_0_6px_rgba(245,220,88,0.25)]">
-          <span class="text-[8px] font-mono tracking-whisper text-plum/60 dark:text-gold/70 uppercase mt-1 text-center whitespace-nowrap transition-colors duration-600 group-hover:text-gold">CAMPUS CLOSET ATELIER</span>
+          <span class="text-[8px] font-mono tracking-whisper text-plum/60 dark:text-gold/70 uppercase mt-1 text-center whitespace-nowrap transition-colors duration-600 group-hover:text-gold">ARCHIVE APPAREL ATELIER</span>
         </a>
       </div>
 
-      <!-- Right: Lend + Theme Toggle + Custody Bag Pill (Prototype 2 Style) -->
-      <div class="w-1/3 flex justify-end items-center gap-3 sm:gap-5 lg:gap-6 text-[11px] font-serif uppercase tracking-monastic text-ash dark:text-stone-300">
-        <a href="#calculator" class="hover:text-plum dark:hover:text-gold transition-colors hidden sm:inline shrink-0">Lend</a>
+      <!-- Right: Need Help? + Select Location + Theme Toggle + Custody Bag -->
+      <div class="flex items-center gap-3 sm:gap-4 lg:gap-5 text-[11px] font-serif uppercase tracking-monastic text-ash dark:text-stone-300 shrink-0">
         
-        <!-- Dark Mode Toggle Button (Default: Dark Mode Active) -->
-        <button id="themeToggleBtn" onclick="toggleDarkMode()" class="px-2.5 py-1 sm:px-3 sm:py-1 rounded-full border border-stone-300 dark:border-white/20 text-xs font-mono flex items-center gap-1.5 hover:border-plum dark:hover:border-gold transition-all bg-white/70 dark:bg-white/5 text-stone-600 dark:text-stone-300 shrink-0" title="Toggle Dark/Light Mode">
-          <span id="themeIcon" class="text-xs">☀</span>
-          <span id="themeLabel" class="text-[9px] uppercase font-bold tracking-wider hidden md:inline">Light</span>
+        <!-- Need Help? Pill Button -->
+        <button onclick="openContactModal()" class="px-2.5 sm:px-3.5 py-1.5 rounded-full border border-stone-300 dark:border-white/20 text-[11px] font-mono flex items-center gap-1.5 hover:border-plum dark:hover:border-gold hover:text-plum dark:hover:text-gold transition-all bg-white/70 dark:bg-white/5 text-stone-700 dark:text-stone-200 shrink-0 shadow-xs cursor-pointer" title="Need Help?">
+          <span class="text-xs">📞</span>
+          <span class="font-medium whitespace-nowrap hidden sm:inline">Need Help?</span>
         </button>
 
-        <!-- Custody Bag Pill Button (Prototype 2 Pill) -->
-        <button onclick="openBagDrawer()" class="px-3.5 sm:px-4 py-1.5 rounded-full border border-plum/30 dark:border-gold/30 text-plum dark:text-gold font-mono text-[10px] uppercase tracking-wider hover:bg-plum hover:text-gold dark:hover:bg-gold dark:hover:text-ink transition-all flex items-center gap-1 shrink-0 group">
+        <!-- Select Location Pill Button (Styled like Need Help?, neutral not yellow) -->
+        <button id="navLocationBtn" onclick="openLocationModal()" class="px-2.5 sm:px-3.5 py-1.5 rounded-full border border-stone-300 dark:border-white/20 text-[11px] font-mono flex items-center gap-1.5 hover:border-plum dark:hover:border-gold hover:text-plum dark:hover:text-gold transition-all bg-white/70 dark:bg-white/5 text-stone-700 dark:text-stone-200 shrink-0 shadow-xs cursor-pointer" title="Select Location">
+          <span class="text-xs">📍</span>
+          <span id="navLocationLabel" class="font-medium whitespace-nowrap hidden sm:inline">Select Location</span>
+        </button>
+
+        <!-- Dark Mode Toggle Button (Default: Dark Mode Active) -->
+        <button id="themeToggleBtn" onclick="toggleDarkMode()" class="px-2.5 py-1.5 rounded-full border border-stone-300 dark:border-white/20 text-xs font-mono flex items-center gap-1.5 hover:border-plum dark:hover:border-gold transition-all bg-white/70 dark:bg-white/5 text-stone-600 dark:text-stone-300 shrink-0 shadow-xs cursor-pointer" title="Toggle Dark/Light Mode">
+          <span id="themeIcon" class="text-xs">☀</span>
+          <span id="themeLabel" class="text-[9px] uppercase font-bold tracking-wider hidden xl:inline">Light</span>
+        </button>
+
+        <!-- Custody Bag Pill Button -->
+        <button onclick="openBagDrawer()" class="px-3.5 sm:px-4 py-1.5 rounded-full border border-plum/30 dark:border-gold/30 text-plum dark:text-gold font-mono text-[10px] uppercase tracking-wider hover:bg-plum hover:text-gold dark:hover:bg-gold dark:hover:text-ink transition-all flex items-center gap-1 shrink-0 group shadow-xs cursor-pointer">
           <span class="hidden sm:inline">Custody </span>Bag (<span id="bagCountBadge">0</span>)
         </button>
       </div>
@@ -402,7 +459,7 @@
         <!-- Occasion Tag Badge -->
         <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-white/5 border border-plum/15 dark:border-gold/30 shadow-sm text-[10px] font-mono uppercase tracking-wider text-plum dark:text-gold reveal-down">
           <span class="w-2 h-2 rounded-full bg-red animate-ping"></span>
-          <span>WESTERN &amp; FEST WARDROBE MMXXVI · CAMPUS CONCIERGE</span>
+          <span>CURATED ARCHIVE · GOTH, Y2K &amp; WESTERN BOHO EDITS</span>
         </div>
 
         <!-- Master Title -->
@@ -460,7 +517,7 @@
           <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/20 flex flex-col justify-between p-6 sm:p-8 text-white">
             <div class="flex justify-between items-center">
               <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-[9px] font-mono tracking-widest uppercase text-gold border border-gold/30">
-                Curator: Ananya R. · North Campus Wardrobe
+                Aesthetic:Western Boho
               </span>
               <div class="flex items-center gap-2 text-[10px] font-mono text-stone-300">
                 <span class="w-1.5 h-1.5 rounded-full bg-red-rec animate-ping"></span>
@@ -469,7 +526,7 @@
             </div>
 
             <div class="space-y-1">
-              <span class="text-[10px] font-mono uppercase tracking-widest text-gold block">FLAGSHIP FEST EDIT · CAMPUS FAVORITE</span>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-gold block">SIGNATURE PIECE · BOHO WESTERN RUSH</span>
               <div class="flex justify-between items-baseline">
                 <h3 class="font-cormorant text-3xl font-light italic">Western Corset &amp; Ruffle Skirt Set</h3>
                 <span class="font-mono text-gold font-bold text-lg">₹299</span>
@@ -506,27 +563,27 @@
 
         <!-- Quick Search Input -->
         <div class="w-full md:w-80 relative">
-          <input id="searchInput" type="text" placeholder="Search corsets, boho sets, mini dresses, fest fits..." class="w-full pl-9 pr-4 py-3 border border-stone-300 rounded-full text-xs font-mono focus:outline-none focus:border-plum bg-white/90 shadow-sm transition-all" oninput="liveSearch(this.value)">
+          <input id="searchInput" type="text" placeholder="Search goth, grunge, corsets, y2k, boho, dark feminine..." class="w-full pl-9 pr-4 py-3 border border-stone-300 rounded-full text-xs font-mono focus:outline-none focus:border-plum bg-white/90 shadow-sm transition-all" oninput="liveSearch(this.value)">
           <span class="absolute left-3.5 top-3.5 text-stone-400 text-xs">🔍</span>
         </div>
       </div>
 
-      <!-- Filter Category Tabs (College Western Categories) -->
+      <!-- Filter Category Tabs (Aesthetic & Silhouette Categories) -->
       <div class="flex flex-wrap gap-2 text-xs font-mono pt-6 pb-10 reveal-up delay-100" id="filterContainer">
         <button onclick="filterCategory('all', this)" class="filter-btn px-4 py-2 rounded-full bg-plum text-gold font-bold shadow-sm transition-all">
-          All Fits (10)
+          All Outfits (10)
+        </button>
+        <button onclick="filterCategory('goth', this)" class="filter-btn px-4 py-2 rounded-full bg-white border border-stone-200 text-stone-600 hover:border-plum hover:text-plum transition-all">
+          Dark Goth &amp; Grunge
         </button>
         <button onclick="filterCategory('corset', this)" class="filter-btn px-4 py-2 rounded-full bg-white border border-stone-200 text-stone-600 hover:border-plum hover:text-plum transition-all">
           Corsets &amp; Y2K
         </button>
         <button onclick="filterCategory('boho', this)" class="filter-btn px-4 py-2 rounded-full bg-white border border-stone-200 text-stone-600 hover:border-plum hover:text-plum transition-all">
-          Boho &amp; Cottagecore
+          Western &amp; Boho
         </button>
         <button onclick="filterCategory('party', this)" class="filter-btn px-4 py-2 rounded-full bg-white border border-stone-200 text-stone-600 hover:border-plum hover:text-plum transition-all">
-          Party &amp; Night Out
-        </button>
-        <button onclick="filterCategory('fest', this)" class="filter-btn px-4 py-2 rounded-full bg-white border border-stone-200 text-stone-600 hover:border-plum hover:text-plum transition-all">
-          Concert &amp; Fest Edits
+          Chic Evening &amp; Slips
         </button>
       </div>
 
@@ -534,11 +591,11 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="garmentGrid">
         
         <!-- Piece 1: Western Corset & Ruffle Skirt Set -->
-        <article class="garment-card group cursor-pointer reveal-up" data-category="corset fest boho" data-name="western corset ruffle skirt set boho fest" onclick="openGarmentModal('Western Corset &amp; Ruffle Skirt Set', '₹299', 'Dreamy western-inspired festival set: lace-up corset bodice paired with multi-tiered ivory ruffle skirt and statement belt styling. Curated by Ananya R. (North Campus Closet). Perfect for college fest headliners, concert nights &amp; aesthetic photoshoots.', 'assets/pics/western-boho-corset-skirt.jpeg')">
+        <article class="garment-card group cursor-pointer reveal-up" data-category="boho corset" data-name="western boho corset tiered ruffle skirt festival edit" onclick="openGarmentModal('Western Corset &amp; Ruffle Skirt Set', '₹299', 'Dreamy western-inspired festival set: lace-up corset bodice paired with multi-tiered ivory ruffle skirt, statement cowboy buckle belt &amp; bandana accents. Perfect for music fest headliners, outdoor sundowners &amp; aesthetic editorial shoots.', 'assets/pics/western-boho-corset-skirt.jpeg')">
           <div class="relative aspect-[3/4.2] overflow-hidden rounded-2xl bg-stone-100 mb-3 shadow-subtle group-hover:shadow-floating transition-all duration-500">
             <img src="assets/pics/western-boho-corset-skirt.jpeg" alt="Western Corset &amp; Ruffle Skirt Set" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
             <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 dark:bg-black/70 backdrop-blur-sm text-[9px] font-mono tracking-widest uppercase text-plum dark:text-gold font-semibold">
-              North Campus Closet
+              Western Boho
             </div>
             <div class="absolute inset-0 bg-plum/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="px-4 py-2 rounded-full bg-white text-plum text-xs font-mono uppercase font-bold tracking-wider shadow-lg">
@@ -549,18 +606,18 @@
           <div class="flex justify-between items-baseline pt-1">
             <div>
               <h3 class="font-cormorant text-2xl font-medium group-hover:text-plum dark:group-hover:text-gold transition-colors">Western Corset &amp; Skirt</h3>
-              <span class="text-[11px] font-mono text-stone-500 block">Lace-Up Corset · Ruffle Skirt · S-M</span>
+              <span class="text-[11px] font-mono text-stone-500 block">Lace-Up Corset · Tiered Ruffle Skirt · S-M</span>
             </div>
             <span class="font-mono text-plum dark:text-gold font-bold text-base">₹299</span>
           </div>
         </article>
 
         <!-- Piece 2: Parisian Café Chic Set -->
-        <article class="garment-card group cursor-pointer reveal-up delay-100" data-category="corset party" data-name="parisian cafe chic set floral corset skirt" onclick="openGarmentModal('Parisian Café Chic Set', '₹279', 'Aesthetic floral printed corset paired with a fluid pleated midi skirt. Curated by Rhea M. (South Campus Vault). Designed for golden hour coffee dates, birthday brunches, and Pinterest-worthy campus photos.', 'assets/pics/parisian-cafe-chic.jpeg')">
+        <article class="garment-card group cursor-pointer reveal-up delay-100" data-category="corset party" data-name="parisian cafe chic cottagecore floral corset pleated midi" onclick="openGarmentModal('Parisian Café Chic Set', '₹279', 'Romantic Parisian aesthetic floral printed corset paired with a fluid pleated midi skirt. Designed for golden hour coffee dates, weekend celebrations, and effortless European vintage vibes.', 'assets/pics/parisian-cafe-chic.jpeg')">
           <div class="relative aspect-[3/4.2] overflow-hidden rounded-2xl bg-stone-100 mb-3 shadow-subtle group-hover:shadow-floating transition-all duration-500">
             <img src="assets/pics/parisian-cafe-chic.jpeg" alt="Parisian Café Chic Set" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
             <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 dark:bg-black/70 backdrop-blur-sm text-[9px] font-mono tracking-widest uppercase text-plum dark:text-gold font-semibold">
-              Hauz Khas Studio
+              Parisian Chic
             </div>
             <div class="absolute inset-0 bg-plum/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="px-4 py-2 rounded-full bg-white text-plum text-xs font-mono uppercase font-bold tracking-wider shadow-lg">
@@ -571,18 +628,18 @@
           <div class="flex justify-between items-baseline pt-1">
             <div>
               <h3 class="font-cormorant text-2xl font-medium group-hover:text-plum dark:group-hover:text-gold transition-colors">Parisian Café Chic</h3>
-              <span class="text-[11px] font-mono text-stone-500 block">Floral Corset · Pleated Skirt · S</span>
+              <span class="text-[11px] font-mono text-stone-500 block">Floral Corset · Pleated Midi · S</span>
             </div>
             <span class="font-mono text-plum dark:text-gold font-bold text-base">₹279</span>
           </div>
         </article>
 
         <!-- Piece 3: Ruched Y2K Strapless Corset -->
-        <article class="garment-card group cursor-pointer reveal-up delay-200" data-category="corset party fest" data-name="ruched y2k strapless corset brown top" onclick="openGarmentModal('Ruched Y2K Strapless Corset', '₹229', 'Chocolate brown ruched strapless top with lace-up corset ties and boning detail. Curated by Tanvi K. (Bandra Enclave). Style with low-rise denim or mini skirts for weekend clubbing and concert sets.', 'assets/pics/brown-corset-y2k.jpeg')">
+        <article class="garment-card group cursor-pointer reveal-up delay-200" data-category="corset party" data-name="ruched y2k strapless corset brown lace-up top clubbing" onclick="openGarmentModal('Ruched Y2K Strapless Corset', '₹229', 'Chocolate espresso brown ruched strapless top with lace-up corset ties and structured boning. Style with low-rise denim or mini cargo skirts for weekend clubbing and rooftop nightlife.', 'assets/pics/brown-corset-y2k.jpeg')">
           <div class="relative aspect-[3/4.2] overflow-hidden rounded-2xl bg-stone-100 mb-3 shadow-subtle group-hover:shadow-floating transition-all duration-500">
             <img src="assets/pics/brown-corset-y2k.jpeg" alt="Ruched Y2K Strapless Corset" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
             <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 dark:bg-black/70 backdrop-blur-sm text-[9px] font-mono tracking-widest uppercase text-plum dark:text-gold font-semibold">
-              Bandra West Closet
+              Y2K Aesthetic
             </div>
             <div class="absolute inset-0 bg-plum/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="px-4 py-2 rounded-full bg-white text-plum text-xs font-mono uppercase font-bold tracking-wider shadow-lg">
@@ -593,18 +650,18 @@
           <div class="flex justify-between items-baseline pt-1">
             <div>
               <h3 class="font-cormorant text-2xl font-medium group-hover:text-plum dark:group-hover:text-gold transition-colors">Ruched Y2K Corset</h3>
-              <span class="text-[11px] font-mono text-stone-500 block">Strapless Boning · Size XS-S</span>
+              <span class="text-[11px] font-mono text-stone-500 block">Strapless Boning · Lace-Up Back · XS-S</span>
             </div>
             <span class="font-mono text-plum dark:text-gold font-bold text-base">₹229</span>
           </div>
         </article>
 
         <!-- Piece 4: Dark Romance Goth Set -->
-        <article class="garment-card group cursor-pointer reveal-up delay-300" data-category="party fest" data-name="dark romance goth set lace top pleated mini" onclick="openGarmentModal('Dark Romance Goth Set', '₹289', 'All-black dark romance statement fit: sheer floral lace detailing, fitted corset silhouette, and pleated high-waisted mini. Curated by Meera S. (Koramangala Wardrobe). Unmatched edge for indie gigs and after-dark parties.', 'assets/pics/gothic-dark-feminine.jpeg')">
+        <article class="garment-card group cursor-pointer reveal-up delay-300" data-category="goth party" data-name="dark romance goth dark feminine sheer lace corset pleated mini" onclick="openGarmentModal('Dark Romance Goth Set', '₹289', 'All-black dark feminine statement silhouette: sheer floral lace corsetry, sculpted waistline, and knife-pleated high-waisted mini. Uncompromising dark romanticism for indie gigs, warehouse raves &amp; midnight soirées.', 'assets/pics/gothic-dark-feminine.jpeg')">
           <div class="relative aspect-[3/4.2] overflow-hidden rounded-2xl bg-stone-100 mb-3 shadow-subtle group-hover:shadow-floating transition-all duration-500">
             <img src="assets/pics/gothic-dark-feminine.jpeg" alt="Dark Romance Goth Set" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
             <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 dark:bg-black/70 backdrop-blur-sm text-[9px] font-mono tracking-widest uppercase text-plum dark:text-gold font-semibold">
-              Koramangala Wardrobe
+              Dark Feminine Goth
             </div>
             <div class="absolute inset-0 bg-plum/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="px-4 py-2 rounded-full bg-white text-plum text-xs font-mono uppercase font-bold tracking-wider shadow-lg">
@@ -614,7 +671,7 @@
           </div>
           <div class="flex justify-between items-baseline pt-1">
             <div>
-              <h3 class="font-cormorant text-2xl font-medium group-hover:text-plum dark:group-hover:text-gold transition-colors">Dark Romance Set</h3>
+              <h3 class="font-cormorant text-2xl font-medium group-hover:text-plum dark:group-hover:text-gold transition-colors">Dark Romance Goth Set</h3>
               <span class="text-[11px] font-mono text-stone-500 block">Sheer Lace Top · Pleated Mini · S-M</span>
             </div>
             <span class="font-mono text-plum dark:text-gold font-bold text-base">₹289</span>
@@ -622,11 +679,11 @@
         </article>
 
         <!-- Piece 5: Sage Boho Tie-Front Co-ord -->
-        <article class="garment-card group cursor-pointer reveal-up" data-category="boho fest" data-name="sage boho tie-front co-ord green skirt top" onclick="openGarmentModal('Sage Boho Tie-Front Co-ord', '₹269', 'Earthy olive and sage green boho two-piece set with flutter sleeves and tiered breezy maxi skirt. Curated by Tara V. (Indiranagar Hub). Effortless, breezy charm for college cultural fests and sunny brunch dates.', 'assets/pics/green-chic-boho.jpeg')">
+        <article class="garment-card group cursor-pointer reveal-up" data-category="boho" data-name="sage boho tie-front co-ord cottagecore earth tones maxi skirt" onclick="openGarmentModal('Sage Boho Tie-Front Co-ord', '₹269', 'Earthy sage and olive botanical two-piece set with flutter sleeves, tie-front crop top, and breezy tiered maxi skirt. Effortless cottagecore elegance for garden parties, music festivals &amp; sunny retreats.', 'assets/pics/green-chic-boho.jpeg')">
           <div class="relative aspect-[3/4.2] overflow-hidden rounded-2xl bg-stone-100 mb-3 shadow-subtle group-hover:shadow-floating transition-all duration-500">
             <img src="assets/pics/green-chic-boho.jpeg" alt="Sage Boho Tie-Front Co-ord" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
             <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 dark:bg-black/70 backdrop-blur-sm text-[9px] font-mono tracking-widest uppercase text-plum dark:text-gold font-semibold">
-              Indiranagar Hub
+              Cottagecore Boho
             </div>
             <div class="absolute inset-0 bg-plum/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="px-4 py-2 rounded-full bg-white text-plum text-xs font-mono uppercase font-bold tracking-wider shadow-lg">
@@ -644,11 +701,11 @@
         </article>
 
         <!-- Piece 6: Soft Goth Oversized Knit Edit -->
-        <article class="garment-card group cursor-pointer reveal-up delay-100" data-category="fest party" data-name="soft goth oversized knit sweater lace tights" onclick="openGarmentModal('Soft Goth Oversized Knit Edit', '₹249', 'Chunky oversized noir sweater paired with patterned lace tights and grunge boot styling. Curated by Disha P. (Gurgaon Studio). Cozy yet effortlessly edgy for winter fests and midnight campus hangouts.', 'assets/pics/oversized-black-sweater-goth.jpeg')">
+        <article class="garment-card group cursor-pointer reveal-up delay-100" data-category="goth" data-name="soft goth oversized knit sweater lace tights grunge dark aesthetic" onclick="openGarmentModal('Soft Goth Oversized Knit Edit', '₹249', 'Chunky oversized jet-black knit sweater paired with patterned lace tights and combat boot aesthetics. Cozy yet undeniably grunge for winter evenings, underground gigs &amp; dark aesthetic photography.', 'assets/pics/oversized-black-sweater-goth.jpeg')">
           <div class="relative aspect-[3/4.2] overflow-hidden rounded-2xl bg-stone-100 mb-3 shadow-subtle group-hover:shadow-floating transition-all duration-500">
             <img src="assets/pics/oversized-black-sweater-goth.jpeg" alt="Soft Goth Oversized Knit Edit" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
             <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 dark:bg-black/70 backdrop-blur-sm text-[9px] font-mono tracking-widest uppercase text-plum dark:text-gold font-semibold">
-              Cyber Hub Closet
+              Soft Goth Grunge
             </div>
             <div class="absolute inset-0 bg-plum/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="px-4 py-2 rounded-full bg-white text-plum text-xs font-mono uppercase font-bold tracking-wider shadow-lg">
@@ -659,18 +716,18 @@
           <div class="flex justify-between items-baseline pt-1">
             <div>
               <h3 class="font-cormorant text-2xl font-medium group-hover:text-plum dark:group-hover:text-gold transition-colors">Soft Goth Knit Edit</h3>
-              <span class="text-[11px] font-mono text-stone-500 block">Chunky Knit · Lace Accents · Free Size</span>
+              <span class="text-[11px] font-mono text-stone-500 block">Chunky Noir Knit · Lace Accents · Free Size</span>
             </div>
             <span class="font-mono text-plum dark:text-gold font-bold text-base">₹249</span>
           </div>
         </article>
 
         <!-- Piece 7: Liquid Satin Champagne Slip -->
-        <article class="garment-card group cursor-pointer reveal-up delay-200" data-category="party" data-name="liquid satin champagne slip dress evening party" onclick="openGarmentModal('Liquid Satin Champagne Slip', '₹319', 'Heavy 22-momme liquid champagne satin slip dress with fluid cowl neckline and low back drape. Curated by Tanya S. (South Delhi Vault). Ideal for college farewells, formal dinners, and milestone 21st birthdays.', 'assets/images/western-liquid-satin-1.jpg')">
+        <article class="garment-card group cursor-pointer reveal-up delay-200" data-category="party" data-name="liquid satin champagne slip dress cowl neck evening gala slip" onclick="openGarmentModal('Liquid Satin Champagne Slip', '₹319', 'Heavy 22-momme liquid champagne silk satin slip dress with fluid cowl neckline and low back drape. Pure 90s minimalism for gala evenings, cocktail celebrations, and formal dinners.', 'assets/images/western-liquid-satin-1.jpg')">
           <div class="relative aspect-[3/4.2] overflow-hidden rounded-2xl bg-stone-100 mb-3 shadow-subtle group-hover:shadow-floating transition-all duration-500">
             <img src="assets/images/western-liquid-satin-1.jpg" alt="Liquid Satin Champagne Slip" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
             <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 dark:bg-black/70 backdrop-blur-sm text-[9px] font-mono tracking-widest uppercase text-plum dark:text-gold font-semibold">
-              South Delhi Vault
+              Minimalist Chic
             </div>
             <div class="absolute inset-0 bg-plum/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="px-4 py-2 rounded-full bg-white text-plum text-xs font-mono uppercase font-bold tracking-wider shadow-lg">
@@ -681,18 +738,18 @@
           <div class="flex justify-between items-baseline pt-1">
             <div>
               <h3 class="font-cormorant text-2xl font-medium group-hover:text-plum dark:group-hover:text-gold transition-colors">Liquid Satin Slip</h3>
-              <span class="text-[11px] font-mono text-stone-500 block">Cowl Neck Bias Cut · Size S</span>
+              <span class="text-[11px] font-mono text-stone-500 block">Cowl Neck Bias Cut · Heavy Satin · S</span>
             </div>
             <span class="font-mono text-plum dark:text-gold font-bold text-base">₹319</span>
           </div>
         </article>
 
         <!-- Piece 8: Sunset Horizon Boho Ensemble -->
-        <article class="garment-card group cursor-pointer reveal-up delay-300" data-category="boho fest" data-name="sunset horizon boho ensemble festival set" onclick="openGarmentModal('Sunset Horizon Boho Ensemble', '₹279', 'Layered earthy textures, rich terracotta and cream tones with artisan embroidery details. Curated by Sanjana D. (Pune University Enclave). Head-turning festival styling for outdoor music gigs.', 'assets/pics/download-1.jpeg')">
+        <article class="garment-card group cursor-pointer reveal-up delay-300" data-category="boho" data-name="sunset horizon boho ensemble festival set earthy tribal print" onclick="openGarmentModal('Sunset Horizon Boho Ensemble', '₹279', 'Layered earthy textures, rich terracotta and cream tones with artisan embroidered detailing. Standout bohemian festival styling for open-air concerts &amp; sunset gatherings.', 'assets/pics/download-1.jpeg')">
           <div class="relative aspect-[3/4.2] overflow-hidden rounded-2xl bg-stone-100 mb-3 shadow-subtle group-hover:shadow-floating transition-all duration-500">
             <img src="assets/pics/download-1.jpeg" alt="Sunset Horizon Boho Ensemble" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
             <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 dark:bg-black/70 backdrop-blur-sm text-[9px] font-mono tracking-widest uppercase text-plum dark:text-gold font-semibold">
-              Pune Uni Enclave
+              Festival Boho
             </div>
             <div class="absolute inset-0 bg-plum/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="px-4 py-2 rounded-full bg-white text-plum text-xs font-mono uppercase font-bold tracking-wider shadow-lg">
@@ -703,18 +760,18 @@
           <div class="flex justify-between items-baseline pt-1">
             <div>
               <h3 class="font-cormorant text-2xl font-medium group-hover:text-plum dark:group-hover:text-gold transition-colors">Sunset Boho Ensemble</h3>
-              <span class="text-[11px] font-mono text-stone-500 block">Embroidered Crop &amp; Skirt · S-M</span>
+              <span class="text-[11px] font-mono text-stone-500 block">Embroidered Crop &amp; Skirt · Earth Tones · S-M</span>
             </div>
             <span class="font-mono text-plum dark:text-gold font-bold text-base">₹279</span>
           </div>
         </article>
 
         <!-- Piece 9: Vintage Moto & Pleated Mini -->
-        <article class="garment-card group cursor-pointer reveal-up" data-category="fest party" data-name="vintage moto pleated mini skirt grunge leather" onclick="openGarmentModal('Vintage Moto &amp; Pleated Mini', '₹299', 'Distressed vintage-cut moto jacket paired with a structured high-waist pleated mini skirt and buckle belt. Curated by Kritika N. (Vasant Vihar). Instant cool-girl aesthetic for college rock fests and night outs.', 'assets/pics/download-2.jpeg')">
+        <article class="garment-card group cursor-pointer reveal-up" data-category="goth party" data-name="vintage moto pleated mini skirt grunge leather biker jacket" onclick="openGarmentModal('Vintage Moto &amp; Pleated Mini', '₹299', 'Distressed vintage-cut moto leather jacket paired with a structured high-waist pleated mini skirt and industrial buckle belt. Heavy grunge attitude for live rock gigs and late-night nightlife.', 'assets/pics/download-2.jpeg')">
           <div class="relative aspect-[3/4.2] overflow-hidden rounded-2xl bg-stone-100 mb-3 shadow-subtle group-hover:shadow-floating transition-all duration-500">
             <img src="assets/pics/download-2.jpeg" alt="Vintage Moto &amp; Pleated Mini" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
             <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 dark:bg-black/70 backdrop-blur-sm text-[9px] font-mono tracking-widest uppercase text-plum dark:text-gold font-semibold">
-              Vasant Vihar Studio
+              Grunge Moto
             </div>
             <div class="absolute inset-0 bg-plum/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="px-4 py-2 rounded-full bg-white text-plum text-xs font-mono uppercase font-bold tracking-wider shadow-lg">
@@ -725,18 +782,18 @@
           <div class="flex justify-between items-baseline pt-1">
             <div>
               <h3 class="font-cormorant text-2xl font-medium group-hover:text-plum dark:group-hover:text-gold transition-colors">Vintage Moto &amp; Mini</h3>
-              <span class="text-[11px] font-mono text-stone-500 block">Moto Jacket · Knife-Pleat Skirt · Size M</span>
+              <span class="text-[11px] font-mono text-stone-500 block">Moto Leather · Knife-Pleat Skirt · Size M</span>
             </div>
             <span class="font-mono text-plum dark:text-gold font-bold text-base">₹299</span>
           </div>
         </article>
 
         <!-- Piece 10: Crimson Rose Tiered Mini -->
-        <article class="garment-card group cursor-pointer reveal-up delay-100" data-category="party boho" data-name="crimson rose tiered mini floral dress" onclick="openGarmentModal('Crimson Rose Tiered Mini', '₹259', 'Vibrant crimson floral mini dress featuring delicate sweetheart bustline and ruffled hem. Curated by Aanya S. (Delhi University Hub). Perfect for romantic dinner dates, day parties, and birthday celebrations.', 'assets/images/photo-1496747611176-843222e1e57c.jpg')">
+        <article class="garment-card group cursor-pointer reveal-up delay-100" data-category="party boho" data-name="crimson rose tiered mini floral chiffon sweetheart dress" onclick="openGarmentModal('Crimson Rose Tiered Mini', '₹259', 'Vibrant crimson floral mini dress featuring a sweetheart bustline, tiered ruffle hem, and delicate straps. Ideal for candlelit dinner dates, rooftop soirées, and celebration evenings.', 'assets/images/photo-1496747611176-843222e1e57c.jpg')">
           <div class="relative aspect-[3/4.2] overflow-hidden rounded-2xl bg-stone-100 mb-3 shadow-subtle group-hover:shadow-floating transition-all duration-500">
             <img src="assets/images/photo-1496747611176-843222e1e57c.jpg" alt="Crimson Rose Tiered Mini" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
             <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 dark:bg-black/70 backdrop-blur-sm text-[9px] font-mono tracking-widest uppercase text-plum dark:text-gold font-semibold">
-              DU Campus Hub
+              Romantic Party
             </div>
             <div class="absolute inset-0 bg-plum/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="px-4 py-2 rounded-full bg-white text-plum text-xs font-mono uppercase font-bold tracking-wider shadow-lg">
@@ -776,7 +833,7 @@
           <em class="italic text-gold font-normal">From Campus Sunset to After-Hours Party.</em>
         </h2>
         <p class="text-stone-300 text-sm font-sans leading-relaxed font-light">
-          Great outfits belong to unforgettable college memories — not sitting forgotten in your hostel closet after one Instagram dump. Why spend thousands when you can rent, stun, and swap?
+          Great outfits belong to unforgettable unforgettable nights — not sitting forgotten in your wardrobe after one Instagram dump. Why spend thousands when you can rent, stun, and swap?
         </p>
       </div>
 
@@ -823,9 +880,9 @@
             <span class="text-gold font-bold">ACT III</span>
             <span class="text-stone-400">10:00 AM — ZERO LAUNDRY RETURN</span>
           </div>
-          <h3 class="font-cormorant text-3xl font-light group-hover:text-gold transition-colors">Zero Hostel Laundry</h3>
+          <h3 class="font-cormorant text-3xl font-light group-hover:text-gold transition-colors">Zero Cleaning Burden</h3>
           <p class="text-xs text-stone-300 font-sans leading-relaxed font-light">
-            No morning laundry in your dorm. Slide the fit into the prepaid courier bag. We conduct medical-grade ozone sanitization while you sleep in after the night out.
+            No morning laundry burden. Slide the fit into the prepaid courier bag. We conduct medical-grade ozone sanitization while you sleep in after the night out.
           </p>
           <div class="flex justify-between items-center pt-2">
             <span class="inline-block text-[10px] font-mono text-gold tracking-widest uppercase">ZERO WASHING BURDEN</span>
@@ -1076,10 +1133,10 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       
       <!-- Hub 1 -->
-      <div class="hub-card group relative p-8 rounded-3xl bg-white/70 dark:bg-white/[0.03] border border-stone-200/80 dark:border-white/10 shadow-subtle space-y-4 reveal-up delay-100 cursor-pointer backdrop-blur-xl overflow-hidden" onclick="openConciergeBooking('North Campus & South Delhi Hubs')">
+      <div class="hub-card group relative p-8 rounded-3xl bg-white/70 dark:bg-white/[0.03] border border-stone-200/80 dark:border-white/10 shadow-subtle space-y-4 reveal-up delay-100 cursor-pointer backdrop-blur-xl overflow-hidden" onclick="openConciergeBooking('Central & South Delhi Studios')">
         <div class="absolute -top-12 -right-12 w-32 h-32 bg-gold/10 rounded-full blur-2xl group-hover:bg-gold/25 transition-all duration-500 pointer-events-none"></div>
         <div class="flex justify-between items-center text-xs font-mono">
-          <span class="px-3 py-1 rounded-full bg-plum-soft dark:bg-plum/30 text-plum dark:text-gold font-bold">NORTH CAMPUS &amp; SOUTH DELHI</span>
+          <span class="px-3 py-1 rounded-full bg-plum-soft dark:bg-plum/30 text-plum dark:text-gold font-bold">DELHI NCR STUDIOS</span>
           <span class="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-semibold">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             2-HOUR EXPRESS COURIER READY
@@ -1087,7 +1144,7 @@
         </div>
         <h3 class="font-cormorant text-2xl sm:text-3xl font-semibold group-hover:text-plum dark:group-hover:text-gold transition-colors">Kamla Nagar, Hauz Khas &amp; South Ex</h3>
         <p class="text-xs text-stone-600 dark:text-stone-300 font-sans leading-relaxed font-light">
-          Serving college students and fashion enthusiasts across Delhi University, IIT Delhi &amp; NIFT. Includes 2-hour express dispatch for same-day fest emergencies, steamed handover, and scheduled Monday pickups.
+          Serving fashion enthusiasts across Delhi NCR with express 2-hour courier dispatch. Includes 2-hour express dispatch for same-day fest emergencies, steamed handover, and scheduled Monday pickups.
         </p>
         <div class="pt-2 flex justify-between items-center text-[11px] font-mono text-stone-500 dark:text-stone-400 border-t border-stone-100 dark:border-white/10">
           <span>HOURS: 09:00 — 21:00</span>
@@ -1107,7 +1164,7 @@
         </div>
         <h3 class="font-cormorant text-2xl sm:text-3xl font-semibold group-hover:text-plum dark:group-hover:text-gold transition-colors">Bandra West &amp; Koramangala Enclaves</h3>
         <p class="text-xs text-stone-600 dark:text-stone-300 font-sans leading-relaxed font-light">
-          Dedicated peer fashion hubs serving college students in Mumbai &amp; Bangalore. Fast hostel gate drop-offs, pre-paid return satchels, and zero-deposit student custody passes.
+          Dedicated peer fashion hubs serving style collectives in Mumbai &amp; Bangalore. Fast hostel gate drop-offs, pre-paid return satchels, and zero-deposit student custody passes.
         </p>
         <div class="pt-2 flex justify-between items-center text-[11px] font-mono text-stone-500 dark:text-stone-400 border-t border-stone-100 dark:border-white/10">
           <span>HOURS: 10:00 — 20:00</span>
@@ -1126,44 +1183,44 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       <div class="max-w-2xl mb-12 space-y-2 reveal-up">
         <span class="text-[10px] font-mono uppercase tracking-widest text-plum dark:text-gold block font-bold">VERIFIED STUDENT VOICES</span>
-        <h2 class="font-cormorant text-4xl sm:text-5xl font-light">Stories From Campus Fests &amp; Weekend Plans</h2>
+        <h2 class="font-cormorant text-4xl sm:text-5xl font-light">Stories From Festivals &amp; Weekend Nights</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        <div class="story-card group relative p-8 rounded-3xl bg-white/70 dark:bg-white/[0.03] border border-stone-200/80 dark:border-white/10 space-y-4 shadow-subtle reveal-up delay-100 backdrop-blur-xl cursor-pointer overflow-hidden" onclick="showToast('Campus Story · Ananya M. (DU North Campus)')">
+        <div class="story-card group relative p-8 rounded-3xl bg-white/70 dark:bg-white/[0.03] border border-stone-200/80 dark:border-white/10 space-y-4 shadow-subtle reveal-up delay-100 backdrop-blur-xl cursor-pointer overflow-hidden" onclick="showToast('Style Review · Maya S. (Dark Aesthetic Edit)')">
           <div class="absolute -top-12 -right-12 w-28 h-28 bg-gold/10 rounded-full blur-2xl group-hover:bg-gold/25 transition-all duration-500 pointer-events-none"></div>
           <div class="flex text-gold text-sm group-hover:scale-105 transition-transform origin-left">★★★★★</div>
           <p class="text-xs text-stone-600 dark:text-stone-300 font-sans leading-relaxed font-light italic group-hover:text-ink dark:group-hover:text-white transition-colors">
-            "Rented the Western Corset &amp; Ruffle Skirt for Crossroads Fest. Literally everyone asked where I got it from! Paid ₹299 instead of spending ₹4,500 on an outfit I&#39;d only wear once. Handover return took 10 seconds."
+            "Rented the Dark Romance Goth Set for a warehouse gig. The boning and floral lace details were immaculate! Paid ₹289 instead of buying a luxury goth ensemble I&#39;d only wear once. Handover took seconds."
           </p>
           <div class="pt-2 border-t border-stone-100 dark:border-white/10 flex justify-between items-center text-[11px] font-mono">
-            <span class="font-bold text-plum dark:text-gold">Ananya M.</span>
-            <span class="text-stone-400">DU North Campus · LSR</span>
+            <span class="font-bold text-plum dark:text-gold">Maya S.</span>
+            <span class="text-stone-400">Verified Member · Goth &amp; Grunge Wardrobe</span>
           </div>
         </div>
 
-        <div class="story-card group relative p-8 rounded-3xl bg-white/70 dark:bg-white/[0.03] border border-stone-200/80 dark:border-white/10 space-y-4 shadow-subtle reveal-up delay-200 backdrop-blur-xl cursor-pointer overflow-hidden" onclick="showToast('Curator Story · Rhea K. (NMIMS Mumbai)')">
+        <div class="story-card group relative p-8 rounded-3xl bg-white/70 dark:bg-white/[0.03] border border-stone-200/80 dark:border-white/10 space-y-4 shadow-subtle reveal-up delay-200 backdrop-blur-xl cursor-pointer overflow-hidden" onclick="showToast('Lender Review · Aarohi K. (Y2K & Corset Vault)')">
           <div class="absolute -top-12 -right-12 w-28 h-28 bg-plum/15 rounded-full blur-2xl group-hover:bg-plum/30 transition-all duration-500 pointer-events-none"></div>
           <div class="flex text-gold text-sm group-hover:scale-105 transition-transform origin-left">★★★★★</div>
           <p class="text-xs text-stone-600 dark:text-stone-300 font-sans leading-relaxed font-light italic group-hover:text-ink dark:group-hover:text-white transition-colors">
-            "I listed 4 of my concert fits and Y2K corset tops on Wedelia. Made ₹9,600 last month just from girls borrowing them for college fests and weekend parties. My wardrobe literally pays for my weekend brunches."
+            "I listed 4 of my concert fits and Y2K corset tops on Wedelia. Made ₹9,600 last month from people borrowing them for music festivals and weekend events. My wardrobe literally pays for my weekend plans."
           </p>
           <div class="pt-2 border-t border-stone-100 dark:border-white/10 flex justify-between items-center text-[11px] font-mono">
-            <span class="font-bold text-plum dark:text-gold">Rhea K. (Curator)</span>
-            <span class="text-stone-400">NMIMS Mumbai · Student Vault</span>
+            <span class="font-bold text-plum dark:text-gold">Aarohi K.</span>
+            <span class="text-stone-400">Verified Lender · Y2K &amp; Corset Archive</span>
           </div>
         </div>
 
-        <div class="story-card group relative p-8 rounded-3xl bg-white/70 dark:bg-white/[0.03] border border-stone-200/80 dark:border-white/10 space-y-4 shadow-subtle reveal-up delay-300 backdrop-blur-xl cursor-pointer overflow-hidden" onclick="showToast('Celebration Story · Devika M. (Christ University)')">
+        <div class="story-card group relative p-8 rounded-3xl bg-white/70 dark:bg-white/[0.03] border border-stone-200/80 dark:border-white/10 space-y-4 shadow-subtle reveal-up delay-300 backdrop-blur-xl cursor-pointer overflow-hidden" onclick="showToast('Celebration Review · Devika M. (Minimalist Chic)')">
           <div class="absolute -top-12 -right-12 w-28 h-28 bg-gold/10 rounded-full blur-2xl group-hover:bg-gold/25 transition-all duration-500 pointer-events-none"></div>
           <div class="flex text-gold text-sm group-hover:scale-105 transition-transform origin-left">★★★★★</div>
           <p class="text-xs text-stone-600 dark:text-stone-300 font-sans leading-relaxed font-light italic group-hover:text-ink dark:group-hover:text-white transition-colors">
-            "Needed an outfit for our college farewell dinner in 4 hours. The Liquid Satin Slip arrived steamed and ready at my hostel gate. Fit like a glove and looked 10/10 in all the farewell pictures."
+            "Needed an outfit for an evening gala dinner on short notice. The Liquid Satin Slip arrived steamed and ready at my doorstep. Fit like a glove and looked 10/10 in all the pictures."
           </p>
           <div class="pt-2 border-t border-stone-100 dark:border-white/10 flex justify-between items-center text-[11px] font-mono">
             <span class="font-bold text-plum dark:text-gold">Devika M.</span>
-            <span class="text-stone-400">Christ University · Bangalore</span>
+            <span class="text-stone-400">Verified Member · Minimalist Evening Edit</span>
           </div>
         </div>
 
@@ -1328,7 +1385,7 @@
       <div class="md:col-span-3 space-y-2 font-mono">
         <strong class="text-gold uppercase text-[11px] block tracking-wider">Concierge Studios</strong>
         <p class="text-stone-400 text-[11px] leading-relaxed font-light">
-          Delhi NCR: North Campus &amp; South Delhi Hubs<br>
+          Delhi NCR: Hauz Khas &amp; Central Delhi Studios<br>
           Mumbai: Bandra Enclave<br>
           Bangalore: Koramangala Hub<br>
           White-Glove Hostel Gate &amp; Doorstep Courier Delivery.
@@ -1344,6 +1401,122 @@
       </div>
     </div>
   </footer>
+
+  <!-- ========================================================================= -->
+  <!-- APPLE GLASSMORPHIC CONTACT US MODAL (CENTERED VIEWPORT)                    -->
+  <!-- ========================================================================= -->
+  <div id="contactModalOverlay" class="fixed inset-0 bg-black/40 dark:bg-black/55 backdrop-blur-[4px] z-[70] opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4" onclick="closeContactModal()">
+    <div id="contactModalCard" class="relative w-full max-w-md rounded-3xl apple-glass p-7 sm:p-9 text-center transform scale-95 opacity-0 transition-all duration-300 space-y-6" onclick="event.stopPropagation()">
+      
+      <!-- Close Button -->
+      <button onclick="closeContactModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 border border-black/5 dark:border-white/10 flex items-center justify-center text-stone-600 dark:text-stone-300 hover:text-ink dark:hover:text-white transition-all text-xs cursor-pointer shadow-sm" title="Close">
+        ✕
+      </button>
+
+      <!-- Ambient Luxury Soft Glow Orbs -->
+      <div class="absolute -top-12 -right-12 w-36 h-36 bg-gold/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-12 -left-12 w-36 h-36 bg-plum/25 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Header: Contact Us -->
+      <div class="pt-1">
+        <span class="text-[10px] font-mono tracking-whisper uppercase text-plum/70 dark:text-gold/70 block mb-1">CONCIERGE DESK</span>
+        <h2 class="font-cormorant text-3xl sm:text-4xl font-normal text-ink dark:text-white inline-block">
+          Contact Us
+        </h2>
+        <div class="w-12 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-2"></div>
+      </div>
+
+      <!-- Subtitle with Lightweight Elegant Shine -->
+      <div>
+        <p class="font-cormorant text-2xl sm:text-3xl font-light text-shine tracking-wide">
+          We&#39;d love to hear from you!
+        </p>
+      </div>
+
+      <!-- Communication Channels (Apple Pill Glass Tiles - No phone numbers) -->
+      <div class="space-y-3 pt-1">
+        <a href="https://wa.me/9999999999" target="_blank" rel="noopener noreferrer" class="apple-glass-card group w-full py-3.5 px-5 rounded-2xl flex items-center justify-between hover:border-gold/50 hover:bg-white/70 dark:hover:bg-white/10 transition-all shadow-sm cursor-pointer">
+          <div class="flex items-center gap-3">
+            <span class="w-9 h-9 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-base">💬</span>
+            <div class="text-left">
+              <span class="text-[10px] font-mono uppercase tracking-wider text-stone-500 dark:text-stone-400 block">Instant Chat</span>
+              <span class="text-xs sm:text-sm font-sans font-semibold text-stone-800 dark:text-stone-200">WhatsApp Concierge</span>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-emerald-600 dark:text-emerald-400 group-hover:translate-x-1 transition-transform">Connect →</span>
+        </a>
+
+        <a href="mailto:help@wedelia.in" class="apple-glass-card group w-full py-3.5 px-5 rounded-2xl flex items-center justify-between hover:border-gold/50 hover:bg-white/70 dark:hover:bg-white/10 transition-all shadow-sm cursor-pointer">
+          <div class="flex items-center gap-3">
+            <span class="w-9 h-9 rounded-full bg-gold/20 text-gold-dark dark:text-gold flex items-center justify-center text-base">✉️</span>
+            <div class="text-left">
+              <span class="text-[10px] font-mono uppercase tracking-wider text-stone-500 dark:text-stone-400 block">Official Support</span>
+              <span class="text-xs sm:text-sm font-sans font-semibold text-stone-800 dark:text-stone-200">help@wedelia.in</span>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-plum dark:text-gold group-hover:translate-x-1 transition-transform">Send Email →</span>
+        </a>
+      </div>
+
+      <!-- Warm Closing Sign-off -->
+      <div class="pt-4 border-t border-black/5 dark:border-white/10">
+        <p class="font-cormorant text-2xl sm:text-3xl italic text-plum-dark dark:text-gold font-normal">
+          Shine On. We love you
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SELECT LOCATION MODAL (APPLE GLASSMORPHIC & SCROLLABLE CITY LIST)          -->
+  <!-- ========================================================================= -->
+  <div id="locationModalOverlay" class="fixed inset-0 bg-black/40 dark:bg-black/55 backdrop-blur-[4px] z-[70] opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4 sm:p-6" onclick="closeLocationModal()">
+    <div id="locationModalCard" class="relative w-full max-w-2xl rounded-3xl apple-glass shadow-[0_30px_90px_-20px_rgba(0,0,0,0.65)] overflow-hidden transform scale-95 opacity-0 transition-all duration-300 flex flex-col max-h-[85vh]" onclick="event.stopPropagation()">
+      
+      <!-- Modal Top Dark Glass Header Bar -->
+      <div class="bg-black/10 dark:bg-black/30 backdrop-blur-md px-6 py-4 flex justify-between items-center border-b border-black/5 dark:border-white/10 shrink-0">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="font-sans font-bold text-xs sm:text-sm tracking-wider uppercase text-ink dark:text-white">
+            Service Availability
+          </span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="font-mono text-xs text-plum dark:text-gold font-medium hidden sm:inline">Store &amp; Courier Locator</span>
+          <button onclick="closeLocationModal()" class="w-7 h-7 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 border border-black/5 dark:border-white/10 flex items-center justify-center text-stone-600 dark:text-stone-300 hover:text-white transition-colors text-xs cursor-pointer shadow-sm" title="Close">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <!-- Subheader with Title & Live Search Input -->
+      <div class="p-4 sm:p-5 bg-white/30 dark:bg-white/[0.02] border-b border-black/5 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0">
+        <div class="flex items-center gap-2">
+          <span class="text-sm font-semibold text-stone-800 dark:text-stone-200">Select City / Hub</span>
+          <span class="text-[10px] font-mono text-plum dark:text-gold bg-plum/10 dark:bg-gold/15 px-2.5 py-0.5 rounded-full font-bold">53 Major Cities</span>
+        </div>
+        <div class="relative w-full sm:w-64">
+          <input id="citySearchInput" type="text" placeholder="Search City..." class="w-full pl-3.5 pr-8 py-2 border border-black/10 dark:border-white/15 rounded-xl text-xs font-mono bg-white/80 dark:bg-black/25 dark:text-white focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-all shadow-inner" oninput="filterCities(this.value)">
+          <span class="absolute right-2.5 top-2.5 text-stone-400 text-xs pointer-events-none">🔍</span>
+        </div>
+      </div>
+
+      <!-- City Tiles 2-Column Grid (Smooth Custom Scrollbar, Max-height for clean scrollability, Overscroll Contain) -->
+      <div id="cityGridContainer" class="p-4 sm:p-6 overflow-y-auto overscroll-contain max-h-[50vh] sm:max-h-[54vh] grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1 custom-scrollbar">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 py-3.5 bg-white/30 dark:bg-black/20 border-t border-black/5 dark:border-white/10 flex justify-between items-center text-[11px] font-mono text-stone-500 shrink-0">
+        <span>Hostel &amp; doorstep express courier dispatch</span>
+        <button onclick="selectCity('All Locations')" class="text-plum dark:text-gold font-bold hover:underline cursor-pointer">
+          View All Pan-India →
+        </button>
+      </div>
+
+    </div>
+  </div>
 
   <!-- Slide-out Garment Details Modal Drawer -->
   <div id="drawerOverlay" class="fixed inset-0 bg-ink/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeAllDrawers()"></div>
@@ -1413,11 +1586,11 @@
       <form id="reserveForm" onsubmit="handleDirectReservation(event)" class="space-y-4 pt-2 border-t border-stone-200 dark:border-white/10 hidden">
         <div class="space-y-1">
           <label class="text-[10px] font-mono uppercase tracking-widest text-stone-500">Full Name</label>
-          <input type="text" required placeholder="Ananya Sharma" class="w-full p-2.5 border border-stone-300 rounded text-xs font-mono focus:outline-none focus:ring-1 focus:ring-plum">
+          <input type="text" required placeholder="Sanya Malhotra" class="w-full p-2.5 border border-stone-300 rounded text-xs font-mono focus:outline-none focus:ring-1 focus:ring-plum">
         </div>
         <div class="space-y-1">
-          <label class="text-[10px] font-mono uppercase tracking-widest text-stone-500">Hostel / Campus Address</label>
-          <input type="text" required placeholder="LSR Hostel Gate / Kamla Nagar, Delhi" class="w-full p-2.5 border border-stone-300 rounded text-xs font-mono focus:outline-none focus:ring-1 focus:ring-plum">
+          <label class="text-[10px] font-mono uppercase tracking-widest text-stone-500">Delivery Address</label>
+          <input type="text" required placeholder="Apartment 4B, Defence Colony / Indiranagar" class="w-full p-2.5 border border-stone-300 rounded text-xs font-mono focus:outline-none focus:ring-1 focus:ring-plum">
         </div>
         <div class="space-y-1">
           <label class="text-[10px] font-mono uppercase tracking-widest text-stone-500">Fest / Event Date</label>
@@ -1685,7 +1858,7 @@
           <div id="emptyCartMessage" class="text-center py-12 space-y-3">
             <span class="text-3xl">🛍</span>
             <p class="font-cormorant text-2xl text-stone-500">Your bag is empty.</p>
-            <p class="text-xs font-mono text-stone-400">Explore campus fits and add pieces to your pass.</p>
+            <p class="text-xs font-mono text-stone-400">Explore aesthetic outfits and add pieces to your pass.</p>
           </div>
         `;
         totalLabel.innerText = '₹0';
@@ -1729,6 +1902,8 @@
       document.getElementById('drawerOverlay').classList.add('opacity-0', 'pointer-events-none');
       document.getElementById('sideDrawer').classList.add('translate-x-full');
       document.getElementById('bagDrawer').classList.add('translate-x-full');
+      closeContactModal();
+      closeLocationModal();
     }
 
     function checkoutBag() {
@@ -1737,13 +1912,13 @@
         return;
       }
       closeAllDrawers();
-      showToast(`Success! ${cart.length} outfits confirmed. Campus courier dispatched.`);
+      showToast(`Success! ${cart.length} outfits confirmed. Courier dispatched.`);
       cart = [];
       updateCartUI();
     }
 
     function openLenderModal() {
-      openGarmentModal('List Your Fits on Campus Vault', 'Earn 70%', 'Apply to list your western corsets, party dresses, and statement fits for fellow college students. We handle insured doorstep pickups, hospital-grade ozone sanitization, and direct weekly UPI payouts.', 'assets/pics/western-boho-corset-skirt.jpeg');
+      openGarmentModal('List Your Fits on Wedelia Vault', 'Earn 70%', 'Apply to list your western corsets, party dresses, and statement fits for fellow college students. We handle insured doorstep pickups, hospital-grade ozone sanitization, and direct weekly UPI payouts.', 'assets/pics/western-boho-corset-skirt.jpeg');
     }
 
     // 12. Ultra-Smooth Animated FAQ Accordion (Silky Slide-down & Slide-up)
@@ -1787,6 +1962,133 @@
       showToast(`Selected ${hubName} · Doorstep courier scheduled.`);
       openBagDrawer();
     }
+
+    // 14. Contact Us Modal & Location Selector System (~50 Big Cities)
+    const CITIES = [
+      "All Locations", "Delhi NCR", "Mumbai", "Bengaluru", "Hyderabad",
+      "Pune", "Chennai", "Kolkata", "Jaipur", "Ahmedabad","Howrah",
+      "Chandigarh", "Lucknow", "Gurgaon", "Noida", "Faridabad",
+      "Ghaziabad", "Indore", "Bhopal", "Surat", "Vadodara",
+      "Nagpur", "Kochi", "Coimbatore", "Visakhapatnam", "Patna",
+      "Ludhiana", "Agra", "Nashik", "Varanasi", "Amritsar",
+      "Dehradun", "Udaipur", "Jodhpur", "Mysuru", "Mangalore",
+      "Guwahati", "Bhubaneswar", "Ranchi", "Raipur", "Goa",
+      "Kanpur", "Jalandhar", "Shimla", "Jammu", "Srinagar",
+      "Thiruvananthapuram", "Vijayawada", "Rajkot", "Gwalior", "Jabalpur",
+      "Prayagraj", "Meerut"
+    ];
+
+    let currentSelectedCity = localStorage.getItem('wedelia_location') || 'Select Location';
+
+    function initLocation() {
+      const saved = localStorage.getItem('wedelia_location');
+      if (saved && saved !== 'Select Location') {
+        currentSelectedCity = saved;
+        const label = document.getElementById('navLocationLabel');
+        if (label) label.innerText = saved === 'All Locations' ? 'All Cities' : saved;
+      }
+      renderCities(CITIES);
+    }
+
+    function renderCities(cityList) {
+      const container = document.getElementById('cityGridContainer');
+      if (!container) return;
+      if (!cityList || cityList.length === 0) {
+        container.innerHTML = '<div class="col-span-full py-10 text-center text-xs font-mono text-stone-400">No cities found matching that query.</div>';
+        return;
+      }
+      container.innerHTML = cityList.map(city => {
+        const isSelected = city === currentSelectedCity;
+        return `
+          <button onclick="selectCity('${city.replace(/'/g, "\\'")}')" class="city-tile py-3 px-4 rounded-2xl border ${isSelected ? 'border-gold bg-gold/20 dark:bg-gold/25 font-bold shadow-md ring-1 ring-gold/40' : 'border-stone-200/70 dark:border-white/10 bg-white/70 dark:bg-white/[0.04]'} hover:border-gold hover:bg-gold/10 dark:hover:bg-gold/15 backdrop-blur-sm transition-all text-center flex items-center justify-between group cursor-pointer">
+            <span class="font-cormorant text-base sm:text-lg text-ink dark:text-stone-100 font-medium group-hover:text-gold transition-colors">${city}</span>
+            ${isSelected ? '<span class="text-xs text-gold font-bold">✓</span>' : '<span class="text-stone-400 dark:text-white/20 text-xs opacity-0 group-hover:opacity-100 transition-opacity">Select →</span>'}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function filterCities(query) {
+      const q = (query || '').toLowerCase().trim();
+      const filtered = CITIES.filter(c => c.toLowerCase().includes(q));
+      renderCities(filtered);
+    }
+
+    function selectCity(city) {
+      currentSelectedCity = city;
+      localStorage.setItem('wedelia_location', city);
+      const label = document.getElementById('navLocationLabel');
+      if (label) {
+        label.innerText = city === 'All Locations' ? 'All Cities' : city;
+      }
+      renderCities(CITIES);
+      closeLocationModal();
+      showToast(city === 'All Locations' ? 'Location set to Pan-India 📍' : `Location set to ${city} 📍`);
+    }
+
+    function openContactModal() {
+      const overlay = document.getElementById('contactModalOverlay');
+      const card = document.getElementById('contactModalCard');
+      if (!overlay || !card) return;
+      document.body.classList.add('overflow-hidden');
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+
+    function closeContactModal() {
+      const overlay = document.getElementById('contactModalOverlay');
+      const card = document.getElementById('contactModalCard');
+      if (!overlay || !card) return;
+      document.body.classList.remove('overflow-hidden');
+      card.classList.remove('scale-100', 'opacity-100');
+      card.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+      }, 200);
+    }
+
+    function openLocationModal() {
+      const overlay = document.getElementById('locationModalOverlay');
+      const card = document.getElementById('locationModalCard');
+      if (!overlay || !card) return;
+      document.body.classList.add('overflow-hidden');
+      const search = document.getElementById('citySearchInput');
+      if (search) search.value = '';
+      renderCities(CITIES);
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+        if (search) search.focus();
+      }, 10);
+    }
+
+    function closeLocationModal() {
+      const overlay = document.getElementById('locationModalOverlay');
+      const card = document.getElementById('locationModalCard');
+      if (!overlay || !card) return;
+      document.body.classList.remove('overflow-hidden');
+      card.classList.remove('scale-100', 'opacity-100');
+      card.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+      }, 200);
+    }
+
+    // Keyboard ESC listener
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeContactModal();
+        closeLocationModal();
+        closeAllDrawers();
+      }
+    });
+
+    // Initialize location on load
+    initLocation();
   </script>
 
   <!-- Lenis Smooth Scroll Script -->

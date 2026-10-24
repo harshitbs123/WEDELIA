@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#56325f">
+  <title>WEDELIA — Site 08 · Neo-Luxe Spatial 3D Bento</title>
+
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            plum: { DEFAULT: '#56325f', dark: '#2b1731', soft: '#f6eff8', glow: 'rgba(86, 50, 95, 0.15)' },
+            gold: { DEFAULT: '#e2c85b', warm: '#f2d95c', light: '#fdf9e2' },
+            bentobg: '#f8f4fb',
+            ink: '#15101a'
+          },
+          fontFamily: {
+            cormorant: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"DM Sans"', 'sans-serif'],
+            mono: ['"Space Mono"', 'monospace'],
+            syne: ['"Syne"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .glass-tile {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 20px 50px -10px rgba(86, 50, 95, 0.08);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s;
+    }
+    .glass-tile:hover {
+      box-shadow: 0 30px 60px -15px rgba(86, 50, 95, 0.18);
+    }
+  </style>
+</head>
+<body class="bg-bentobg text-ink font-sans antialiased selection:bg-plum selection:text-gold min-h-screen relative overflow-x-hidden">
+
+  <!-- Ambient Light Halos -->
+  <div class="fixed top-20 left-10 w-96 h-96 bg-plum/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="fixed bottom-10 right-10 w-96 h-96 bg-gold/20 rounded-full blur-3xl pointer-events-none"></div>
+
+  <!-- Global 10 Sites Hub Navigation Ribbon -->
+  <nav class="bg-ink text-stone-300 text-[10px] font-mono tracking-widest uppercase py-2 px-6 flex justify-between items-center border-b border-white/10 sticky top-0 z-50">
+    <div class="flex items-center gap-3">
+      <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+      <span class="text-white font-bold">SITE 08 // NEO-LUXE SPATIAL 3D BENTO ECOSYSTEM</span>
+    </div>
+    <div class="flex items-center gap-2 overflow-x-auto py-0.5">
+      <span class="text-stone-500 hidden sm:inline">EXPLORE SITES:</span>
+      <a href="site1.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">01</a>
+      <a href="site2.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">02</a>
+      <a href="site3.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">03</a>
+      <a href="site4.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">04</a>
+      <a href="site5.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">05</a>
+      <a href="site6.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">06</a>
+      <a href="site7.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">07</a>
+      <a href="site8.html" class="px-2 py-0.5 rounded bg-gold text-ink font-bold">08</a>
+      <a href="site9.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">09</a>
+      <a href="site10.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">10</a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="border-b border-plum/10 bg-white/80 backdrop-blur-xl px-6 lg:px-12 py-4 flex items-center justify-between sticky top-[33px] z-40">
+    <div class="flex items-center gap-6">
+      <img src="assets/logo.svg" alt="Wedelia Logo" class="h-8 w-auto">
+      <span class="font-cormorant text-2xl font-light tracking-[0.2em] text-plum font-bold">WEDELIA</span>
+      <span class="hidden md:inline text-[9px] font-mono uppercase tracking-[0.25em] text-stone-500 pl-4 border-l border-stone-200">
+        Spatial Bento Suite 08
+      </span>
+    </div>
+    <div class="flex items-center gap-4">
+      <button onclick="openDrawer('Spatial Bento Bag', '₹0', 'Instant locker custody reservation')" class="px-5 py-2.5 rounded-full bg-plum text-gold font-mono text-xs uppercase tracking-widest font-bold hover:bg-plum-dark transition-all shadow-md">
+        Bag (0)
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero: Spatial Bento Matrix (RADICAL 12-COLUMN MODULAR TILES) -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-12 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+      
+      <!-- Bento Tile 1: Lead Headline (8 cols) -->
+      <div class="md:col-span-8 rounded-3xl p-8 sm:p-12 glass-tile flex flex-col justify-between space-y-6 relative overflow-hidden">
+        <div class="space-y-4 max-w-xl relative z-10">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-plum-soft text-plum text-[10px] font-mono uppercase tracking-wider">
+            <span>✦</span>
+            <span>SPATIAL OCCASION ARCHITECTURE MMXXVI</span>
+          </div>
+          <h1 class="font-cormorant text-4xl sm:text-6xl font-light text-ink leading-[1.02]">
+            Spatial luxury.<br>
+            <em class="italic text-plum font-normal font-cormorant">Zero wardrobe clutter.</em>
+          </h1>
+          <p class="text-stone-600 text-xs sm:text-sm font-sans leading-relaxed font-light">
+            Occasion wear conceived without the burden of permanence. Check out curated silk corsets and gala gowns from campus lockers for 72 hours.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4 pt-4 relative z-10">
+          <a href="#bento-catalog" class="px-8 py-3.5 rounded-full bg-plum text-gold font-mono text-xs uppercase tracking-widest font-bold hover:bg-plum-dark transition-all shadow-md">
+            Query Matrix ↗
+          </a>
+          <button onclick="openDrawer('Join Lender Guild', 'Earn 70%', 'Monetize your occasion pieces through campus lockers.');" class="px-8 py-3.5 rounded-full border border-plum/30 bg-white/80 text-plum font-mono text-xs uppercase tracking-widest font-bold hover:bg-plum/5">
+            Lender Protocol
+          </button>
+        </div>
+      </div>
+
+      <!-- Bento Tile 2: Live Locker Radar (4 cols) -->
+      <div class="md:col-span-4 rounded-3xl p-8 bg-plum text-white shadow-xl flex flex-col justify-between space-y-6 relative overflow-hidden">
+        <div class="space-y-2">
+          <div class="flex justify-between items-center text-[10px] font-mono">
+            <span class="text-gold tracking-widest uppercase">LOCKER RADAR</span>
+            <span class="flex items-center gap-1.5 text-emerald-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+              LIVE
+            </span>
+          </div>
+          <h3 class="font-cormorant text-3xl font-light">North Campus Enclave #08</h3>
+          <p class="text-xs text-stone-300 font-sans leading-relaxed">
+            Automated pickup lockers at University Enclave. Contactless PIN handover.
+          </p>
+        </div>
+
+        <div class="py-4 border-y border-white/10 grid grid-cols-2 gap-4 text-xs font-mono">
+          <div>
+            <span class="text-stone-400 text-[10px] block">SILHOUETTES READY</span>
+            <span class="text-gold text-xl font-bold">14 Looks</span>
+          </div>
+          <div>
+            <span class="text-stone-400 text-[10px] block">HYGIENE STATUS</span>
+            <span class="text-emerald-400 text-xl font-bold">100% O3</span>
+          </div>
+        </div>
+
+        <span class="text-[10px] font-mono text-stone-400">NEXT REFRESH: 18:00 TODAY</span>
+      </div>
+
+      <!-- Bento Tile 3: 72H Zero Burden (4 cols) -->
+      <div class="md:col-span-4 rounded-3xl p-6 glass-tile space-y-3">
+        <span class="font-mono text-sm text-plum font-bold">72h</span>
+        <h4 class="font-cormorant text-2xl font-semibold text-ink">Zero Laundry Chore</h4>
+        <p class="text-xs text-stone-600 font-sans leading-relaxed">
+          Return unwashed in sealed return satchel. Minor fest spills insured automatically.
+        </p>
+      </div>
+
+      <!-- Bento Tile 4: 70% Direct Dividend (4 cols) -->
+      <div class="md:col-span-4 rounded-3xl p-6 glass-tile space-y-3">
+        <span class="font-mono text-sm text-gold-dark font-bold text-amber-700">70%</span>
+        <h4 class="font-cormorant text-2xl font-semibold text-ink">Student Peer Yield</h4>
+        <p class="text-xs text-stone-600 font-sans leading-relaxed">
+          Lenders receive direct UPI transfers every Monday morning for every rented silhouette.
+        </p>
+      </div>
+
+      <!-- Bento Tile 5: Medical Ozone Standard (4 cols) -->
+      <div class="md:col-span-4 rounded-3xl p-6 glass-tile space-y-3">
+        <span class="font-mono text-sm text-emerald-700 font-bold">O₃</span>
+        <h4 class="font-cormorant text-2xl font-semibold text-ink">Hospital Sanitization</h4>
+        <p class="text-xs text-stone-600 font-sans leading-relaxed">
+          15-minute pure ozone gas cycle kills 99.9% of bacteria without fabric fiber damage.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Curated Bento Catalog (Clean Borderless Cards) -->
+  <section id="bento-catalog" class="max-w-7xl mx-auto px-6 lg:px-12 py-20 border-t border-plum/10">
+    <div class="flex justify-between items-baseline mb-12 pb-4 border-b border-plum/10">
+      <div>
+        <span class="text-[10px] font-mono uppercase tracking-widest text-plum block font-bold">SPATIAL COLLECTION</span>
+        <h2 class="font-cormorant text-4xl sm:text-5xl font-light text-ink mt-1">Available Silhouettes</h2>
+      </div>
+      <span class="text-xs font-mono text-stone-400">READY FOR 72H DISPATCH</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <!-- Card 1 -->
+      <article class="group cursor-pointer" onclick="openDrawer('Parisian Silk Corset', '₹299', 'Pure ivory silk with steel boning and eyelet tie back. North Campus locker ready.')">
+        <div class="aspect-[3/4.2] overflow-hidden rounded-2xl bg-stone-100 mb-3 relative shadow-sm group-hover:shadow-md transition-all">
+          <img src="assets/images/photo-1515886657613-9f3515b0c78f-1.jpg" alt="Parisian Silk Corset" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        </div>
+        <div class="flex justify-between items-baseline pt-1">
+          <div>
+            <h3 class="font-cormorant text-xl text-ink font-semibold group-hover:text-plum transition-colors">Parisian Silk Corset</h3>
+            <span class="text-[11px] font-mono text-stone-500 block">Structured Boning · Size S</span>
+          </div>
+          <span class="font-mono text-plum font-bold text-sm">₹299</span>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="group cursor-pointer" onclick="openDrawer('Dark Romance Lace', '₹249', 'French corded floral lace with satin trim. Stephen\'s pod ready.')">
+        <div class="aspect-[3/4.2] overflow-hidden rounded-2xl bg-stone-100 mb-3 relative shadow-sm group-hover:shadow-md transition-all">
+          <img src="assets/images/photo-1529139574466-a303027c1d8b.jpg" alt="Dark Romance Lace" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        </div>
+        <div class="flex justify-between items-baseline pt-1">
+          <div>
+            <h3 class="font-cormorant text-xl text-ink font-semibold group-hover:text-plum transition-colors">Dark Romance Lace</h3>
+            <span class="text-[11px] font-mono text-stone-500 block">Corded Sheer Lace · Size S</span>
+          </div>
+          <span class="font-mono text-plum font-bold text-sm">₹249</span>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="group cursor-pointer" onclick="openDrawer('Liquid Satin Column Slip', '₹349', 'Heavy champagne bias cut silk satin gown. LSR pod ready.')">
+        <div class="aspect-[3/4.2] overflow-hidden rounded-2xl bg-stone-100 mb-3 relative shadow-sm group-hover:shadow-md transition-all">
+          <img src="assets/images/photo-1539008835657-9e8e9680c956.jpg" alt="Liquid Satin Column Slip" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        </div>
+        <div class="flex justify-between items-baseline pt-1">
+          <div>
+            <h3 class="font-cormorant text-xl text-ink font-semibold group-hover:text-plum transition-colors">Liquid Satin Column</h3>
+            <span class="text-[11px] font-mono text-stone-500 block">Heavy Bias Satin · Size M</span>
+          </div>
+          <span class="font-mono text-plum font-bold text-sm">₹349</span>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="group cursor-pointer" onclick="openDrawer('Ruby Velvet Bodice', '₹399', 'Crushed ruby red velvet with sweetheart neckline. Miranda pod ready.')">
+        <div class="aspect-[3/4.2] overflow-hidden rounded-2xl bg-stone-100 mb-3 relative shadow-sm group-hover:shadow-md transition-all">
+          <img src="assets/images/photo-1539109136881-3be0616acf4b.jpg" alt="Ruby Velvet Bodice" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        </div>
+        <div class="flex justify-between items-baseline pt-1">
+          <div>
+            <h3 class="font-cormorant text-xl text-ink font-semibold group-hover:text-plum transition-colors">Ruby Velvet Bodice</h3>
+            <span class="text-[11px] font-mono text-stone-500 block">Crushed Ruby Velvet · Size S</span>
+          </div>
+          <span class="font-mono text-plum font-bold text-sm">₹399</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Gazette Dispatch Newsletter Wire (Loved from P3) -->
+  <section class="max-w-4xl mx-auto px-6 py-12">
+    <div class="bg-white border-2 border-plum p-8 rounded-3xl space-y-4 shadow-xl">
+      <div class="flex justify-between text-[10px] font-mono border-b border-plum/20 pb-2">
+        <span class="font-bold text-plum">★ SPATIAL DISPATCH // BENTO FEED ★</span>
+        <span>MMXXVI</span>
+      </div>
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+        <div>
+          <h4 class="font-cormorant text-2xl font-bold">Subscribe to The Bento Feed</h4>
+          <p class="text-xs text-stone-500 font-sans">Instant telegraph alerts when premium silhouettes return to lockers.</p>
+        </div>
+        <form onsubmit="event.preventDefault(); alert('Subscribed to Bento Feed!');" class="flex gap-2 w-full sm:w-auto">
+          <input type="email" required placeholder="name@college.du.ac.in" class="p-2 border border-stone-300 rounded-xl text-xs font-mono">
+          <button type="submit" class="px-5 py-2 bg-plum text-gold font-mono text-xs uppercase font-bold rounded-xl hover:bg-plum-dark">Join ↗</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4-Column Luxury Footer -->
+  <footer class="bg-ink text-stone-300 pt-16 pb-12 px-6 lg:px-12 border-t border-white/10 text-xs">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-white/10 font-mono">
+      <div class="md:col-span-5 space-y-3">
+        <img src="assets/logo.svg" alt="Wedelia Logo" class="h-7 w-auto">
+        <p class="text-stone-400 text-xs leading-relaxed max-w-sm">WEDELIA spatial bento ecosystem. Site 08 · Neo-Luxe Spatial Bento.</p>
+      </div>
+      <div class="md:col-span-3 space-y-2">
+        <strong class="text-gold uppercase text-[11px] block">Campus Pods</strong>
+        <p class="text-stone-400">SRCC · Stephen's · LSR · Miranda House</p>
+      </div>
+      <div class="md:col-span-4 space-y-2">
+        <strong class="text-gold uppercase text-[11px] block">Hygiene Guarantee</strong>
+        <p class="text-stone-400">100% Medical Ozone Cleansed After Every 72h Pass</p>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto pt-4 flex justify-between text-[11px] text-stone-500 font-mono">
+      <span>© 2026 WEDELIA ATELIER. SITE 08 OF 10.</span>
+      <a href="#" class="hover:text-gold">Top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Slide-out Drawer Modal -->
+  <div id="drawerOverlay" class="fixed inset-0 bg-ink/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeDrawer()"></div>
+  <aside id="sideDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white rounded-l-3xl shadow-2xl z-50 translate-x-full transition-transform duration-300 flex flex-col font-mono">
+    <div class="p-6 border-b border-stone-200 flex justify-between items-center">
+      <div>
+        <span class="text-[10px] uppercase font-bold text-plum">SPATIAL PASS</span>
+        <h3 id="drawerTitle" class="font-cormorant text-2xl font-light text-ink mt-0.5">Garment Details</h3>
+      </div>
+      <button onclick="closeDrawer()" class="w-8 h-8 rounded-full border border-stone-300 flex items-center justify-center font-bold">✕</button>
+    </div>
+
+    <div class="p-6 overflow-y-auto flex-1 space-y-6">
+      <div class="flex justify-between items-baseline pb-4 border-b border-stone-200">
+        <span class="text-xs text-stone-500">72-HOUR CUSTODY</span>
+        <span id="drawerPrice" class="text-2xl font-bold text-plum">₹299</span>
+      </div>
+
+      <p id="drawerDesc" class="text-xs text-stone-600 leading-relaxed font-sans">
+        Garment description and styling specifications.
+      </p>
+
+      <form onsubmit="event.preventDefault(); alert('Reserved! Check SMS for locker code.'); closeDrawer();" class="space-y-4 pt-2">
+        <div class="space-y-1">
+          <label class="text-[10px] uppercase text-stone-500 font-bold">Student Name</label>
+          <input type="text" required placeholder="Aanya Sharma" class="w-full p-2.5 border border-stone-300 rounded text-xs">
+        </div>
+        <div class="space-y-1">
+          <label class="text-[10px] uppercase text-stone-500 font-bold">Fest Date</label>
+          <input type="date" required class="w-full p-2.5 border border-stone-300 rounded text-xs">
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-full bg-plum text-gold uppercase text-xs font-bold hover:bg-plum-dark transition-all">
+          Confirm 72h Pass ↗
+        </button>
+      </form>
+    </div>
+  </aside>
+
+  <script>
+    function openDrawer(title, price, desc) {
+      document.getElementById('drawerTitle').innerText = title;
+      document.getElementById('drawerPrice').innerText = price;
+      document.getElementById('drawerDesc').innerText = desc;
+      document.getElementById('drawerOverlay').classList.remove('opacity-0', 'pointer-events-none');
+      document.getElementById('sideDrawer').classList.remove('translate-x-full');
+    }
+
+    function closeDrawer() {
+      document.getElementById('drawerOverlay').classList.add('opacity-0', 'pointer-events-none');
+      document.getElementById('sideDrawer').classList.add('translate-x-full');
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#24142a">
+  <title>WEDELIA — The Zen Void · High Luxury Occasion Wardrobe</title>
+
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,100..800;1,9..40,100..800&family=Italiana&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            plum: {
+              DEFAULT: '#56325f',
+              dark: '#24142a',
+              deep: '#140b17',
+              soft: '#f0e6f2',
+              whisper: 'rgba(86, 50, 95, 0.05)'
+            },
+            gold: {
+              DEFAULT: '#e2c85b',
+              light: '#fcf6d6',
+              hairline: 'rgba(226, 200, 91, 0.35)'
+            },
+            red: {
+              DEFAULT: '#ed2d23'
+            },
+            ink: '#120e15',
+            void: '#faf7f2',
+            paper: '#fffefa',
+            ash: '#78707a'
+          },
+          fontFamily: {
+            cormorant: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"DM Sans"', 'sans-serif'],
+            italiana: ['"Italiana"', 'serif'],
+            mono: ['"Space Mono"', 'monospace']
+          },
+          letterSpacing: {
+            monastic: '0.25em',
+            whisper: '0.4em'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Zen Void Cursor */
+    .zen-cursor {
+      pointer-events: none;
+      position: fixed;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s, border-color 0.3s;
+      z-index: 9999;
+    }
+    .text-hairline {
+      -webkit-text-stroke: 0.5px rgba(36, 20, 42, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-void text-ink font-sans antialiased selection:bg-plum-dark selection:text-gold min-h-screen relative">
+
+  <!-- Interactive Subtle Kinetic Cursor -->
+  <div id="zenCursor" class="zen-cursor w-5 h-5 rounded-full border border-plum/40 bg-gold/20 backdrop-blur-sm hidden md:block"></div>
+
+  <!-- ========================================================
+       TOP MONASTIC UTILITY LINE
+       ======================================================== -->
+  <aside class="border-b border-stone-200/60 py-2.5 px-8 text-center text-[10px] font-mono tracking-whisper uppercase text-ash bg-void">
+    TEMPORARY CUSTODY OF COUTURE // ARCHIVE REF 10 // <a href="homepage.html" class="underline hover:text-plum font-bold">ALL 10 CONCEPTS ↗</a>
+  </aside>
+
+  <!-- ========================================================
+       MINIMAL ZEN NAVIGATION
+       ======================================================== -->
+  <header class="sticky top-0 z-40 bg-void/90 backdrop-blur-xl border-b border-stone-200/50 px-8 lg:px-20 py-6 flex items-center justify-between transition-all">
+    <div class="w-1/3 flex items-center gap-8 text-[11px] font-serif uppercase tracking-monastic text-ash">
+      <a href="#sanctuary" class="hover:text-plum transition-colors">The Ritual</a>
+      <a href="#archive" class="hover:text-plum transition-colors hidden sm:inline">Archive</a>
+    </div>
+
+    <div class="w-1/3 flex justify-center">
+      <a href="#home" class="group flex flex-col items-center">
+        <img src="assets/logo.svg" alt="Wedelia" class="h-8 w-auto filter contrast-125">
+        <span class="text-[8px] font-mono tracking-whisper text-plum/60 uppercase mt-1">THE VOID ATELIER</span>
+      </a>
+    </div>
+
+    <div class="w-1/3 flex justify-end items-center gap-6 text-[11px] font-serif uppercase tracking-monastic text-ash">
+      <a href="#custody" class="hover:text-plum transition-colors hidden sm:inline">Lend</a>
+      <button onclick="toggleDrawer()" class="px-4 py-1.5 rounded-full border border-plum/30 text-plum font-mono text-[10px] uppercase tracking-wider hover:bg-plum hover:text-gold transition-all">
+        Custody Bag (0)
+      </button>
+    </div>
+  </header>
+
+  <main id="home">
+
+    <!-- ========================================================
+         HERO SECTION: 90% DELIBERATE WHITESPACE & THE SILHOUETTE
+         ======================================================== -->
+    <section class="max-w-4xl mx-auto px-6 py-28 lg:py-36 text-center space-y-12">
+      
+      <div class="space-y-4">
+        <span class="text-[10px] font-mono tracking-whisper uppercase text-plum/80 block">
+          P U R I T Y · C I R C U L A R I T Y · C E L E B R A T I O N
+        </span>
+        <h1 class="font-cormorant text-5xl sm:text-7xl lg:text-8xl font-light tracking-tight text-ink leading-[1.04]">
+          Nothing possessed.<br>
+          <em class="italic font-normal text-plum">Everything experienced.</em><br>
+          The memory remains.
+        </h1>
+      </div>
+
+      <!-- Center Suspended Couture Piece with Kinetic Proximity Reveal -->
+      <div id="heroPiece" class="relative max-w-sm sm:max-w-md mx-auto aspect-[3/4] rounded-sm overflow-hidden bg-stone-200/80 shadow-2xl group cursor-pointer" onclick="openDrawer('wd-201', 'Parisian Café Chic', '299', 'assets/images/photo-1515886657613-9f3515b0c78f-1.jpg')">
+        <img src="assets/images/photo-1515886657613-9f3515b0c78f.jpg" alt="Zen Wardrobe Silhouette" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 filter contrast-[1.02]">
+        
+        <!-- Hover Proximity Veil -->
+        <div class="absolute inset-0 bg-plum-deep/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-between p-8 text-white">
+          <div class="text-right text-[10px] font-mono text-gold tracking-widest uppercase">
+            ARCHIVE NO. 201 // SILK BONED CORSET
+          </div>
+          <div class="text-left space-y-1">
+            <span class="text-[9px] font-mono text-stone-300 uppercase">Provenance: Wardrobe Collective DU</span>
+            <h3 class="font-cormorant text-3xl font-light italic">Parisian Café Chic Set</h3>
+            <p class="text-xs font-mono text-gold">₹299 for 72h Celebration Custody</p>
+          </div>
+          <button class="w-full py-3 bg-white text-ink text-xs font-mono uppercase tracking-widest font-bold rounded-sm hover:bg-gold transition-colors">
+            Request Custody Window ↗
+          </button>
+        </div>
+      </div>
+
+      <div class="max-w-md mx-auto space-y-4">
+        <p class="text-xs font-mono leading-relaxed text-ash">
+          An antidote to hyper-consumption. High-fashion silhouettes held in temporal trust. Wear it for your event, return without laundering.
+        </p>
+        <div class="pt-2 flex justify-center items-center gap-6 text-[11px] font-mono text-plum">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+          <span>Zero Ownership Burden</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-red"></span>
+          <span>Hospital Ozone Sanitization</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================
+         SECTION 2: THE 3 RITUALS OF TEMPORAL CUSTODY (HOW IT WORKS)
+         ======================================================== -->
+    <section id="sanctuary" class="max-w-5xl mx-auto px-6 py-28 border-t border-stone-200/80">
+      
+      <div class="text-center max-w-lg mx-auto mb-20 space-y-3">
+        <span class="text-[10px] font-mono tracking-whisper uppercase text-plum/70">THE THREE RITUALS</span>
+        <h2 class="font-cormorant text-4xl sm:text-5xl font-light text-ink">
+          How Custody Operates.
+        </h2>
+        <p class="text-xs font-mono text-ash leading-relaxed">
+          The choreography between our archive, your celebration, and the return.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+        
+        <!-- Ritual 01 -->
+        <div class="space-y-4 text-center md:text-left border-t border-stone-300/80 pt-6">
+          <span class="font-mono text-xs text-gold font-bold">RITUAL 01</span>
+          <h3 class="font-cormorant text-2xl font-normal text-ink">The Allocation</h3>
+          <p class="text-xs font-mono text-ash leading-relaxed">
+            Choose your occasion dates. The garment is inspected, sealed in our breathable linen satchel, and dispatched to your campus drop sanctuary 24 hours prior.
+          </p>
+        </div>
+
+        <!-- Ritual 02 -->
+        <div class="space-y-4 text-center md:text-left border-t border-stone-300/80 pt-6">
+          <span class="font-mono text-xs text-gold font-bold">RITUAL 02</span>
+          <h3 class="font-cormorant text-2xl font-normal text-ink">The Metamorphosis</h3>
+          <p class="text-xs font-mono text-ash leading-relaxed">
+            Wear the garment with pure presence. Celebrate birthdays, farewell balls, or festival nights. The piece is entirely yours for the 72-hour window.
+          </p>
+        </div>
+
+        <!-- Ritual 03 -->
+        <div class="space-y-4 text-center md:text-left border-t border-stone-300/80 pt-6">
+          <span class="font-mono text-xs text-gold font-bold">RITUAL 03</span>
+          <h3 class="font-cormorant text-2xl font-normal text-ink">The Sanctuary Return</h3>
+          <p class="text-xs font-mono text-ash leading-relaxed">
+            Never wash or dry clean. Place the piece back into the prepaid satchel and drop at our campus locker. Our certified ozone cycle restores pure sterile readiness.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================================
+         SECTION 3: THE MONASTIC ARCHIVE (SINGLE-COLUMN BREATHING GALLERY)
+         ======================================================== -->
+    <section id="archive" class="max-w-4xl mx-auto px-6 py-24 border-t border-stone-200/80">
+      
+      <div class="flex justify-between items-baseline mb-24 border-b border-stone-200/80 pb-6">
+        <div>
+          <span class="text-[10px] font-mono tracking-whisper uppercase text-ash">THE RUNWAY INDEX</span>
+          <h2 class="font-cormorant text-4xl font-light text-ink mt-1">Available Custody Silhouettes</h2>
+        </div>
+        <span class="text-xs font-mono text-plum font-bold">2026 ARCHIVE</span>
+      </div>
+
+      <!-- Runway Item 1 -->
+      <article class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-32 group">
+        <div class="md:col-span-7 aspect-[3/4] overflow-hidden bg-stone-100 rounded-sm">
+          <img src="assets/images/photo-1529139574466-a303027c1d8b.jpg" alt="Dark Romance" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+        </div>
+        <div class="md:col-span-5 space-y-4">
+          <span class="text-[10px] font-mono text-plum uppercase tracking-widest">SPEC NO. 202 // STATEMENT</span>
+          <h3 class="font-cormorant text-3xl font-normal text-ink">Dark Romance Lace Top</h3>
+          <p class="text-xs font-mono text-ash leading-relaxed">
+            Chocolate brown corded lace bodice with sheer sleeve drape. Worn for concerts and evening galas.
+          </p>
+          <div class="pt-4 border-t border-stone-200 space-y-2 text-xs font-mono">
+            <div class="flex justify-between">
+              <span class="text-ash">Event Custody:</span>
+              <strong class="text-plum">₹249 / 3 Days</strong>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-ash">Security Deposit:</span>
+              <span>₹350 (100% Refundable)</span>
+            </div>
+          </div>
+          <button onclick="openDrawer('wd-202', 'Dark Romance Lace Top', '249', 'assets/images/photo-1529139574466-a303027c1d8b.jpg')" class="w-full mt-4 py-3 bg-plum text-gold text-xs font-mono uppercase tracking-widest font-bold hover:bg-plum-dark transition-colors">
+            Request Look ↗
+          </button>
+        </div>
+      </article>
+
+      <!-- Runway Item 2 -->
+      <article class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-32 group">
+        <div class="md:col-span-7 aspect-[3/4] overflow-hidden bg-stone-100 rounded-sm">
+          <img src="assets/images/photo-1490481651871-ab68de25d43d.jpg" alt="Sage Garden" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+        </div>
+        <div class="md:col-span-5 space-y-4">
+          <span class="text-[10px] font-mono text-plum uppercase tracking-widest">SPEC NO. 203 // BOHO</span>
+          <h3 class="font-cormorant text-3xl font-normal text-ink">Sage Garden Co-ord</h3>
+          <p class="text-xs font-mono text-ash leading-relaxed">
+            Breathable washed linen blend in light sage green and ivory. Soft floral drape tailored for campus brunch.
+          </p>
+          <div class="pt-4 border-t border-stone-200 space-y-2 text-xs font-mono">
+            <div class="flex justify-between">
+              <span class="text-ash">Event Custody:</span>
+              <strong class="text-plum">₹279 / 3 Days</strong>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-ash">Security Deposit:</span>
+              <span>₹350 (100% Refundable)</span>
+            </div>
+          </div>
+          <button onclick="openDrawer('wd-203', 'Sage Garden Co-ord', '279', 'assets/images/photo-1490481651871-ab68de25d43d.jpg')" class="w-full mt-4 py-3 bg-plum text-gold text-xs font-mono uppercase tracking-widest font-bold hover:bg-plum-dark transition-colors">
+            Request Look ↗
+          </button>
+        </div>
+      </article>
+
+      <!-- Runway Item 3 -->
+      <article class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center mb-24 group">
+        <div class="md:col-span-7 aspect-[3/4] overflow-hidden bg-stone-100 rounded-sm">
+          <img src="assets/images/photo-1524504388940-b1c1722653e1.jpg" alt="Midnight Gothic" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+        </div>
+        <div class="md:col-span-5 space-y-4">
+          <span class="text-[10px] font-mono text-plum uppercase tracking-widest">SPEC NO. 208 // NOCTURNE</span>
+          <h3 class="font-cormorant text-3xl font-normal text-ink">Midnight Gothic Look</h3>
+          <p class="text-xs font-mono text-ash leading-relaxed">
+            Dramatic black sheer lace statement ensemble with interior boning. A main-character piece for nighttime gala events.
+          </p>
+          <div class="pt-4 border-t border-stone-200 space-y-2 text-xs font-mono">
+            <div class="flex justify-between">
+              <span class="text-ash">Event Custody:</span>
+              <strong class="text-plum">₹329 / 3 Days</strong>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-ash">Security Deposit:</span>
+              <span>₹450 (100% Refundable)</span>
+            </div>
+          </div>
+          <button onclick="openDrawer('wd-208', 'Midnight Gothic Look', '329', 'assets/images/photo-1524504388940-b1c1722653e1.jpg')" class="w-full mt-4 py-3 bg-plum text-gold text-xs font-mono uppercase tracking-widest font-bold hover:bg-plum-dark transition-colors">
+            Request Look ↗
+          </button>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ========================================================
+         SECTION 4: THE CUSTODIAN’S WARDROBE (LEND YOUR CLOSET)
+         ======================================================== -->
+    <section id="custody" class="bg-plum-dark text-white py-24 px-6 border-t border-plum/30">
+      <div class="max-w-3xl mx-auto text-center space-y-8">
+        <span class="text-[10px] font-mono tracking-whisper text-gold uppercase block">
+          THE WARDROBE SANCTUARY
+        </span>
+        <h2 class="font-cormorant text-4xl sm:text-6xl font-light italic leading-tight">
+          Entrust your occasion garments to the circular archive.
+        </h2>
+        <p class="text-stone-300 text-xs sm:text-sm font-mono leading-relaxed max-w-lg mx-auto">
+          We invite curated wardrobe owners to share occasion pieces. We safeguard each piece with deposit guarantees, certified care, and a 70% direct dividend on every booking.
+        </p>
+
+        <form id="zenLenderForm" onsubmit="handleZenLender(event)" class="max-w-md mx-auto space-y-3 text-left pt-4 font-mono text-xs">
+          <input type="text" required placeholder="Your Name" class="w-full p-3 bg-white/5 border border-white/20 rounded outline-none focus:border-gold text-white">
+          <input type="text" required placeholder="Contact (WhatsApp or Email)" class="w-full p-3 bg-white/5 border border-white/20 rounded outline-none focus:border-gold text-white">
+          <input type="text" required placeholder="Garment Detail (Corset, Saree, Evening Dress)" class="w-full p-3 bg-white/5 border border-white/20 rounded outline-none focus:border-gold text-white">
+          <button type="submit" class="w-full py-3.5 bg-gold text-plum-dark font-bold uppercase tracking-widest hover:bg-gold-light transition-colors">
+            Offer Piece To Archive ↗
+          </button>
+          <div id="zenLenderSuccess" class="hidden text-center text-xs text-gold font-bold p-2 bg-white/10 rounded">
+            Piece noted in archive sanctuary. We will contact you quietly.
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================
+       MINIMAL ZEN FOOTER
+       ======================================================== -->
+  <footer class="bg-void py-16 px-8 border-t border-stone-200 text-xs font-mono text-ash">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-3">
+        <img src="assets/logo.svg" alt="Wedelia" class="h-6 w-auto opacity-70">
+        <span>© 2026 WEDELIA ATELIER. PROTOTYPE 02 (THE ZEN VOID).</span>
+      </div>
+      <div class="flex gap-6 uppercase tracking-wider">
+        <a href="homepage.html" class="hover:text-plum underline">All 10 Concepts</a>
+        <a href="#home" class="hover:text-plum">Ascend ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       SLIDE-OUT CUSTODY DRAWER (BOOKING)
+       ======================================================== -->
+  <div id="custodyDrawer" class="fixed inset-y-0 right-0 w-full sm:w-[450px] bg-void border-l border-stone-200 shadow-2xl z-50 transform translate-x-full transition-transform duration-500 ease-out p-8 overflow-y-auto">
+    <div class="flex justify-between items-center pb-6 border-b border-stone-200">
+      <div class="space-y-1">
+        <span class="text-[10px] font-mono tracking-widest text-plum uppercase">TEMPORARY CUSTODY</span>
+        <h3 class="font-cormorant text-2xl font-bold text-ink">Reserve Window</h3>
+      </div>
+      <button onclick="toggleDrawer()" class="text-xl text-ash hover:text-ink">✕</button>
+    </div>
+
+    <div class="py-6 space-y-6">
+      <div class="aspect-[3/4] bg-stone-100 rounded overflow-hidden">
+        <img id="drawerImg" src="assets/images/photo-1515886657613-9f3515b0c78f-1.jpg" class="w-full h-full object-cover">
+      </div>
+
+      <div>
+        <h4 id="drawerTitle" class="font-cormorant text-2xl font-normal text-ink">Parisian Café Chic</h4>
+        <span id="drawerPrice" class="font-mono text-plum text-sm font-bold block mt-1">₹299 for 72h</span>
+        <p class="text-xs font-mono text-ash mt-1">Ozone eco-sanitized · Campus hub handover</p>
+      </div>
+
+      <form id="zenBookingForm" onsubmit="handleZenBooking(event)" class="space-y-3 font-mono text-xs">
+        <div>
+          <label class="block text-ash text-[10px] uppercase mb-1">Your Name</label>
+          <input type="text" required placeholder="Name" class="w-full p-2.5 bg-paper border border-stone-200 rounded outline-none focus:border-plum">
+        </div>
+        <div>
+          <label class="block text-ash text-[10px] uppercase mb-1">Phone for Handover Confirmation</label>
+          <input type="tel" required placeholder="WhatsApp Contact" class="w-full p-2.5 bg-paper border border-stone-200 rounded outline-none focus:border-plum">
+        </div>
+        <div>
+          <label class="block text-ash text-[10px] uppercase mb-1">Event Date</label>
+          <input type="date" required class="w-full p-2.5 bg-paper border border-stone-200 rounded outline-none focus:border-plum">
+        </div>
+        <button type="submit" class="w-full py-3.5 bg-plum text-gold font-bold uppercase tracking-widest rounded hover:bg-plum-dark transition-all">
+          Confirm Custody Request ↗
+        </button>
+        <div id="drawerSuccess" class="hidden text-center text-xs text-plum font-bold p-3 bg-plum-soft rounded">
+          ✓ Request recorded. Your custody token has been registered locally.
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Interactive Logic -->
+  <script>
+    // Kinetic Cursor physics
+    const cursor = document.getElementById('zenCursor');
+    if (cursor) {
+      window.addEventListener('mousemove', e => {
+        cursor.style.left = `${e.clientX}px`;
+        cursor.style.top = `${e.clientY}px`;
+      });
+      document.querySelectorAll('a, button, input').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          cursor.classList.add('scale-150', 'bg-gold/40', 'border-plum');
+        });
+        el.addEventListener('mouseleave', () => {
+          cursor.classList.remove('scale-150', 'bg-gold/40', 'border-plum');
+        });
+      });
+    }
+
+    // Drawer Logic
+    const drawer = document.getElementById('custodyDrawer');
+    function toggleDrawer() {
+      drawer.classList.toggle('translate-x-full');
+    }
+    function openDrawer(id, title, price, img) {
+      document.getElementById('drawerTitle').textContent = title;
+      document.getElementById('drawerPrice').textContent = `₹${price} for 72h`;
+      document.getElementById('drawerImg').src = img;
+      document.getElementById('drawerSuccess').classList.add('hidden');
+      drawer.classList.remove('translate-x-full');
+    }
+
+    function handleZenBooking(e) {
+      e.preventDefault();
+      document.getElementById('drawerSuccess').classList.remove('hidden');
+      setTimeout(() => {
+        toggleDrawer();
+      }, 2500);
+    }
+
+    function handleZenLender(e) {
+      e.preventDefault();
+      document.getElementById('zenLenderSuccess').classList.remove('hidden');
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>

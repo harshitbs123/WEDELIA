@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#56325f">
+  <title>WEDELIA — The Tactile Atelier · Occasion Wear Rental</title>
+
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,200..900;1,9..40,200..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            plum: {
+              DEFAULT: '#56325f',
+              dark: '#392141',
+              deep: '#1d0f22',
+              soft: '#eee6ef',
+              muted: '#756c78'
+            },
+            gold: {
+              DEFAULT: '#f2d95c',
+              light: '#fdf4c9',
+              dark: '#c7ae32'
+            },
+            red: {
+              DEFAULT: '#ed2d23',
+              crimson: '#9b1b15'
+            },
+            ink: '#19141c',
+            sand: '#f6efe9',
+            cream: '#fbf8f2',
+            paper: '#fffdf9',
+            line: '#e8ded7'
+          },
+          fontFamily: {
+            cormorant: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"DM Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            mono: ['"Space Mono"', 'monospace'],
+            syne: ['"Syne"', 'sans-serif']
+          },
+          boxShadow: {
+            tactile: '0 25px 70px -15px rgba(57, 33, 65, 0.12)',
+            pill: '0 10px 30px -5px rgba(57, 33, 65, 0.08)',
+            floating: '0 30px 90px -20px rgba(29, 15, 34, 0.18)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Organic Tactile Texture */
+    .bg-mesh {
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(86, 50, 95, 0.04) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(242, 217, 92, 0.06) 0px, transparent 50%);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 4px;
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #56325f33;
+      border-radius: 9999px;
+    }
+    /* Floating organic stamp animation */
+    @keyframes slowFloat {
+      0%, 100% { transform: translateY(0px) rotate(12deg); }
+      50% { transform: translateY(-8px) rotate(10deg); }
+    }
+    .animate-float-stamp {
+      animation: slowFloat 6s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-sand text-ink font-sans antialiased selection:bg-plum selection:text-gold min-h-screen bg-mesh">
+
+  <!-- ========================================================
+       TOP GLOBAL ANNOUNCEMENT (Tactile Sensory Ticker)
+       ======================================================== -->
+  <aside class="bg-plum-dark text-[#f6ecd2] text-[10px] tracking-[2px] uppercase py-2 px-6 flex justify-between items-center font-mono border-b border-plum/30">
+    <div class="flex items-center gap-3">
+      <span class="w-1.5 h-1.5 rounded-full bg-gold animate-ping"></span>
+      <span>CAMPUS FÊTE & GALA SEASON RENTAL WINDOW OPEN</span>
+    </div>
+    <div class="hidden md:flex items-center gap-6 text-[10px]">
+      <span>100% OZONE DRY-CLEAN CERTIFIED</span>
+      <span>·</span>
+      <span>SAME-DAY CAMPUS DISPATCH</span>
+      <span>·</span>
+      <a href="homepage.html" class="text-gold underline hover:text-white">SWITCH TO ALL 10 CONCEPTS ↗</a>
+    </div>
+  </aside>
+
+  <!-- ========================================================
+       FLOATING GLASS PILL NAVBAR
+       ======================================================== -->
+  <header class="sticky top-4 z-40 max-w-6xl mx-auto px-4 sm:px-6">
+    <nav class="bg-white/85 backdrop-blur-xl border border-stone-300/80 rounded-full py-3 px-6 sm:px-8 flex items-center justify-between shadow-pill transition-all duration-300">
+      
+      <!-- Brand Logo -->
+      <a href="#home" class="flex items-center gap-3 group">
+        <img src="assets/logo.svg" alt="WEDELIA" class="h-8 sm:h-9 w-auto">
+        <span class="hidden sm:inline-block border-l border-stone-300 pl-3 font-cormorant text-xs tracking-[2px] uppercase text-plum font-semibold">The Tactile Atelier</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-7 text-xs uppercase tracking-[2px] font-semibold text-stone-600">
+        <a href="#collection" class="hover:text-plum transition-colors">Archive</a>
+        <a href="#how-it-works" class="hover:text-plum transition-colors">How It Works</a>
+        <a href="#stories" class="hover:text-plum transition-colors">Garment Stories</a>
+        <a href="#lend" class="hover:text-plum transition-colors">Lend Closet</a>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <button onclick="openBookingModal('wd-201', 'Parisian Café Chic', '299', 'assets/images/photo-1515886657613-9f3515b0c78f-1.jpg')" class="px-5 py-2.5 rounded-full bg-plum text-gold text-xs font-bold uppercase tracking-wider hover:bg-plum-dark transition-all shadow-sm">
+          Reserve Fit
+        </button>
+        <button id="mobileMenuBtn" class="md:hidden w-8 h-8 rounded-full border border-stone-300 flex items-center justify-center text-plum font-bold">
+          ☰
+        </button>
+      </div>
+
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden mt-2 bg-white/95 backdrop-blur-xl border border-stone-200 rounded-3xl p-6 shadow-xl space-y-4 text-xs font-bold uppercase tracking-widest text-center">
+      <a href="#collection" class="block py-2 hover:text-plum" onclick="toggleMobileMenu()">Archive Collection</a>
+      <a href="#how-it-works" class="block py-2 hover:text-plum" onclick="toggleMobileMenu()">How Renting Works</a>
+      <a href="#stories" class="block py-2 hover:text-plum" onclick="toggleMobileMenu()">Garment Stories</a>
+      <a href="#lend" class="block py-2 hover:text-plum" onclick="toggleMobileMenu()">Monetize Your Closet</a>
+      <a href="homepage.html" class="block py-2 text-gold bg-plum rounded-xl">View 10 Awwwards Concepts</a>
+    </div>
+  </header>
+
+  <main id="home">
+
+    <!-- ========================================================
+         HERO SECTION: THE ASYMMETRICAL TACTILE COLLAGE
+         ======================================================== -->
+    <section class="max-w-7xl mx-auto px-6 lg:px-12 pt-12 pb-24 lg:pt-16 lg:pb-32 relative">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Editorial Copy Block -->
+        <div class="lg:col-span-6 space-y-6 lg:pr-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold/30 border border-gold/50 text-plum-dark text-xs font-mono font-bold tracking-wider uppercase">
+            <span class="w-2 h-2 rounded-full bg-red animate-pulse"></span>
+            Sensory Occasion Wear · 2026 Season
+          </div>
+
+          <h1 class="font-cormorant text-5xl sm:text-6xl lg:text-7xl font-normal leading-[1.06] text-ink">
+            Feel the silk.<br>
+            <em class="font-light italic text-plum">Own the evening.</em><br>
+            Release the closet.
+          </h1>
+
+          <p class="text-stone-600 font-sans text-sm sm:text-base leading-relaxed max-w-lg">
+            India’s tactile occasion-wear rental destination. Discover sculptured corsets, flowing romantic co-ords, and evening sets from curated private wardrobes—delivered dry-cleaned and ready for your next unforgettable moment.
+          </p>
+
+          <!-- Quick Date & Event Reservation Bar -->
+          <div class="bg-white p-4 sm:p-5 rounded-2xl border border-stone-200/90 shadow-tactile max-w-md space-y-3">
+            <div class="flex items-center justify-between text-[11px] font-mono uppercase font-bold text-plum">
+              <span>FIND AN OUTFIT FOR YOUR OCCASION</span>
+              <span class="text-stone-400">Step 01</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <div>
+                <label class="block text-[10px] font-mono text-stone-400 uppercase mb-1">Event Date</label>
+                <input type="date" id="heroEventDate" class="w-full text-xs p-2.5 bg-sand/60 border border-stone-200 rounded-lg outline-none focus:border-plum font-sans">
+              </div>
+              <div>
+                <label class="block text-[10px] font-mono text-stone-400 uppercase mb-1">Occasion Type</label>
+                <select class="w-full text-xs p-2.5 bg-sand/60 border border-stone-200 rounded-lg outline-none focus:border-plum font-sans text-stone-700">
+                  <option>Campus Ball / Farewell</option>
+                  <option>Cocktail Night Out</option>
+                  <option>Wedding Guest Ensemble</option>
+                  <option>Birthday Celebration</option>
+                </select>
+              </div>
+            </div>
+            <a href="#collection" class="w-full py-3 bg-plum text-gold font-sans text-xs uppercase tracking-[2px] font-bold rounded-xl hover:bg-plum-dark transition-all flex items-center justify-center gap-2 shadow-md">
+              Browse Available Looks <span>↗</span>
+            </a>
+          </div>
+
+          <!-- Proof Metrics -->
+          <div class="pt-4 flex items-center gap-8 border-t border-stone-300/70 text-xs text-stone-600 font-mono">
+            <div>
+              <strong class="font-cormorant text-2xl font-bold text-plum block">1,240+</strong>
+              <span class="text-[10px] uppercase text-stone-500">Looks Rented</span>
+            </div>
+            <div class="border-l border-stone-300 pl-8">
+              <strong class="font-cormorant text-2xl font-bold text-plum block">₹4.8L</strong>
+              <span class="text-[10px] uppercase text-stone-500">Saved by Renters</span>
+            </div>
+            <div class="border-l border-stone-300 pl-8">
+              <strong class="font-cormorant text-2xl font-bold text-red block">100%</strong>
+              <span class="text-[10px] uppercase text-stone-500">Ozone Cleaned</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Asymmetric Collage Imagery -->
+        <div class="lg:col-span-6 relative">
+          
+          <!-- Backing Texture Silhouette Image -->
+          <div class="w-4/5 sm:w-3/4 aspect-[3/4] rounded-3xl overflow-hidden shadow-floating relative z-10 ml-auto bg-stone-200 group">
+            <img src="assets/images/photo-1515886657613-9f3515b0c78f.jpg" alt="Wedelia Haute Couture Model" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-plum-deep/80 via-transparent to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+              <span class="text-gold font-mono text-[10px] tracking-widest uppercase">THE HERO PIECE</span>
+              <h3 class="font-cormorant text-2xl sm:text-3xl font-normal">Parisian Café Chic Two-Piece</h3>
+              <p class="text-white/80 text-xs mt-1">₹299 / 72-hour rental · Security Deposit ₹400</p>
+            </div>
+          </div>
+
+          <!-- Overlapping Tactile Card (Foreground) -->
+          <div class="absolute -bottom-10 -left-2 sm:-left-6 w-3/5 sm:w-1/2 bg-white/95 backdrop-blur-xl p-5 sm:p-6 rounded-2xl shadow-tactile z-20 border border-stone-200 space-y-3">
+            <div class="flex items-center justify-between text-[10px] font-mono text-plum font-bold">
+              <span>GARMENT AUDIT</span>
+              <span class="text-red">● READY</span>
+            </div>
+            <h4 class="font-cormorant text-xl font-bold text-ink leading-tight">Dark Romance Lace Crop</h4>
+            <div class="space-y-1 text-[11px] text-stone-500 font-sans">
+              <p>✦ Handfeel: Crisp, corded floral lace</p>
+              <p>✦ Provenance: Wardrobe of Ananya (LSR)</p>
+              <p>✦ Condition: Hospital grade sanitised</p>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-stone-100">
+              <span class="font-mono font-bold text-plum text-sm">₹249</span>
+              <button onclick="openBookingModal('wd-202', 'Dark Romance Lace Top', '249', 'assets/images/photo-1529139574466-a303027c1d8b.jpg')" class="px-3 py-1 bg-gold text-plum-dark text-[10px] font-mono font-bold uppercase rounded hover:bg-gold-light transition-colors">
+                Reserve ↗
+              </button>
+            </div>
+          </div>
+
+          <!-- Floating Circular Sticker Badge -->
+          <div class="absolute -top-6 right-4 sm:right-10 w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gold text-plum-dark flex flex-col items-center justify-center text-center p-2 text-[10px] font-bold tracking-wider uppercase animate-float-stamp shadow-tactile z-30 border border-plum/20">
+            <span>TACTILE</span>
+            <span class="text-red font-serif text-lg leading-none font-black">CIRCULAR</span>
+            <span>CLOSET ✳</span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 2: CURATED TACTILE COLLECTION (CATALOGUE)
+         ======================================================== -->
+    <section id="collection" class="max-w-7xl mx-auto px-6 lg:px-12 py-20 border-t border-stone-200">
+      
+      <!-- Section Heading & Filter Chips -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="text-xs font-mono font-bold uppercase tracking-[3px] text-plum">THE OCCASION EDIT · 2026 ARCHIVE</span>
+          <h2 class="font-cormorant text-4xl sm:text-5xl font-normal text-ink mt-2">
+            Selected Silhouettes For Borrowing.
+          </h2>
+          <p class="text-stone-600 text-sm max-w-lg mt-2">
+            Hand-inspected corsets, dresses, and sets with honest condition notes and upfront security deposits.
+          </p>
+        </div>
+
+        <!-- Filter Pill Chips -->
+        <div class="flex items-center gap-2 overflow-x-auto custom-scrollbar pb-2">
+          <button onclick="filterTactile('all')" class="filter-tab px-4 py-2 rounded-full text-xs font-bold font-mono tracking-wider transition-all bg-plum text-gold active-filter" data-category="all">All Outfits (11)</button>
+          <button onclick="filterTactile('western')" class="filter-tab px-4 py-2 rounded-full text-xs font-bold font-mono tracking-wider transition-all bg-white border border-stone-200 text-stone-600 hover:border-plum" data-category="western">Western & Corsets</button>
+          <button onclick="filterTactile('boho')" class="filter-tab px-4 py-2 rounded-full text-xs font-bold font-mono tracking-wider transition-all bg-white border border-stone-200 text-stone-600 hover:border-plum" data-category="boho">Boho & Co-ords</button>
+          <button onclick="filterTactile('statement')" class="filter-tab px-4 py-2 rounded-full text-xs font-bold font-mono tracking-wider transition-all bg-white border border-stone-200 text-stone-600 hover:border-plum" data-category="statement">Statement & Lace</button>
+          <button onclick="filterTactile('dress')" class="filter-tab px-4 py-2 rounded-full text-xs font-bold font-mono tracking-wider transition-all bg-white border border-stone-200 text-stone-600 hover:border-plum" data-category="dress">Cocktail Dresses</button>
+        </div>
+      </div>
+
+      <!-- Garment Cards Grid -->
+      <div id="tactileGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Card 1 -->
+        <article class="garment-card group bg-white rounded-2xl overflow-hidden border border-stone-200/90 shadow-sm hover:shadow-tactile transition-all duration-500" data-category="western">
+          <div class="relative aspect-[3/4] overflow-hidden bg-stone-100">
+            <img src="assets/images/photo-1515886657613-9f3515b0c78f-1.jpg" alt="Parisian Café Chic" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-cream/95 text-plum text-[9px] uppercase font-mono font-bold tracking-wider">City-Girl Edit</span>
+            <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded bg-black/60 backdrop-blur-md text-white text-[9px] font-mono">Boning: Flexible Steel</span>
+          </div>
+          <div class="p-5 space-y-3">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[9px] font-mono uppercase tracking-wider text-stone-400">CORSET & RUFFLE SKIRT</span>
+                <h3 class="font-cormorant text-xl font-bold text-ink group-hover:text-plum transition-colors">Parisian Café Chic</h3>
+              </div>
+              <div class="text-right">
+                <span class="font-mono font-bold text-plum text-base">₹299</span>
+                <span class="block text-[9px] text-stone-400">/ 3-day event</span>
+              </div>
+            </div>
+            <p class="text-xs text-stone-500 line-clamp-2">Ivory floral & espresso brown layered dark skirt. Perfect for birthday brunches and photoshoots.</p>
+            <div class="pt-3 border-t border-stone-100 flex items-center justify-between">
+              <span class="text-[10px] font-mono text-stone-400">Deposit: ₹400</span>
+              <button onclick="openBookingModal('wd-201', 'Parisian Café Chic', '299', 'assets/images/photo-1515886657613-9f3515b0c78f-1.jpg')" class="px-3.5 py-1.5 bg-plum text-gold text-[10px] font-mono font-bold uppercase rounded-lg hover:bg-plum-dark transition-colors">
+                Reserve Look ↗
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="garment-card group bg-white rounded-2xl overflow-hidden border border-stone-200/90 shadow-sm hover:shadow-tactile transition-all duration-500" data-category="statement">
+          <div class="relative aspect-[3/4] overflow-hidden bg-stone-100">
+            <img src="assets/images/photo-1529139574466-a303027c1d8b.jpg" alt="Dark Romance Lace Top" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-cream/95 text-plum text-[9px] uppercase font-mono font-bold tracking-wider">After-Dark Edit</span>
+            <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded bg-black/60 backdrop-blur-md text-white text-[9px] font-mono">Fabric: Corded Lace</span>
+          </div>
+          <div class="p-5 space-y-3">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[9px] font-mono uppercase tracking-wider text-stone-400">LACE STATEMENT TOP</span>
+                <h3 class="font-cormorant text-xl font-bold text-ink group-hover:text-plum transition-colors">Dark Romance Lace Top</h3>
+              </div>
+              <div class="text-right">
+                <span class="font-mono font-bold text-plum text-base">₹249</span>
+                <span class="block text-[9px] text-stone-400">/ 3-day event</span>
+              </div>
+            </div>
+            <p class="text-xs text-stone-500 line-clamp-2">Chocolate brown dramatic statement lace piece. Styles effortlessly with denim or leather skirts.</p>
+            <div class="pt-3 border-t border-stone-100 flex items-center justify-between">
+              <span class="text-[10px] font-mono text-stone-400">Deposit: ₹350</span>
+              <button onclick="openBookingModal('wd-202', 'Dark Romance Lace Top', '249', 'assets/images/photo-1529139574466-a303027c1d8b.jpg')" class="px-3.5 py-1.5 bg-plum text-gold text-[10px] font-mono font-bold uppercase rounded-lg hover:bg-plum-dark transition-colors">
+                Reserve Look ↗
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="garment-card group bg-white rounded-2xl overflow-hidden border border-stone-200/90 shadow-sm hover:shadow-tactile transition-all duration-500" data-category="boho">
+          <div class="relative aspect-[3/4] overflow-hidden bg-stone-100">
+            <img src="assets/images/photo-1490481651871-ab68de25d43d.jpg" alt="Sage Garden Co-ord" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-cream/95 text-plum text-[9px] uppercase font-mono font-bold tracking-wider">Soft-Girl Edit</span>
+            <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded bg-black/60 backdrop-blur-md text-white text-[9px] font-mono">Fabric: Washed Linen</span>
+          </div>
+          <div class="p-5 space-y-3">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[9px] font-mono uppercase tracking-wider text-stone-400">BOHO CO-ORD SET</span>
+                <h3 class="font-cormorant text-xl font-bold text-ink group-hover:text-plum transition-colors">Sage Garden Co-ord</h3>
+              </div>
+              <div class="text-right">
+                <span class="font-mono font-bold text-plum text-base">₹279</span>
+                <span class="block text-[9px] text-stone-400">/ 3-day event</span>
+              </div>
+            </div>
+            <p class="text-xs text-stone-500 line-clamp-2">Light sage green and ivory floral-inspired pairing. Gentle on skin and effortless for campus brunch.</p>
+            <div class="pt-3 border-t border-stone-100 flex items-center justify-between">
+              <span class="text-[10px] font-mono text-stone-400">Deposit: ₹350</span>
+              <button onclick="openBookingModal('wd-203', 'Sage Garden Co-ord', '279', 'assets/images/photo-1490481651871-ab68de25d43d.jpg')" class="px-3.5 py-1.5 bg-plum text-gold text-[10px] font-mono font-bold uppercase rounded-lg hover:bg-plum-dark transition-colors">
+                Reserve Look ↗
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="garment-card group bg-white rounded-2xl overflow-hidden border border-stone-200/90 shadow-sm hover:shadow-tactile transition-all duration-500" data-category="boho">
+          <div class="relative aspect-[3/4] overflow-hidden bg-stone-100">
+            <img src="assets/images/photo-1539109136881-3be0616acf4b.jpg" alt="Bohemian Sunset Set" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded bg-cream/95 text-plum text-[9px] uppercase font-mono font-bold tracking-wider">Boho Mood</span>
+            <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded bg-black/60 backdrop-blur-md text-white text-[9px] font-mono">Weight: 340 GSM</span>
+          </div>
+          <div class="p-5 space-y-3">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[9px] font-mono uppercase tracking-wider text-stone-400">STATEMENT SET</span>
+                <h3 class="font-cormorant text-xl font-bold text-ink group-hover:text-plum transition-colors">Bohemian Sunset Set</h3>
+              </div>
+              <div class="text-right">
+                <span class="font-mono font-bold text-plum text-base">₹349</span>
+                <span class="block text-[9px] text-stone-400">/ 3-day event</span>
+              </div>
+            </div>
+            <p class="text-xs text-stone-500 line-clamp-2">Burgundy, cream & earthy layered look. Designed for high-energy fest evenings and cultural nights.</p>
+            <div class="pt-3 border-t border-stone-100 flex items-center justify-between">
+              <span class="text-[10px] font-mono text-stone-400">Deposit: ₹450</span>
+              <button onclick="openBookingModal('wd-204', 'Bohemian Sunset Set', '349', 'assets/images/photo-1539109136881-3be0616acf4b.jpg')" class="px-3.5 py-1.5 bg-plum text-gold text-[10px] font-mono font-bold uppercase rounded-lg hover:bg-plum-dark transition-colors">
+                Reserve Look ↗
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 3: HOW IT WORKS (THE 4-ACT SENSORY RENTAL CYCLE)
+         ======================================================== -->
+    <section id="how-it-works" class="py-24 bg-white border-y border-stone-200">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <span class="text-xs font-mono font-bold uppercase tracking-[3px] text-red">SIMPLE BY DESIGN · 100% TRANSPARENT</span>
+          <h2 class="font-cormorant text-4xl sm:text-5xl font-normal text-ink">
+            How The Rental Journey Unfolds.
+          </h2>
+          <p class="text-stone-600 text-sm">
+            From the moment you reserve to the moment you hand it back. Zero dry-cleaning friction, zero buyer's remorse.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <!-- Step 1 -->
+          <div class="p-8 rounded-3xl bg-sand/70 border border-stone-200 space-y-4 relative group hover:bg-sand transition-all">
+            <span class="font-mono text-3xl font-bold text-plum/30 group-hover:text-plum transition-colors">01</span>
+            <div class="w-10 h-10 rounded-full bg-gold/40 text-plum flex items-center justify-center font-bold text-lg">⌕</div>
+            <h3 class="font-serif text-lg font-bold text-ink">Find Your Look</h3>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              Browse our verified campus and boutique archive by event date, aesthetic, and silhouette. Real garment condition notes and refundable deposits are visible upfront.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="p-8 rounded-3xl bg-sand/70 border border-stone-200 space-y-4 relative group hover:bg-sand transition-all">
+            <span class="font-mono text-3xl font-bold text-plum/30 group-hover:text-plum transition-colors">02</span>
+            <div class="w-10 h-10 rounded-full bg-gold/40 text-plum flex items-center justify-center font-bold text-lg">↗</div>
+            <h3 class="font-serif text-lg font-bold text-ink">Reserve With Ease</h3>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              Lock in your dates. Pick up your outfit at campus drop points or get 24-hour tracked local dispatch straight to your door in our reusable garment satchel.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="p-8 rounded-3xl bg-sand/70 border border-stone-200 space-y-4 relative group hover:bg-sand transition-all">
+            <span class="font-mono text-3xl font-bold text-plum/30 group-hover:text-plum transition-colors">03</span>
+            <div class="w-10 h-10 rounded-full bg-gold/40 text-plum flex items-center justify-center font-bold text-lg">♡</div>
+            <h3 class="font-serif text-lg font-bold text-ink">Own The Celebration</h3>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              Wear it. Celebrate in it. Take the photos that will last a lifetime. Live the moment without the lingering burden of a ₹15,000 dress gathering dust.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="p-8 rounded-3xl bg-sand/70 border border-stone-200 space-y-4 relative group hover:bg-sand transition-all">
+            <span class="font-mono text-3xl font-bold text-plum/30 group-hover:text-plum transition-colors">04</span>
+            <div class="w-10 h-10 rounded-full bg-gold/40 text-plum flex items-center justify-center font-bold text-lg">✳</div>
+            <h3 class="font-serif text-lg font-bold text-ink">Return Without Washing</h3>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              Never worry about laundry. Simply place the garment into the prepaid return bag. Our atelier performs eco-friendly hospital ozone sanitization for the next wearer.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 4: LENDER’S ATELIER & REVENUE CALCULATOR
+         ======================================================== -->
+    <section id="lend" class="max-w-7xl mx-auto px-6 lg:px-12 py-24">
+      <div class="bg-plum-dark text-white rounded-3xl p-8 lg:p-16 relative overflow-hidden shadow-2xl">
+        
+        <!-- Ambient Glow -->
+        <div class="absolute -top-32 -right-32 w-96 h-96 bg-gold/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+          
+          <div class="lg:col-span-7 space-y-6">
+            <span class="text-xs font-mono font-bold tracking-[3px] text-gold uppercase">FOR WARDROBE CURATORS & BOUTIQUES</span>
+            <h2 class="font-cormorant text-4xl sm:text-6xl font-normal leading-tight">
+              That lehenga in your cupboard?<br>
+              <em class="font-light italic text-gold">It could earn ₹6,000 this month.</em>
+            </h2>
+            <p class="text-stone-300 text-sm leading-relaxed max-w-lg">
+              WEDELIA provides complete peace of mind. We verify borrowers, collect refundable security deposits, handle safe handovers, and clean garments between bookings.
+            </p>
+
+            <div class="space-y-2 text-xs font-mono text-stone-300 pt-2">
+              <div class="flex items-center gap-2">
+                <span class="text-gold">✓</span> 70% direct payout per rental event
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-gold">✓</span> Complete deposit protection against accidental damages
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-gold">✓</span> Professional dry cleaning included at zero cost to you
+              </div>
+            </div>
+
+            <!-- Interactive Earnings Preview Slider -->
+            <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/15 max-w-md space-y-4">
+              <div class="flex justify-between items-center text-xs font-mono">
+                <span>Number of Occasion Outfits You Own:</span>
+                <span id="sliderVal" class="text-gold font-bold text-base">3 Outfits</span>
+              </div>
+              <input type="range" id="outfitSlider" min="1" max="10" value="3" class="w-full accent-gold cursor-pointer" oninput="updateEarnings(this.value)">
+              <div class="pt-2 flex justify-between items-center border-t border-white/10">
+                <span class="text-[11px] text-stone-400 font-mono">Estimated Monthly Income:</span>
+                <span id="earningsVal" class="text-2xl font-serif font-bold text-gold">₹7,200</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Quick Lender Submission Form -->
+          <div class="lg:col-span-5 bg-white text-ink p-8 rounded-2xl shadow-xl space-y-4">
+            <div class="border-b border-stone-200 pb-3">
+              <span class="text-[10px] font-mono text-plum uppercase font-bold tracking-wider">APPLY IN 60 SECONDS</span>
+              <h3 class="font-serif text-xl font-bold">List Your Garment</h3>
+            </div>
+
+            <form id="lenderForm" onsubmit="handleLenderSubmit(event)" class="space-y-3 text-xs">
+              <div>
+                <label class="block font-bold text-stone-700 mb-1">Your Full Name</label>
+                <input type="text" required placeholder="E.g. Meera Sharma" class="w-full p-2.5 bg-stone-50 border border-stone-200 rounded-lg outline-none focus:border-plum">
+              </div>
+              <div>
+                <label class="block font-bold text-stone-700 mb-1">Contact (Email or WhatsApp)</label>
+                <input type="text" required placeholder="Phone or email for follow-up" class="w-full p-2.5 bg-stone-50 border border-stone-200 rounded-lg outline-none focus:border-plum">
+              </div>
+              <div>
+                <label class="block font-bold text-stone-700 mb-1">Garment Category</label>
+                <select class="w-full p-2.5 bg-stone-50 border border-stone-200 rounded-lg outline-none focus:border-plum text-stone-700">
+                  <option>Silk Saree / Ethnic Drape</option>
+                  <option>Corset & Skirt Two-Piece</option>
+                  <option>Designer Cocktail Dress</option>
+                  <option>Festive Lehenga Set</option>
+                </select>
+              </div>
+              <div>
+                <label class="block font-bold text-stone-700 mb-1">Brief Description & Size</label>
+                <textarea rows="2" placeholder="Brand, estimated original price, preferred rental price..." class="w-full p-2.5 bg-stone-50 border border-stone-200 rounded-lg outline-none focus:border-plum"></textarea>
+              </div>
+              <button type="submit" class="w-full py-3 bg-plum text-gold font-bold uppercase tracking-wider rounded-lg hover:bg-plum-dark transition-all">
+                Submit Wardrobe Interest ↗
+              </button>
+              <p id="lenderSuccessMsg" class="hidden text-center text-xs text-green-700 font-bold bg-green-50 p-2 rounded">
+                Interest recorded! Our curator will text you within 24 hours.
+              </p>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 5: THE TACTILE MANIFESTO
+         ======================================================== -->
+    <section id="stories" class="bg-sand py-20 px-6 border-t border-stone-200 text-center">
+      <div class="max-w-3xl mx-auto space-y-6">
+        <span class="w-8 h-8 rounded-full bg-gold/50 text-plum inline-flex items-center justify-center font-serif text-lg font-bold">“</span>
+        <h3 class="font-cormorant text-3xl sm:text-5xl font-light italic leading-tight text-ink">
+          “Fashion was meant to be experienced intensely and passed forward—not trapped in dark closets between lonely winters.”
+        </h3>
+        <p class="text-xs uppercase font-mono tracking-[3px] text-plum font-bold">
+          The Wedelia Wardrobe Accord · Delhi Campus Collective
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================
+       SITE FOOTER
+       ======================================================== -->
+  <footer class="bg-ink text-white pt-16 pb-12 px-6 lg:px-12 border-t border-white/10 text-xs">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/10">
+      
+      <!-- Brand & Mission -->
+      <div class="md:col-span-5 space-y-4">
+        <img src="assets/logo.svg" alt="Wedelia" class="h-8 w-auto">
+        <p class="text-stone-400 text-xs leading-relaxed max-w-sm">
+          WEDELIA is a campus-first occasion wear fashion rental prototype. Discover, reserve, and return designer silhouettes with complete peace of mind.
+        </p>
+        <span class="inline-block text-[10px] font-mono text-gold border border-gold/30 px-3 py-1 rounded-full">
+          DELHI UNIVERSITY HUB 01 · 2026 PROTOTYPE
+        </span>
+      </div>
+
+      <!-- Quick Nav -->
+      <div class="md:col-span-3 space-y-3 font-mono">
+        <strong class="text-gold uppercase text-[11px] tracking-wider block">Archive Index</strong>
+        <ul class="space-y-2 text-stone-400">
+          <li><a href="#collection" class="hover:text-white">Western Corsetry</a></li>
+          <li><a href="#collection" class="hover:text-white">Cocktail Gowns</a></li>
+          <li><a href="#collection" class="hover:text-white">Campus Co-ords</a></li>
+          <li><a href="#how-it-works" class="hover:text-white">Ozone Care Process</a></li>
+        </ul>
+      </div>
+
+      <!-- Hubs & Hours -->
+      <div class="md:col-span-4 space-y-3 font-mono">
+        <strong class="text-gold uppercase text-[11px] tracking-wider block">Locker Drop Sanctuary</strong>
+        <p class="text-stone-400">North Campus Locker Hub: Chhatra Marg, University Enclave</p>
+        <p class="text-stone-400">Hours: Monday – Saturday, 9:00 AM – 8:00 PM</p>
+        <a href="homepage.html" class="inline-block mt-2 text-gold underline hover:text-white">
+          ← Preview All 10 Concept Alternatives
+        </a>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto pt-6 flex flex-col sm:flex-row justify-between items-center text-[11px] text-stone-500 font-mono gap-4">
+      <span>© 2026 WEDELIA ATELIER. All Rights Reserved. Prototype demonstration round.</span>
+      <div class="flex gap-4">
+        <a href="#home" class="hover:text-gold">Back to Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       BOOKING MODAL (QUICK RESERVE DRAWER)
+       ======================================================== -->
+  <dialog id="bookingDialog" class="backdrop:bg-black/60 backdrop:backdrop-blur-sm p-0 rounded-3xl border border-stone-300 shadow-2xl max-w-lg w-full overflow-hidden">
+    <div class="bg-white p-6 sm:p-8 space-y-5">
+      <div class="flex justify-between items-center pb-3 border-b border-stone-100">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-gold"></span>
+          <span class="text-[10px] font-mono text-plum font-bold uppercase tracking-widest">RESERVE OCCASION FIT</span>
+        </div>
+        <button onclick="closeBookingModal()" class="w-8 h-8 rounded-full bg-sand text-plum flex items-center justify-center font-bold hover:bg-plum hover:text-white transition-colors">✕</button>
+      </div>
+
+      <!-- Product Preview in Modal -->
+      <div class="flex items-center gap-4 p-3 rounded-2xl bg-sand/60 border border-stone-200">
+        <img id="modalImg" src="assets/images/photo-1515886657613-9f3515b0c78f-1.jpg" class="w-16 h-20 object-cover rounded-xl">
+        <div>
+          <h4 id="modalTitle" class="font-cormorant text-xl font-bold text-ink">Parisian Café Chic</h4>
+          <span id="modalPrice" class="font-mono text-plum font-bold text-sm">₹299 / 72-Hour Rental</span>
+          <p class="text-[11px] text-stone-500 mt-0.5">Refundable Deposit: ₹400 · 100% Ozone Cleaned</p>
+        </div>
+      </div>
+
+      <!-- Form Inputs -->
+      <form id="reservationForm" onsubmit="handleReservationSubmit(event)" class="space-y-3 text-xs">
+        <div>
+          <label class="block font-bold text-stone-700 mb-1">Your Full Name</label>
+          <input type="text" required placeholder="Name for booking pass" class="w-full p-2.5 bg-stone-50 border border-stone-200 rounded-lg outline-none focus:border-plum">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-stone-700 mb-1">Contact Number</label>
+            <input type="tel" required placeholder="WhatsApp for dispatch" class="w-full p-2.5 bg-stone-50 border border-stone-200 rounded-lg outline-none focus:border-plum">
+          </div>
+          <div>
+            <label class="block font-bold text-stone-700 mb-1">Event Date</label>
+            <input type="date" required class="w-full p-2.5 bg-stone-50 border border-stone-200 rounded-lg outline-none focus:border-plum">
+          </div>
+        </div>
+        <div>
+          <label class="block font-bold text-stone-700 mb-1">Sizing & Pickup Notes (Optional)</label>
+          <textarea rows="2" placeholder="Mention size concerns or pickup campus hub..." class="w-full p-2.5 bg-stone-50 border border-stone-200 rounded-lg outline-none focus:border-plum"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 bg-plum text-gold font-bold uppercase tracking-wider rounded-xl hover:bg-plum-dark transition-all text-xs">
+          Confirm Prototype Reservation ↗
+        </button>
+
+        <p class="text-[10px] text-stone-400 text-center font-mono">
+          Prototype Demo Only. No real payment taken. Details saved locally.
+        </p>
+
+        <div id="bookingSuccessBox" class="hidden text-center p-3 rounded-lg bg-green-50 text-green-800 font-bold text-xs">
+          ✓ Booking Recorded! Your pickup pass has been generated.
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- ========================================================
+       INTERACTIVE JAVASCRIPT
+       ======================================================== -->
+  <script>
+    // Filter functionality
+    function filterTactile(category) {
+      document.querySelectorAll('.filter-tab').forEach(tab => {
+        const isCurrent = tab.dataset.category === category;
+        tab.classList.toggle('bg-plum', isCurrent);
+        tab.classList.toggle('text-gold', isCurrent);
+        tab.classList.toggle('bg-white', !isCurrent);
+        tab.classList.toggle('text-stone-600', !isCurrent);
+      });
+
+      document.querySelectorAll('.garment-card').forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Modal logic
+    const dialog = document.getElementById('bookingDialog');
+    function openBookingModal(id, title, price, img) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalPrice').textContent = `₹${price} / 72-Hour Rental`;
+      document.getElementById('modalImg').src = img;
+      document.getElementById('bookingSuccessBox').classList.add('hidden');
+      dialog.showModal();
+    }
+    function closeBookingModal() {
+      dialog.close();
+    }
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+
+    // Form handlers
+    function handleReservationSubmit(e) {
+      e.preventDefault();
+      const successBox = document.getElementById('bookingSuccessBox');
+      successBox.classList.remove('hidden');
+      setTimeout(() => {
+        dialog.close();
+      }, 2500);
+    }
+
+    function handleLenderSubmit(e) {
+      e.preventDefault();
+      const msg = document.getElementById('lenderSuccessMsg');
+      msg.classList.remove('hidden');
+      e.target.reset();
+    }
+
+    // Interactive Earnings Slider
+    function updateEarnings(val) {
+      document.getElementById('sliderVal').textContent = `${val} ${val == 1 ? 'Outfit' : 'Outfits'}`;
+      const earnings = val * 2400;
+      document.getElementById('earningsVal').textContent = `₹${earnings.toLocaleString('en-IN')}`;
+    }
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const menu = document.getElementById('mobileMenu');
+    function toggleMobileMenu() {
+      menu.classList.toggle('hidden');
+    }
+    menuBtn.addEventListener('click', toggleMobileMenu);
+  </script>
+</body>
+</html>

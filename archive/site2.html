@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#141118">
+  <title>WEDELIA — Site 02 · Tokyo Brutalist Spec Engine</title>
+
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            plum: { DEFAULT: '#56325f', dark: '#2d1833', spec: '#43214c' },
+            gold: { DEFAULT: '#e2c85b', bright: '#ffeb80' },
+            red: { DEFAULT: '#ed2d23', pass: '#ff3b30' },
+            specbg: '#efebe3',
+            specline: '#221f26',
+            gridline: 'rgba(0,0,0,0.07)'
+          },
+          fontFamily: {
+            mono: ['"Space Mono"', 'monospace'],
+            syne: ['"Syne"', 'sans-serif'],
+            sans: ['"DM Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .grid-bg {
+      background-size: 20px 20px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    }
+    .barcode {
+      letter-spacing: -2px;
+      font-family: 'Space Mono', monospace;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      display: flex;
+      width: 200%;
+      animation: marquee 20s linear infinite;
+    }
+  </style>
+</head>
+<body class="bg-specbg text-specline font-mono antialiased selection:bg-specline selection:text-gold min-h-screen grid-bg relative">
+
+  <!-- Global 10 Sites Hub Navigation Ribbon -->
+  <nav class="bg-specline text-stone-300 text-[10px] tracking-widest uppercase py-2 px-6 flex justify-between items-center border-b border-white/20 sticky top-0 z-50">
+    <div class="flex items-center gap-3">
+      <span class="w-2 h-2 rounded-full bg-gold animate-ping"></span>
+      <span class="text-white font-bold">SITE 02 // TOKYO BRUTALIST SPEC ENGINE (UNITED ATHLE SPEC)</span>
+    </div>
+    <div class="flex items-center gap-2 overflow-x-auto py-0.5">
+      <span class="text-stone-500 hidden sm:inline">EXPLORE SITES:</span>
+      <a href="site1.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">01</a>
+      <a href="site2.html" class="px-2 py-0.5 rounded bg-gold text-ink font-bold">02</a>
+      <a href="site3.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">03</a>
+      <a href="site4.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">04</a>
+      <a href="site5.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">05</a>
+      <a href="site6.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">06</a>
+      <a href="site7.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">07</a>
+      <a href="site8.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">08</a>
+      <a href="site9.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">09</a>
+      <a href="site10.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">10</a>
+    </div>
+  </nav>
+
+  <!-- Marquee Ticker Tape -->
+  <div class="bg-specline text-gold text-[10px] py-1 border-b border-black overflow-hidden whitespace-nowrap">
+    <div class="marquee-track flex gap-8 tracking-widest uppercase">
+      <span>● WEDELIA SPEC-02 · TOKYO CRAFT ARCHIVE</span>
+      <span>● FABRIC STANDARD: 100% RAW SILK / GSM 280-420</span>
+      <span>● HYGIENE STANDARD: MEDICAL O3 GAS 15-MIN CYCLE</span>
+      <span>● DU CAMPUS LOCKERS: NORTH & SOUTH ACTIVE</span>
+      <span>● CUSTODY PROTOCOL: 72:00:00 CONTINUOUS HRS</span>
+      <span>● WEDELIA SPEC-02 · TOKYO CRAFT ARCHIVE</span>
+      <span>● FABRIC STANDARD: 100% RAW SILK / GSM 280-420</span>
+      <span>● HYGIENE STANDARD: MEDICAL O3 GAS 15-MIN CYCLE</span>
+      <span>● DU CAMPUS LOCKERS: NORTH & SOUTH ACTIVE</span>
+      <span>● CUSTODY PROTOCOL: 72:00:00 CONTINUOUS HRS</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="border-b-2 border-specline bg-specbg/95 px-6 lg:px-12 py-4 flex items-center justify-between sticky top-[33px] z-40">
+    <div class="flex items-center gap-6">
+      <img src="assets/logo.svg" alt="Wedelia Logo" class="h-8 w-auto">
+      <div class="border-l border-specline pl-4 hidden sm:block">
+        <span class="text-[10px] font-bold tracking-widest block uppercase">SYS.INDEX // MMXXVI-02</span>
+        <span class="text-[9px] text-stone-500">PEER CIRCULAR SPECIFICATION TERMINAL</span>
+      </div>
+    </div>
+    <div class="flex items-center gap-4 text-xs">
+      <span class="hidden md:inline px-3 py-1 bg-black text-white text-[10px] font-bold">STATUS: OPERATIONAL</span>
+      <button onclick="openDrawer('SPEC MANIFEST #02', '₹0', 'Technical inventory allocation request')" class="px-4 py-2 bg-plum text-gold font-bold uppercase hover:bg-plum-dark">
+        Spec Ledger (0)
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero: High-Density Technical Spec Engine -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-12 py-12 border-b-2 border-specline">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      
+      <!-- Spec Data Left Column -->
+      <div class="lg:col-span-7 border-2 border-specline p-6 sm:p-8 bg-white flex flex-col justify-between space-y-8 shadow-[6px_6px_0px_#221f26]">
+        <div class="space-y-4">
+          <div class="flex justify-between items-center text-[10px] border-b border-specline pb-2">
+            <span class="text-plum font-bold">SPEC NO: DU-OCCASION-2026</span>
+            <span class="px-2 py-0.5 bg-gold text-specline font-bold">GRADE A+ LUXURY</span>
+          </div>
+
+          <h1 class="font-syne text-4xl sm:text-6xl font-black text-specline uppercase tracking-tight leading-[0.95]">
+            Engineered <br>
+            <span class="text-plum underline decoration-gold decoration-4">Custody.</span> <br>
+            Zero Waste.
+          </h1>
+
+          <p class="text-xs text-stone-600 font-sans leading-relaxed max-w-lg">
+            Technical occasion wear rental system engineered for Delhi University fest season. Pure mulberry silk corsetry, bias gowns, and tailored pieces available on a 72-hour zero-ownership pass.
+          </p>
+
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a href="#spec-catalog" class="px-6 py-3 bg-specline text-gold font-bold text-xs uppercase hover:bg-plum transition-all shadow-[4px_4px_0px_#56325f]">
+              Query Spec Matrix ↗
+            </a>
+            <a href="#calc-spec" class="px-6 py-3 border-2 border-specline bg-white text-specline font-bold text-xs uppercase hover:bg-stone-100">
+              Calculate Lender Yield
+            </a>
+          </div>
+        </div>
+
+        <!-- Monospace Technical Ledger Table -->
+        <div class="border border-specline text-[10px] divide-y divide-specline">
+          <div class="grid grid-cols-3 p-2 bg-stone-100 font-bold">
+            <span>PARAMETER</span>
+            <span>SPECIFICATION</span>
+            <span>VERIFICATION</span>
+          </div>
+          <div class="grid grid-cols-3 p-2">
+            <span>Fabric GSM</span>
+            <span class="font-bold">280–420 GSM Pure Silk</span>
+            <span class="text-emerald-700">PASS [●]</span>
+          </div>
+          <div class="grid grid-cols-3 p-2">
+            <span>Hygiene Cycle</span>
+            <span class="font-bold">15-Min O3 Sterilization</span>
+            <span class="text-emerald-700">PASS [●]</span>
+          </div>
+          <div class="grid grid-cols-3 p-2">
+            <span>Locker Network</span>
+            <span class="font-bold">North & South Pods</span>
+            <span class="text-emerald-700">ACTIVE [●]</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Raw Silhouette Cut with Millimeter Measurement Brackets -->
+      <div class="lg:col-span-5 border-2 border-specline bg-white p-4 relative flex flex-col justify-between shadow-[6px_6px_0px_#221f26]">
+        <div class="flex justify-between items-center text-[10px] pb-2 border-b border-specline">
+          <span>SCHEMATIC 01 // FRONT ELEVATION</span>
+          <span class="font-mono text-plum font-bold">SRCC LOCKER #08</span>
+        </div>
+
+        <div class="aspect-[3/4] overflow-hidden border border-specline my-4 relative group">
+          <img src="assets/images/photo-1515886657613-9f3515b0c78f.jpg" alt="Schematic 01" class="w-full h-full object-cover filter contrast-105">
+          <div class="absolute bottom-2 left-2 px-2 py-1 bg-black text-gold text-[9px] font-bold">
+            FIG 1.1 · SILK CORSET
+          </div>
+        </div>
+
+        <div class="pt-2 border-t border-specline flex justify-between items-center text-xs">
+          <span>CUSTODY RATE: 72H</span>
+          <span class="font-bold text-plum text-base">₹299</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Technical Spec Catalog (Clean Borderless Luxury Cards) -->
+  <section id="spec-catalog" class="max-w-7xl mx-auto px-6 lg:px-12 py-20 border-b-2 border-specline">
+    <div class="flex justify-between items-end mb-10 pb-4 border-b-2 border-specline">
+      <div>
+        <span class="text-[10px] text-plum font-bold uppercase tracking-widest block">CATALOG INVENTORY // BATCH 2026-A</span>
+        <h2 class="font-syne text-3xl sm:text-5xl font-black text-specline uppercase">Available Spec Sheets</h2>
+      </div>
+      <span class="text-xs text-stone-500 hidden sm:inline">ALL READY FOR EXPRESS DISPATCH</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <!-- Spec 1 -->
+      <article class="group cursor-pointer" onclick="openDrawer('ITEM #01: Parisian Silk Corset', '₹299', 'GSM 380 natural silk, steel bones, double eyelet lace back. North Campus locker ready.')">
+        <div class="aspect-[3/4.2] overflow-hidden rounded-lg border border-specline bg-stone-200 mb-3 relative">
+          <img src="assets/images/photo-1515886657613-9f3515b0c78f-1.jpg" alt="Parisian Silk Corset" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <div class="absolute top-2 left-2 px-2 py-0.5 bg-black text-white text-[9px]">ID: 01-SRCC</div>
+        </div>
+        <div class="flex justify-between items-baseline">
+          <div>
+            <h3 class="font-syne text-lg font-bold text-specline group-hover:text-plum transition-colors uppercase">Parisian Corset</h3>
+            <span class="text-[10px] text-stone-500 block">Boning · Size S-M</span>
+          </div>
+          <span class="font-bold text-plum text-sm">₹299</span>
+        </div>
+      </article>
+
+      <!-- Spec 2 -->
+      <article class="group cursor-pointer" onclick="openDrawer('ITEM #02: Dark Romance Lace', '₹249', 'GSM 280 French corded lace top with satin trims. St. Stephen\'s pod ready.')">
+        <div class="aspect-[3/4.2] overflow-hidden rounded-lg border border-specline bg-stone-200 mb-3 relative">
+          <img src="assets/images/photo-1529139574466-a303027c1d8b.jpg" alt="Dark Romance Lace" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <div class="absolute top-2 left-2 px-2 py-0.5 bg-black text-white text-[9px]">ID: 02-STPH</div>
+        </div>
+        <div class="flex justify-between items-baseline">
+          <div>
+            <h3 class="font-syne text-lg font-bold text-specline group-hover:text-plum transition-colors uppercase">Dark Romance Lace</h3>
+            <span class="text-[10px] text-stone-500 block">Corded Lace · Size S</span>
+          </div>
+          <span class="font-bold text-plum text-sm">₹249</span>
+        </div>
+      </article>
+
+      <!-- Spec 3 -->
+      <article class="group cursor-pointer" onclick="openDrawer('ITEM #03: Liquid Satin Column', '₹349', 'GSM 420 heavy bias cut satin gown. LSR pod ready.')">
+        <div class="aspect-[3/4.2] overflow-hidden rounded-lg border border-specline bg-stone-200 mb-3 relative">
+          <img src="assets/images/photo-1539008835657-9e8e9680c956.jpg" alt="Liquid Satin Column" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <div class="absolute top-2 left-2 px-2 py-0.5 bg-black text-white text-[9px]">ID: 03-LSR</div>
+        </div>
+        <div class="flex justify-between items-baseline">
+          <div>
+            <h3 class="font-syne text-lg font-bold text-specline group-hover:text-plum transition-colors uppercase">Liquid Satin Column</h3>
+            <span class="text-[10px] text-stone-500 block">Bias Satin · Size M</span>
+          </div>
+          <span class="font-bold text-plum text-sm">₹349</span>
+        </div>
+      </article>
+
+      <!-- Spec 4 -->
+      <article class="group cursor-pointer" onclick="openDrawer('ITEM #04: Ruby Velvet Bodice', '₹399', 'GSM 360 crushed ruby velvet. Miranda House pod ready.')">
+        <div class="aspect-[3/4.2] overflow-hidden rounded-lg border border-specline bg-stone-200 mb-3 relative">
+          <img src="assets/images/photo-1539109136881-3be0616acf4b.jpg" alt="Ruby Velvet Bodice" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <div class="absolute top-2 left-2 px-2 py-0.5 bg-black text-white text-[9px]">ID: 04-MRND</div>
+        </div>
+        <div class="flex justify-between items-baseline">
+          <div>
+            <h3 class="font-syne text-lg font-bold text-specline group-hover:text-plum transition-colors uppercase">Ruby Velvet Bodice</h3>
+            <span class="text-[10px] text-stone-500 block">Crushed Velvet · Size S</span>
+          </div>
+          <span class="font-bold text-plum text-sm">₹399</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Lender Yield Calculator -->
+  <section id="calc-spec" class="max-w-5xl mx-auto px-6 py-20">
+    <div class="border-2 border-specline p-8 sm:p-12 bg-white shadow-[8px_8px_0px_#56325f] space-y-6">
+      <div class="flex justify-between items-center border-b border-specline pb-4">
+        <div>
+          <span class="text-[10px] font-bold text-plum uppercase">ALGORITHM // PEER CAPITAL DEPLOYMENT</span>
+          <h3 class="font-syne text-3xl font-black uppercase">Lender Yield Calculator</h3>
+        </div>
+        <span class="text-xs font-bold px-3 py-1 bg-gold text-specline">70% DIVIDEND</span>
+      </div>
+
+      <div class="space-y-4">
+        <div class="flex justify-between text-xs">
+          <span>NUMBER OF SILHOUETTES LISTED:</span>
+          <span id="sliderVal" class="font-bold text-plum">3 UNITS</span>
+        </div>
+        <input type="range" min="1" max="10" value="3" class="w-full h-2 bg-stone-200 accent-specline cursor-pointer" oninput="document.getElementById('sliderVal').innerText = this.value + ' UNITS'; document.getElementById('yieldEst').innerText = '₹' + (this.value * 2100).toLocaleString('en-IN') + '/mo';">
+        <div class="flex justify-between items-center pt-4 border-t border-specline">
+          <span class="text-xs">ESTIMATED FESTIVAL DIVIDEND:</span>
+          <span id="yieldEst" class="font-syne text-4xl font-black text-plum">₹6,300/mo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gazette Dispatch Newsletter Wire (Loved from P3) -->
+  <section class="max-w-4xl mx-auto px-6 py-12">
+    <div class="border-2 border-specline bg-white p-6 sm:p-8 space-y-4 shadow-[4px_4px_0px_#221f26]">
+      <div class="flex justify-between text-[10px] border-b border-specline pb-2">
+        <span class="font-bold text-plum">★ TELEMETRY DISPATCH WIRE // TOKYO MMXXVI ★</span>
+        <span>FREQUENCY: WEEKLY</span>
+      </div>
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div>
+          <h4 class="font-syne text-xl font-bold uppercase">Subscribe To Spec Telemetry</h4>
+          <p class="text-xs text-stone-500 font-sans">Receive automated alerts when new garments arrive in North Campus pods.</p>
+        </div>
+        <form onsubmit="event.preventDefault(); alert('Subscribed to Spec Wire!');" class="flex gap-2 w-full sm:w-auto">
+          <input type="email" required placeholder="user@college.edu" class="p-2 border border-specline text-xs">
+          <button type="submit" class="px-5 py-2 bg-specline text-gold font-bold uppercase text-xs hover:bg-plum">Join ↗</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4-Column Luxury Footer -->
+  <footer class="bg-specline text-stone-300 pt-16 pb-12 px-6 lg:px-12 border-t-2 border-specline text-xs">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-white/20">
+      <div class="md:col-span-5 space-y-3">
+        <img src="assets/logo.svg" alt="Wedelia Logo" class="h-7 w-auto">
+        <p class="text-stone-400 text-xs max-w-sm">WEDELIA Technical Specification System. Site 02 · Tokyo Brutalist Spec Engine.</p>
+      </div>
+      <div class="md:col-span-3 space-y-2">
+        <strong class="text-gold uppercase text-[11px] block">Locker Nodes</strong>
+        <p class="text-stone-400">Pod 01 (North) · Pod 02 (South)</p>
+      </div>
+      <div class="md:col-span-4 space-y-2">
+        <strong class="text-gold uppercase text-[11px] block">Medical Standard</strong>
+        <p class="text-stone-400">100% O3 Gas Treatment Protocol</p>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto pt-4 flex justify-between text-[11px] text-stone-500">
+      <span>© 2026 WEDELIA ATELIER. SITE 02 OF 10.</span>
+      <a href="#" class="hover:text-gold">Top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Slide-out Drawer Modal -->
+  <div id="drawerOverlay" class="fixed inset-0 bg-specline/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeDrawer()"></div>
+  <aside id="sideDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white border-l-2 border-specline shadow-2xl z-50 translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="p-6 border-b-2 border-specline flex justify-between items-center bg-stone-100">
+      <div>
+        <span class="text-[10px] uppercase font-bold text-plum">SPEC MANIFEST // LOCKER PASS</span>
+        <h3 id="drawerTitle" class="font-syne text-xl font-bold uppercase mt-0.5">Item Specs</h3>
+      </div>
+      <button onclick="closeDrawer()" class="w-8 h-8 border border-specline flex items-center justify-center font-bold">✕</button>
+    </div>
+
+    <div class="p-6 overflow-y-auto flex-1 space-y-6">
+      <div class="flex justify-between items-baseline pb-4 border-b border-stone-200">
+        <span class="text-xs text-stone-500">72-HOUR CUSTODY RATE</span>
+        <span id="drawerPrice" class="text-2xl font-bold text-plum">₹299</span>
+      </div>
+
+      <div class="space-y-2">
+        <h4 class="text-xs uppercase text-stone-400 font-bold">Engineering Specs</h4>
+        <p id="drawerDesc" class="text-xs text-stone-600 leading-relaxed font-sans">
+          Fabric specifications and technical metrics.
+        </p>
+      </div>
+
+      <form onsubmit="event.preventDefault(); alert('Spec reserved! Keycode sent via SMS.'); closeDrawer();" class="space-y-4 pt-2">
+        <div class="space-y-1">
+          <label class="text-[10px] uppercase text-stone-500 font-bold">Student Name</label>
+          <input type="text" required placeholder="Aanya Sharma" class="w-full p-2.5 border border-specline text-xs">
+        </div>
+        <div class="space-y-1">
+          <label class="text-[10px] uppercase text-stone-500 font-bold">Date of Fest</label>
+          <input type="date" required class="w-full p-2.5 border border-specline text-xs">
+        </div>
+        <button type="submit" class="w-full py-3.5 bg-specline text-gold font-bold uppercase text-xs hover:bg-plum transition-all shadow-[4px_4px_0px_#56325f]">
+          Execute 72h Allocation ↗
+        </button>
+      </form>
+    </div>
+  </aside>
+
+  <script>
+    function openDrawer(title, price, desc) {
+      document.getElementById('drawerTitle').innerText = title;
+      document.getElementById('drawerPrice').innerText = price;
+      document.getElementById('drawerDesc').innerText = desc;
+      document.getElementById('drawerOverlay').classList.remove('opacity-0', 'pointer-events-none');
+      document.getElementById('sideDrawer').classList.remove('translate-x-full');
+    }
+
+    function closeDrawer() {
+      document.getElementById('drawerOverlay').classList.add('opacity-0', 'pointer-events-none');
+      document.getElementById('sideDrawer').classList.add('translate-x-full');
+    }
+  </script>
+
+</body>
+</html>

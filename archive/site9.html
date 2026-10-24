@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fcfbf9">
+  <title>WEDELIA — Site 09 · The Pure Zen Void</title>
+
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@200;300;400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            voidpaper: '#fcfbf9',
+            zenink: '#151218',
+            plum: { DEFAULT: '#56325f', whisper: 'rgba(86, 50, 95, 0.05)' },
+            gold: { DEFAULT: '#e2c85b', hairline: 'rgba(226, 200, 91, 0.35)' }
+          },
+          fontFamily: {
+            cormorant: ['"Cormorant Garamond"', 'serif'],
+            sans: ['"DM Sans"', 'sans-serif'],
+            mono: ['"Space Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .zen-spotlight {
+      pointer-events: none;
+      position: fixed;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(226, 200, 91, 0.12) 0%, rgba(86, 50, 95, 0.04) 50%, transparent 70%);
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body class="bg-voidpaper text-zenink font-sans antialiased selection:bg-plum selection:text-white min-h-screen relative overflow-x-hidden">
+
+  <!-- Ethereal Magnetic Spotlight Following Cursor -->
+  <div id="spotlight" class="zen-spotlight hidden md:block"></div>
+
+  <!-- Global 10 Sites Hub Navigation Ribbon -->
+  <nav class="bg-zenink text-stone-400 text-[10px] font-mono tracking-widest uppercase py-2 px-6 flex justify-between items-center border-b border-white/10 sticky top-0 z-50">
+    <div class="flex items-center gap-3">
+      <span class="w-1.5 h-1.5 rounded-full bg-gold animate-pulse"></span>
+      <span class="text-stone-200">SITE 09 // THE PURE ZEN VOID (98% WHITESPACE & PROXIMITY REVEAL)</span>
+    </div>
+    <div class="flex items-center gap-2 overflow-x-auto py-0.5">
+      <span class="text-stone-600 hidden sm:inline">EXPLORE SITES:</span>
+      <a href="site1.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">01</a>
+      <a href="site2.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">02</a>
+      <a href="site3.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">03</a>
+      <a href="site4.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">04</a>
+      <a href="site5.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">05</a>
+      <a href="site6.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">06</a>
+      <a href="site7.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">07</a>
+      <a href="site8.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">08</a>
+      <a href="site9.html" class="px-2 py-0.5 rounded bg-gold text-ink font-bold">09</a>
+      <a href="site10.html" class="px-2 py-0.5 rounded bg-white/10 hover:bg-white/20">10</a>
+    </div>
+  </nav>
+
+  <!-- Monastic Top Nav -->
+  <header class="border-b border-stone-200/50 bg-voidpaper/80 backdrop-blur-md px-8 lg:px-16 py-6 flex items-center justify-between sticky top-[33px] z-40">
+    <div class="flex items-center gap-6">
+      <img src="assets/logo.svg" alt="Wedelia Logo" class="h-7 w-auto">
+      <span class="font-cormorant text-2xl font-light tracking-[0.25em] text-zenink">WEDELIA</span>
+    </div>
+    <div class="flex items-center gap-6">
+      <button onclick="openDrawer('Zen Satchel', '₹0', 'Contemplation pass reservation')" class="text-xs font-mono uppercase tracking-widest text-stone-500 hover:text-plum transition-colors">
+        Custody (0) ✦
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero: Monastic Vast Void (98% Negative Space) -->
+  <section class="max-w-4xl mx-auto px-8 py-28 sm:py-36 text-center space-y-12">
+    <span class="text-[10px] font-mono uppercase tracking-[0.4em] text-stone-400 block">
+      MONASTIC OCCASION ARCHIVE · MMXXVI
+    </span>
+
+    <h1 class="font-cormorant text-5xl sm:text-7xl lg:text-8xl font-light text-zenink leading-[0.96]">
+      Possess the beauty.<br>
+      <em class="italic text-plum font-normal font-cormorant">Release the weight.</em>
+    </h1>
+
+    <p class="text-stone-500 text-sm sm:text-base font-sans max-w-md mx-auto leading-relaxed font-light">
+      Occasion wear conceived without attachment. Rent curated silks and corsetry for seventy-two hours of celebration, returning unwashed to the circle.
+    </p>
+
+    <!-- Sleek Minimal Buttons -->
+    <div class="flex justify-center items-center gap-6 pt-4">
+      <a href="#void-gallery" class="px-8 py-3.5 rounded-full bg-plum text-gold text-xs font-mono uppercase tracking-widest font-bold hover:bg-plum-dark transition-all">
+        Contemplate Collection ↗
+      </a>
+      <button onclick="openDrawer('Join Lender Guild', 'Earn 70%', 'Monetize your occasion pieces through campus lockers.');" class="px-8 py-3.5 rounded-full border border-stone-300 text-stone-600 text-xs font-mono uppercase tracking-widest hover:border-plum hover:text-plum transition-all">
+        The Rituals
+      </button>
+    </div>
+
+    <div class="pt-16 flex justify-center items-center gap-12 text-[10px] font-mono tracking-widest uppercase text-stone-400 border-t border-stone-200/50">
+      <span>OZONE SANITIZED</span>
+      <span>72-HOUR REPOSE</span>
+      <span>CAMPUS LOCKERS</span>
+    </div>
+  </section>
+
+  <!-- Contemplative Solitary Catalog Exhibition (Breathing Space) -->
+  <section id="void-gallery" class="max-w-6xl mx-auto px-8 py-20 space-y-32 border-t border-stone-200/50">
+    
+    <!-- Item 1: Wide Breathing Frame -->
+    <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center cursor-pointer group" onclick="openDrawer('Parisian Silk Corset', '₹299', 'Natural ivory silk with steel boning and eyelet tie. North Campus locker ready.')">
+      <div class="md:col-span-7 aspect-[3/4] overflow-hidden rounded-2xl bg-stone-100 relative shadow-sm group-hover:shadow-xl transition-all duration-700">
+        <img src="assets/images/photo-1515886657613-9f3515b0c78f-1.jpg" alt="Parisian Silk Corset" class="w-full h-full object-cover filter brightness-[0.98] group-hover:scale-105 transition-transform duration-1000">
+      </div>
+      <div class="md:col-span-5 space-y-4">
+        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-400">SILHOUETTE 01 // SRCC POD</span>
+        <h2 class="font-cormorant text-4xl font-light text-zenink group-hover:text-plum transition-colors">Parisian Silk Corset</h2>
+        <p class="text-xs text-stone-500 font-sans leading-relaxed font-light">
+          Woven ivory silk with steel boning. Fluid drape with adjustable eyelet back. Sanitized via medical ozone gas.
+        </p>
+        <div class="pt-2 flex justify-between items-baseline font-mono text-sm border-t border-stone-200/50">
+          <span class="text-stone-400">72-Hour Repose</span>
+          <span class="text-plum font-bold text-lg">₹299</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Item 2: Wide Breathing Frame Inverted -->
+    <article class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center cursor-pointer group" onclick="openDrawer('Dark Romance Lace', '₹249', 'French corded floral lace with satin trim. Stephen\'s pod ready.')">
+      <div class="md:col-span-5 space-y-4 order-2 md:order-1">
+        <span class="text-[10px] font-mono uppercase tracking-widest text-stone-400">SILHOUETTE 02 // STEPHEN'S POD</span>
+        <h2 class="font-cormorant text-4xl font-light text-zenink group-hover:text-plum transition-colors">Dark Romance Lace</h2>
+        <p class="text-xs text-stone-500 font-sans leading-relaxed font-light">
+          Black corded French floral lace. Understated evening silhouette built for cultural festivals and society balls.
+        </p>
+        <div class="pt-2 flex justify-between items-baseline font-mono text-sm border-t border-stone-200/50">
+          <span class="text-stone-400">72-Hour Repose</span>
+          <span class="text-plum font-bold text-lg">₹249</span>
+        </div>
+      </div>
+      <div class="md:col-span-7 aspect-[3/4] overflow-hidden rounded-2xl bg-stone-100 relative shadow-sm group-hover:shadow-xl transition-all duration-700 order-1 md:order-2">
+        <img src="assets/images/photo-1529139574466-a303027c1d8b.jpg" alt="Dark Romance Lace" class="w-full h-full object-cover filter brightness-[0.98] group-hover:scale-105 transition-transform duration-1000">
+      </div>
+    </article>
+
+  </section>
+
+  <!-- Gazette Dispatch Newsletter Wire (Loved from P3) -->
+  <section class="max-w-4xl mx-auto px-8 py-16">
+    <div class="bg-white border border-stone-200 p-8 rounded-2xl space-y-4 shadow-sm">
+      <div class="flex justify-between text-[10px] font-mono border-b border-stone-200 pb-2">
+        <span class="font-bold text-plum">★ QUIET WIRE // DISPATCH MMXXVI ★</span>
+        <span>THE SANCTUARY</span>
+      </div>
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+        <div>
+          <h4 class="font-cormorant text-2xl font-light">Receive The Quiet Dispatch</h4>
+          <p class="text-xs text-stone-500 font-sans">Periodic notices when private closets release one-of-a-kind silhouettes.</p>
+        </div>
+        <form onsubmit="event.preventDefault(); alert('Subscribed to Quiet Wire!');" class="flex gap-2 w-full sm:w-auto">
+          <input type="email" required placeholder="subscriber@zenith.com" class="p-2 border border-stone-200 text-xs font-mono rounded">
+          <button type="submit" class="px-5 py-2 bg-plum text-gold font-mono text-xs uppercase font-bold rounded hover:bg-plum-dark">Join ↗</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4-Column Luxury Footer -->
+  <footer class="bg-zenink text-stone-400 pt-16 pb-12 px-8 lg:px-16 border-t border-white/10 text-xs">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-white/10 font-mono">
+      <div class="md:col-span-5 space-y-3">
+        <img src="assets/logo.svg" alt="Wedelia Logo" class="h-7 w-auto">
+        <p class="text-stone-400 text-xs leading-relaxed max-w-sm">Monastic occasion fashion rental. Site 09 · The Pure Zen Void.</p>
+      </div>
+      <div class="md:col-span-3 space-y-2">
+        <strong class="text-gold uppercase text-[11px] block">Sanctuary Pods</strong>
+        <p class="text-stone-400">North Campus Hub · South Campus Pod</p>
+      </div>
+      <div class="md:col-span-4 space-y-2">
+        <strong class="text-gold uppercase text-[11px] block">Quiet Statute</strong>
+        <p class="text-stone-400">Hospital Ozone Cleansed · Zero Regret</p>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto pt-4 flex justify-between text-[11px] text-stone-500 font-mono">
+      <span>© 2026 WEDELIA ATELIER. SITE 09 OF 10.</span>
+      <a href="#" class="hover:text-gold">Top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Slide-out Drawer Modal -->
+  <div id="drawerOverlay" class="fixed inset-0 bg-zenink/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeDrawer()"></div>
+  <aside id="sideDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white border-l border-stone-200 shadow-2xl z-50 translate-x-full transition-transform duration-300 flex flex-col font-mono">
+    <div class="p-6 border-b border-stone-200 flex justify-between items-center">
+      <div>
+        <span class="text-[10px] uppercase tracking-widest text-plum">ZEN CUSTODY</span>
+        <h3 id="drawerTitle" class="font-cormorant text-2xl font-light text-zenink mt-0.5">Garment Repose</h3>
+      </div>
+      <button onclick="closeDrawer()" class="w-8 h-8 rounded-full border border-stone-200 flex items-center justify-center font-bold">✕</button>
+    </div>
+
+    <div class="p-6 overflow-y-auto flex-1 space-y-6">
+      <div class="flex justify-between items-baseline pb-4 border-b border-stone-200">
+        <span class="text-xs text-stone-500">72-HOUR CUSTODY</span>
+        <span id="drawerPrice" class="text-2xl font-light text-plum">₹299</span>
+      </div>
+
+      <p id="drawerDesc" class="text-xs text-stone-600 leading-relaxed font-sans font-light">
+        Garment specifications and material provenance.
+      </p>
+
+      <form onsubmit="event.preventDefault(); alert('Custody reserved in stillness! Check SMS for locker PIN.'); closeDrawer();" class="space-y-4 pt-2">
+        <div class="space-y-1">
+          <label class="text-[10px] uppercase text-stone-500">Full Name</label>
+          <input type="text" required placeholder="Tara Mukherjee" class="w-full p-2.5 border border-stone-200 rounded text-xs">
+        </div>
+        <div class="space-y-1">
+          <label class="text-[10px] uppercase text-stone-500">Celebration Date</label>
+          <input type="date" required class="w-full p-2.5 border border-stone-200 rounded text-xs">
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-full bg-plum text-gold uppercase text-xs font-bold hover:bg-plum-dark transition-all">
+          Begin 72h Repose ↗
+        </button>
+      </form>
+    </div>
+  </aside>
+
+  <script>
+    // Magnetic Spotlight
+    const spotlight = document.getElementById('spotlight');
+    if (spotlight) {
+      window.addEventListener('mousemove', (e) => {
+        spotlight.style.left = e.clientX + 'px';
+        spotlight.style.top = e.clientY + 'px';
+      });
+    }
+
+    function openDrawer(title, price, desc) {
+      document.getElementById('drawerTitle').innerText = title;
+      document.getElementById('drawerPrice').innerText = price;
+      document.getElementById('drawerDesc').innerText = desc;
+      document.getElementById('drawerOverlay').classList.remove('opacity-0', 'pointer-events-none');
+      document.getElementById('sideDrawer').classList.remove('translate-x-full');
+    }
+
+    function closeDrawer() {
+      document.getElementById('drawerOverlay').classList.add('opacity-0', 'pointer-events-none');
+      document.getElementById('sideDrawer').classList.add('translate-x-full');
+    }
+  </script>
+
+</body>
+</html>

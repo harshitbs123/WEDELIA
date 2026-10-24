@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#56325f">
+  <title>WEDELIA — 10 Awwwards-Level Occasion Rental Homepages</title>
+  
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,200..900;1,9..40,200..900&family=Italiana&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            plum: {
+              DEFAULT: '#56325f',
+              dark: '#392141',
+              deep: '#1d0f22',
+              soft: '#eee6ef',
+              glass: 'rgba(86, 50, 95, 0.08)'
+            },
+            gold: {
+              DEFAULT: '#f2d95c',
+              light: '#fdf4c9',
+              dark: '#c7ae32'
+            },
+            red: {
+              DEFAULT: '#ed2d23',
+              crimson: '#9b1b15'
+            },
+            ink: '#19141c',
+            cream: '#fbf8f2',
+            paper: '#fffdf9',
+            sand: '#f4ede2',
+            line: '#e9e1e7'
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"DM Sans"', 'sans-serif'],
+            cormorant: ['"Cormorant Garamond"', 'serif'],
+            italiana: ['"Italiana"', 'serif'],
+            cinzel: ['"Cinzel"', 'serif'],
+            mono: ['"Space Mono"', 'monospace'],
+            syne: ['"Syne"', 'sans-serif']
+          },
+          boxShadow: {
+            luxury: '0 30px 100px rgba(57, 33, 65, 0.1)',
+            floating: '0 20px 50px -10px rgba(29, 15, 34, 0.15)',
+            glow: '0 0 40px rgba(242, 217, 92, 0.25)'
+          },
+          keyframes: {
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-50%)' }
+            },
+            pulseSubtle: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '0.4' }
+            }
+          },
+          animation: {
+            marquee: 'marquee 30s linear infinite',
+            'pulse-subtle': 'pulseSubtle 3s ease-in-out infinite'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Utilities for Awwwards Visual Rigor */
+    .noise-bg {
+      background-image: radial-gradient(rgba(86, 50, 95, 0.06) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 4px;
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #56325f44;
+      border-radius: 9999px;
+    }
+    .text-stroke {
+      -webkit-text-stroke: 1px rgba(86, 50, 95, 0.35);
+      color: transparent;
+    }
+    .text-stroke-gold {
+      -webkit-text-stroke: 1px rgba(242, 217, 92, 0.45);
+      color: transparent;
+    }
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    /* Cursor dot */
+    .cursor-ball {
+      pointer-events: none;
+      position: fixed;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s, height 0.25s, background-color 0.25s, opacity 0.25s;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body class="bg-cream text-ink font-sans antialiased selection:bg-plum selection:text-gold min-h-screen relative">
+
+  <!-- Interactive Custom Cursor Ball -->
+  <div id="cursorBall" class="cursor-ball w-4 h-4 rounded-full bg-plum/40 border border-gold backdrop-blur-sm hidden md:block"></div>
+
+  <!-- ========================================================
+       TOP GLOBAL CONCEPT SWITCHER DOCK (AWWWARDS COMMAND BAR)
+       ======================================================== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-[#1e1322]/95 backdrop-blur-xl border-b border-plum/40 text-white shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between gap-4">
+      
+      <!-- Logo & Concept Indicator -->
+      <div class="flex items-center gap-3 shrink-0">
+        <a href="#home" class="flex items-center gap-2 group">
+          <div class="w-8 h-8 rounded bg-plum flex items-center justify-center p-1 border border-gold/40">
+            <img src="assets/logo.svg" alt="Wedelia" class="w-full h-auto">
+          </div>
+          <div class="hidden sm:block">
+            <div class="flex items-center gap-2">
+              <span class="font-serif tracking-widest text-xs text-gold font-bold">WEDELIA</span>
+              <span class="px-1.5 py-0.5 rounded text-[9px] bg-red text-white uppercase font-bold tracking-wider">Awwwards 10</span>
+            </div>
+            <p class="text-[10px] text-gray-400 font-mono tracking-tight">Occasion Fashion Rental Concepts</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Scrollable Concept Pill Navigator -->
+      <nav class="flex items-center gap-1.5 overflow-x-auto custom-scrollbar py-1 max-w-2xl px-2">
+        <button onclick="switchConcept(1)" class="concept-btn px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all border border-transparent text-gray-300 hover:text-white hover:bg-white/10 active-concept" data-concept="1">
+          <span class="text-gold font-mono text-[10px] mr-1">01</span> Sir The Label
+        </button>
+        <button onclick="switchConcept(2)" class="concept-btn px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all border border-transparent text-gray-300 hover:text-white hover:bg-white/10" data-concept="2">
+          <span class="text-gold font-mono text-[10px] mr-1">02</span> Roland Mouret
+        </button>
+        <button onclick="switchConcept(3)" class="concept-btn px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all border border-transparent text-gray-300 hover:text-white hover:bg-white/10" data-concept="3">
+          <span class="text-gold font-mono text-[10px] mr-1">03</span> United Athle
+        </button>
+        <button onclick="switchConcept(4)" class="concept-btn px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all border border-transparent text-gray-300 hover:text-white hover:bg-white/10" data-concept="4">
+          <span class="text-gold font-mono text-[10px] mr-1">04</span> Rino & Pelle
+        </button>
+        <button onclick="switchConcept(5)" class="concept-btn px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all border border-transparent text-gray-300 hover:text-white hover:bg-white/10" data-concept="5">
+          <span class="text-gold font-mono text-[10px] mr-1">05</span> Midnight Velvet
+        </button>
+        <button onclick="switchConcept(6)" class="concept-btn px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all border border-transparent text-gray-300 hover:text-white hover:bg-white/10" data-concept="6">
+          <span class="text-gold font-mono text-[10px] mr-1">06</span> Campus Atelier
+        </button>
+        <button onclick="switchConcept(7)" class="concept-btn px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all border border-transparent text-gray-300 hover:text-white hover:bg-white/10" data-concept="7">
+          <span class="text-gold font-mono text-[10px] mr-1">07</span> Cinema Horizon
+        </button>
+        <button onclick="switchConcept(8)" class="concept-btn px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all border border-transparent text-gray-300 hover:text-white hover:bg-white/10" data-concept="8">
+          <span class="text-gold font-mono text-[10px] mr-1">08</span> Monolith Gazette
+        </button>
+        <button onclick="switchConcept(9)" class="concept-btn px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all border border-transparent text-gray-300 hover:text-white hover:bg-white/10" data-concept="9">
+          <span class="text-gold font-mono text-[10px] mr-1">09</span> Neo-Luxe Bento
+        </button>
+        <button onclick="switchConcept(10)" class="concept-btn px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all border border-transparent text-gray-300 hover:text-white hover:bg-white/10" data-concept="10">
+          <span class="text-gold font-mono text-[10px] mr-1">10</span> Zen Void
+        </button>
+      </nav>
+
+      <!-- Quick Switcher Controls & Info Drawer Button -->
+      <div class="flex items-center gap-2 shrink-0">
+        <button onclick="prevConcept()" class="w-8 h-8 rounded-full border border-white/20 hover:border-gold hover:text-gold flex items-center justify-center transition-all text-xs" title="Previous (Press ←)">←</button>
+        <button onclick="nextConcept()" class="w-8 h-8 rounded-full border border-white/20 hover:border-gold hover:text-gold flex items-center justify-center transition-all text-xs" title="Next (Press →)">→</button>
+        <button onclick="toggleInfoDrawer()" class="px-2.5 py-1 rounded bg-gold/15 hover:bg-gold/25 text-gold border border-gold/30 text-xs font-mono flex items-center gap-1.5 transition-all">
+          <span class="w-1.5 h-1.5 rounded-full bg-red animate-pulse"></span>
+          <span class="hidden md:inline">Design Brief</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================
+       CONCEPT SPECIFICATION & ARCHITECTURE OVERLAY DRAWER
+       ======================================================== -->
+  <aside id="infoDrawer" class="fixed top-14 right-0 bottom-0 w-full sm:w-[460px] bg-ink/95 backdrop-blur-2xl text-white border-l border-plum/30 shadow-2xl z-40 transform translate-x-full transition-transform duration-300 ease-out p-6 overflow-y-auto">
+    <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-gold"></span>
+        <h3 class="font-serif text-lg text-gold font-bold">Curator's Architecture Notes</h3>
+      </div>
+      <button onclick="toggleInfoDrawer()" class="text-gray-400 hover:text-white text-xl">✕</button>
+    </div>
+    
+    <div id="drawerContent" class="space-y-6 text-sm text-gray-300 font-sans">
+      <!-- Injected dynamically via JS based on current active concept -->
+    </div>
+
+    <div class="mt-8 pt-6 border-t border-white/10 text-xs text-gray-400 font-mono space-y-2">
+      <p>💡 <span class="text-gold">Keyboard Navigation:</span> Press keys <kbd class="px-1.5 py-0.5 bg-white/10 rounded">1</kbd> to <kbd class="px-1.5 py-0.5 bg-white/10 rounded">0</kbd> or <kbd class="px-1.5 py-0.5 bg-white/10 rounded">←</kbd> <kbd class="px-1.5 py-0.5 bg-white/10 rounded">→</kbd> to switch layouts instantly.</p>
+      <p>🎨 Retains the signature Wedelia Plum (#56325f), Gold (#f2d95c), and Red (#ed2d23) harmony across 10 radical paradigms.</p>
+    </div>
+  </aside>
+
+  <!-- ========================================================
+       MAIN WRAPPER: 10 DISTINCT FULL HOMEPAGE EXPERIENCES
+       ======================================================== -->
+  <main class="pt-[54px] min-h-screen">
+
+    <!-- ########################################################
+         CONCEPT 01: "THE SIR EDIT" (Ref: SIR The Label)
+         Split-screen editorial, serene natural linen, delicate serif
+         ######################################################## -->
+    <div id="concept-1" class="concept-screen block">
+      <!-- Concept 1 Header -->
+      <nav class="border-b border-stone-200/80 bg-[#fbf8f2]/90 backdrop-blur-md sticky top-[54px] z-30 px-6 lg:px-12 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-8 text-[11px] uppercase tracking-[2px] font-medium text-stone-600">
+          <a href="#c1-archive" class="hover:text-plum transition-colors">Occasion Archive</a>
+          <a href="#c1-how" class="hover:text-plum transition-colors hidden md:block">Rental Philosophy</a>
+          <a href="#c1-lend" class="hover:text-plum transition-colors hidden lg:block">Lend Wardrobe</a>
+        </div>
+        <a href="#concept-1" class="flex flex-col items-center">
+          <img src="assets/logo.svg" alt="Wedelia" class="h-8 w-auto">
+          <span class="text-[9px] uppercase tracking-[3px] text-plum/70 font-serif mt-0.5">Resort & Occasion</span>
+        </a>
+        <div class="flex items-center gap-6 text-[11px] uppercase tracking-[2px] font-medium text-stone-600">
+          <button class="hover:text-plum transition-colors">Search ⌕</button>
+          <button class="text-plum font-bold border-b border-plum pb-0.5 hover:text-plum-dark">Book Look (0)</button>
+        </div>
+      </nav>
+
+      <!-- Concept 1 Hero: 50/50 Asymmetric Split Screen -->
+      <section class="grid grid-cols-1 lg:grid-cols-12 min-h-[calc(100vh-120px)] border-b border-stone-200">
+        <!-- Left: Editorial Manifesto & Rental Date Selector -->
+        <div class="lg:col-span-5 px-8 lg:px-16 py-16 lg:py-24 flex flex-col justify-between bg-[#fbf8f2] border-r border-stone-200/80">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-plum/5 border border-plum/10 text-plum text-[10px] tracking-[1.5px] font-bold uppercase mb-8">
+              <span class="w-1.5 h-1.5 rounded-full bg-red"></span> Spring / Occasion Curation 2026
+            </div>
+            <h1 class="font-cormorant text-5xl lg:text-7xl font-light tracking-tight leading-[1.05] text-ink mb-6">
+              Wear the memory.<br>
+              <em class="font-normal italic text-plum">Leave the burden</em><br>
+              in our care.
+            </h1>
+            <p class="text-stone-600 font-sans text-sm lg:text-base leading-relaxed max-w-md mb-10">
+              India’s first quiet-luxury clothing rental atelier. Discover iconic corsets, couture co-ords, and evening dresses from top wardrobes for celebrations that deserve a once-in-a-lifetime silhouette.
+            </p>
+
+            <!-- Quick Rental Date Selector -->
+            <div class="bg-white p-4 border border-stone-200 rounded shadow-sm max-w-md space-y-3">
+              <div class="text-[10px] uppercase tracking-[1.5px] font-bold text-plum flex items-center justify-between">
+                <span>Reserve An Outfit For Your Event</span>
+                <span class="text-stone-400">Step 01</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <input type="text" placeholder="Event Date (DD/MM)" class="w-full text-xs p-2.5 bg-stone-50 border border-stone-200 rounded outline-none focus:border-plum">
+                <select class="w-full text-xs p-2.5 bg-stone-50 border border-stone-200 rounded outline-none focus:border-plum text-stone-600">
+                  <option>Cocktail / Night Out</option>
+                  <option>Wedding Guest</option>
+                  <option>College Fest / Ball</option>
+                  <option>Birthday Gala</option>
+                </select>
+              </div>
+              <button class="w-full py-3 bg-plum text-gold font-sans text-xs uppercase tracking-[2px] font-bold rounded hover:bg-plum-dark transition-all flex items-center justify-center gap-2">
+                Explore Available Looks <span>↗</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-8 border-t border-stone-200/80 flex items-center justify-between text-[11px] text-stone-500 font-mono">
+            <span>CURATION #01 · SIR REF</span>
+            <span>CAMPUS DELIVERIES: SAME-DAY</span>
+          </div>
+        </div>
+
+        <!-- Right: Tall Runway Canvas with Lookbook Navigator -->
+        <div class="lg:col-span-7 relative bg-stone-100 overflow-hidden group min-h-[480px]">
+          <img src="assets/images/photo-1515886657613-9f3515b0c78f.jpg" alt="Wedelia Lookbook" class="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-8 lg:p-12 text-white">
+            <span class="text-gold font-mono text-xs uppercase tracking-[2px] mb-2">LOOK 01 · PARISIAN CAFÉ CHIC</span>
+            <div class="flex items-end justify-between">
+              <div>
+                <h3 class="font-cormorant text-3xl lg:text-4xl italic font-normal">Silk Corset & Cascading Tier Skirt</h3>
+                <p class="text-white/80 text-xs mt-1">Rental: ₹299 · Security Deposit: ₹400 · Size M</p>
+              </div>
+              <button class="px-5 py-2.5 bg-white text-ink text-xs uppercase tracking-[1.5px] font-bold rounded hover:bg-gold transition-colors">
+                Quick Borrow
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Concept 1 Curated Archive (Lookbook Grid) -->
+      <section id="c1-archive" class="py-24 px-6 lg:px-16 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row items-baseline justify-between border-b border-stone-200 pb-6 mb-12">
+          <div>
+            <span class="text-[10px] tracking-[2px] uppercase text-plum font-bold font-mono">Archive Edit 2026</span>
+            <h2 class="font-cormorant text-4xl lg:text-5xl font-light text-ink mt-1">Selected Garments Available for Handover</h2>
+          </div>
+          <div class="flex gap-4 text-xs font-mono uppercase tracking-wider text-stone-500 mt-4 md:mt-0">
+            <span class="text-plum border-b border-plum font-bold pb-1 cursor-pointer">All Occasions</span>
+            <span class="hover:text-plum cursor-pointer">Cocktails</span>
+            <span class="hover:text-plum cursor-pointer">Festivals</span>
+            <span class="hover:text-plum cursor-pointer">Romantic Edits</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Card 1 -->
+          <article class="group">
+            <div class="relative aspect-[3/4] overflow-hidden bg-stone-100 mb-4 rounded-sm">
+              <img src="assets/images/photo-1529139574466-a303027c1d8b.jpg" alt="Dark Romance" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <span class="absolute top-3 left-3 px-2 py-1 bg-white/90 text-plum text-[9px] uppercase tracking-wider font-bold">Verified Outfit</span>
+              <button class="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-white text-plum flex items-center justify-center text-sm shadow hover:bg-gold transition-colors">♡</button>
+            </div>
+            <div class="flex justify-between items-start text-xs">
+              <div>
+                <h4 class="font-cormorant text-xl font-normal text-ink group-hover:text-plum transition-colors">Dark Romance Lace Top</h4>
+                <p class="text-stone-500 text-[11px] mt-0.5">Concert · Night out · Photoshoot</p>
+              </div>
+              <div class="text-right">
+                <span class="font-serif font-bold text-plum text-sm">₹249</span>
+                <p class="text-[9px] text-stone-400">/ 3-day event</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="group">
+            <div class="relative aspect-[3/4] overflow-hidden bg-stone-100 mb-4 rounded-sm">
+              <img src="assets/images/photo-1490481651871-ab68de25d43d.jpg" alt="Sage Garden" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <span class="absolute top-3 left-3 px-2 py-1 bg-white/90 text-plum text-[9px] uppercase tracking-wider font-bold">Boutique Archive</span>
+              <button class="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-white text-plum flex items-center justify-center text-sm shadow hover:bg-gold transition-colors">♡</button>
+            </div>
+            <div class="flex justify-between items-start text-xs">
+              <div>
+                <h4 class="font-cormorant text-xl font-normal text-ink group-hover:text-plum transition-colors">Sage Garden Co-ord</h4>
+                <p class="text-stone-500 text-[11px] mt-0.5">Campus day · Brunch · Day out</p>
+              </div>
+              <div class="text-right">
+                <span class="font-serif font-bold text-plum text-sm">₹279</span>
+                <p class="text-[9px] text-stone-400">/ 3-day event</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="group">
+            <div class="relative aspect-[3/4] overflow-hidden bg-stone-100 mb-4 rounded-sm">
+              <img src="assets/images/photo-1539109136881-3be0616acf4b.jpg" alt="Boho Sunset" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <span class="absolute top-3 left-3 px-2 py-1 bg-white/90 text-plum text-[9px] uppercase tracking-wider font-bold">Featured Set</span>
+              <button class="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-white text-plum flex items-center justify-center text-sm shadow hover:bg-gold transition-colors">♡</button>
+            </div>
+            <div class="flex justify-between items-start text-xs">
+              <div>
+                <h4 class="font-cormorant text-xl font-normal text-ink group-hover:text-plum transition-colors">Bohemian Sunset Set</h4>
+                <p class="text-stone-500 text-[11px] mt-0.5">Fest · Cultural evening · Gala</p>
+              </div>
+              <div class="text-right">
+                <span class="font-serif font-bold text-plum text-sm">₹349</span>
+                <p class="text-[9px] text-stone-400">/ 3-day event</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="group">
+            <div class="relative aspect-[3/4] overflow-hidden bg-stone-100 mb-4 rounded-sm">
+              <img src="assets/images/photo-1496747611176-843222e1e57c.jpg" alt="Crimson Garden" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <span class="absolute top-3 left-3 px-2 py-1 bg-white/90 text-plum text-[9px] uppercase tracking-wider font-bold">Main Character</span>
+              <button class="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-white text-plum flex items-center justify-center text-sm shadow hover:bg-gold transition-colors">♡</button>
+            </div>
+            <div class="flex justify-between items-start text-xs">
+              <div>
+                <h4 class="font-cormorant text-xl font-normal text-ink group-hover:text-plum transition-colors">Crimson Garden Dress</h4>
+                <p class="text-stone-500 text-[11px] mt-0.5">Birthday · Date · Celebration</p>
+              </div>
+              <div class="text-right">
+                <span class="font-serif font-bold text-plum text-sm">₹329</span>
+                <p class="text-[9px] text-stone-400">/ 3-day event</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Concept 1 Editorial Callout -->
+      <section class="bg-plum text-white py-20 px-8 text-center border-t border-plum-dark">
+        <span class="font-mono text-gold text-xs uppercase tracking-[3px]">The Circular Wardrobe Accord</span>
+        <h3 class="font-cormorant text-3xl lg:text-5xl font-light italic max-w-2xl mx-auto my-6 leading-tight">
+          “You don't need a new wardrobe for every occasion. You only need the right piece, for that singular unforgettable night.”
+        </h3>
+        <p class="text-xs text-stone-300 font-mono tracking-widest uppercase">Wedelia Studio · Peer Rental Ecosystem</p>
+      </section>
+    </div>
+
+
+    <!-- ########################################################
+         CONCEPT 02: "THE ARCHITECTURAL ATELIER" (Ref: Roland Mouret)
+         3-Column Haute Couture grid, floating metadata, crisp hairlines
+         ######################################################## -->
+    <div id="concept-2" class="concept-screen hidden">
+      <!-- Top Micro Bar -->
+      <div class="bg-ink text-gold/90 text-[10px] tracking-[2px] font-mono py-2 px-6 flex justify-between items-center border-b border-white/10">
+        <span>ARCHITECTURAL READY-TO-RENT / PARISIAN DISCIPLINE</span>
+        <span>DELHI CAMPUS DISPATCH: 24H TRACKED</span>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="border-b border-stone-300 bg-white px-8 lg:px-16 py-5 flex items-center justify-between">
+        <div class="w-1/3 flex items-center gap-6 text-xs uppercase tracking-[2px] font-bold text-stone-800">
+          <a href="#" class="hover:text-plum">Collection [Grid: 3]</a>
+          <a href="#" class="hover:text-plum hidden md:inline">Atelier</a>
+        </div>
+        <div class="w-1/3 flex justify-center">
+          <img src="assets/logo.svg" alt="Wedelia" class="h-9 w-auto">
+        </div>
+        <div class="w-1/3 flex justify-end items-center gap-4 text-xs font-mono uppercase text-stone-600">
+          <span class="hidden md:inline">INDEX 2026</span>
+          <span class="px-3 py-1 bg-plum text-gold rounded-full font-bold">Borrow Wardrobe</span>
+        </div>
+      </nav>
+
+      <!-- Architectural Hero -->
+      <section class="border-b border-stone-300 px-8 lg:px-16 py-20 lg:py-28 bg-[#f7f5f0] text-center">
+        <span class="text-[11px] font-mono tracking-[4px] text-red font-bold uppercase block mb-4">ARCHIVE 2026 // GRID EDITION</span>
+        <h1 class="font-cinzel text-4xl lg:text-7xl font-normal tracking-wide text-ink mb-6">
+          SCULPTURAL FORM.<br>
+          <span class="text-plum italic font-cormorant font-light text-5xl lg:text-8xl">Temporary Custody.</span>
+        </h1>
+        <p class="max-w-xl mx-auto text-stone-600 text-sm font-sans leading-relaxed mb-10">
+          Precision-cut silhouettes, dramatic corsetry, and artisanal festive wear curated from vetted wardrobes. Available for 72-hour rental with certified ozone sanitization.
+        </p>
+
+        <!-- Floating Meta Ticker -->
+        <div class="inline-flex flex-wrap items-center justify-center gap-6 border-y border-stone-300 py-4 px-8 text-xs font-mono uppercase text-stone-700">
+          <span>[ 100% OZONE CLEANED ]</span>
+          <span>·</span>
+          <span>[ SECURITY DEPOSIT PROTECTED ]</span>
+          <span>·</span>
+          <span>[ ZERO FAST-FASHION FOOTPRINT ]</span>
+        </div>
+      </section>
+
+      <!-- Signature Roland Mouret 3-Column Grid -->
+      <section class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-stone-300 border border-stone-300">
+          
+          <!-- Column Item 1 -->
+          <div class="bg-white p-8 group flex flex-col justify-between min-h-[640px] hover:bg-stone-50 transition-colors">
+            <div class="flex justify-between items-center text-[10px] font-mono uppercase tracking-wider text-stone-400 mb-4">
+              <span>PLATE 01 / 06</span>
+              <span class="text-plum font-bold">READY TO DISPATCH</span>
+            </div>
+            <div class="relative overflow-hidden aspect-[3/4] my-auto">
+              <img src="assets/images/photo-1515886657613-9f3515b0c78f.jpg" alt="Item 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            </div>
+            <div class="pt-6 border-t border-stone-200">
+              <h3 class="font-cinzel text-lg font-bold text-ink">Parisian Floral Corset</h3>
+              <p class="text-xs text-stone-500 mt-1">Layered drape skirt set in espresso & ivory</p>
+              <div class="flex justify-between items-baseline mt-4 pt-3 border-t border-stone-100">
+                <span class="font-mono text-plum font-bold text-sm">RENT ₹299 <span class="text-[10px] text-stone-400 font-normal">/ EVENT</span></span>
+                <button class="text-xs font-mono uppercase tracking-widest text-ink hover:text-plum font-bold">RESERVE →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column Item 2 -->
+          <div class="bg-white p-8 group flex flex-col justify-between min-h-[640px] hover:bg-stone-50 transition-colors">
+            <div class="flex justify-between items-center text-[10px] font-mono uppercase tracking-wider text-stone-400 mb-4">
+              <span>PLATE 02 / 06</span>
+              <span class="text-red font-bold">HIGH DEMAND</span>
+            </div>
+            <div class="relative overflow-hidden aspect-[3/4] my-auto">
+              <img src="assets/images/photo-1524504388940-b1c1722653e1.jpg" alt="Item 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            </div>
+            <div class="pt-6 border-t border-stone-200">
+              <h3 class="font-cinzel text-lg font-bold text-ink">Midnight Noir Lace Gown</h3>
+              <p class="text-xs text-stone-500 mt-1">Architectural boning with sheer sleeve drape</p>
+              <div class="flex justify-between items-baseline mt-4 pt-3 border-t border-stone-100">
+                <span class="font-mono text-plum font-bold text-sm">RENT ₹329 <span class="text-[10px] text-stone-400 font-normal">/ EVENT</span></span>
+                <button class="text-xs font-mono uppercase tracking-widest text-ink hover:text-plum font-bold">RESERVE →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column Item 3 -->
+          <div class="bg-white p-8 group flex flex-col justify-between min-h-[640px] hover:bg-stone-50 transition-colors">
+            <div class="flex justify-between items-center text-[10px] font-mono uppercase tracking-wider text-stone-400 mb-4">
+              <span>PLATE 03 / 06</span>
+              <span class="text-plum font-bold">EXCLUSIVE</span>
+            </div>
+            <div class="relative overflow-hidden aspect-[3/4] my-auto">
+              <img src="assets/images/photo-1539008835657-9e8e9680c956.jpg" alt="Item 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            </div>
+            <div class="pt-6 border-t border-stone-200">
+              <h3 class="font-cinzel text-lg font-bold text-ink">Golden Hour Drape Dress</h3>
+              <p class="text-xs text-stone-500 mt-1">High-split evening dress in warm ochre print</p>
+              <div class="flex justify-between items-baseline mt-4 pt-3 border-t border-stone-100">
+                <span class="font-mono text-plum font-bold text-sm">RENT ₹299 <span class="text-[10px] text-stone-400 font-normal">/ EVENT</span></span>
+                <button class="text-xs font-mono uppercase tracking-widest text-ink hover:text-plum font-bold">RESERVE →</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+
+    <!-- ########################################################
+         CONCEPT 03: "THE TOKYO SPEC SHEET" (Ref: United Athle)
+         Brutalist technical grid, monospace catalog numbers, dry-clean specs
+         ######################################################## -->
+    <div id="concept-3" class="concept-screen hidden bg-stone-100 text-stone-900 font-mono">
+      <!-- United Athle Style Top Coordinate Bar -->
+      <div class="border-b border-black px-6 py-2 flex justify-between items-center text-[11px] bg-white">
+        <div>WEDELIA // SPEC-CATALOG: 2026-FW // TOKYO-DELHI SPECIFICATION</div>
+        <div class="flex gap-4">
+          <span>LAT: 28.6139° N</span>
+          <span>UNIT WEIGHT: 320-800 GSM</span>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <header class="border-b border-black bg-white px-6 lg:px-12 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <img src="assets/logo.svg" alt="Wedelia" class="h-8 w-auto">
+          <span class="border-l border-black pl-3 text-xs font-bold uppercase tracking-widest">AUTHENTIC GARMENT RENTAL ARCHIVE</span>
+        </div>
+        <div class="flex items-center gap-6 text-xs uppercase font-bold">
+          <span class="px-2 py-0.5 bg-black text-white">LOT: #WDL-DU</span>
+          <button class="hover:underline">FILTER BY GSM ↗</button>
+          <button class="px-3 py-1 bg-red text-white">LEND SPECIMEN</button>
+        </div>
+      </header>
+
+      <!-- Stark Brutalist Hero Banner -->
+      <section class="border-b border-black grid grid-cols-1 lg:grid-cols-12 bg-white">
+        <div class="lg:col-span-8 p-8 lg:p-16 border-b lg:border-b-0 lg:border-r border-black flex flex-col justify-between">
+          <div>
+            <div class="text-xs uppercase tracking-widest text-red font-bold mb-4">ITEM NO. WDL-00-ARCHIVE // SUSTAINABILITY STANDARD</div>
+            <h1 class="font-syne text-5xl lg:text-7xl font-extrabold uppercase tracking-tight leading-none text-black mb-6">
+              HEAVY OCCASION WEAR SPECIFICATION.
+            </h1>
+            <p class="font-mono text-sm leading-relaxed text-stone-600 max-w-xl mb-8">
+              Rigorous peer-rental standard for Indian university fest season. Cleaned to hospital surgical grade ozone standards between each event. Every listing audited for seam integrity and genuine fabric density.
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-3 border border-black p-4 bg-stone-50 text-xs">
+            <div>
+              <span class="text-stone-400 block text-[10px]">AVG RENTAL TIME</span>
+              <strong class="text-lg font-bold text-plum">72 HOURS</strong>
+            </div>
+            <div class="border-x border-black px-4">
+              <span class="text-stone-400 block text-[10px]">VERIFIED LISTINGS</span>
+              <strong class="text-lg font-bold text-black">124 PIECES</strong>
+            </div>
+            <div class="pl-4">
+              <span class="text-stone-400 block text-[10px]">OZONE SANITIZED</span>
+              <strong class="text-lg font-bold text-red">CERTIFIED ✓</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-4 p-8 bg-stone-50 flex flex-col justify-between">
+          <div class="space-y-4">
+            <span class="text-xs font-bold text-black border-b border-black pb-1 block">SPEC FILTER MATRIX:</span>
+            <div class="space-y-2 text-xs">
+              <label class="flex items-center justify-between p-2 bg-white border border-black cursor-pointer hover:bg-stone-100">
+                <span>[ ] 01. WESTERN CO-ORDS & CORSETS</span>
+                <span class="text-stone-400">14 QTY</span>
+              </label>
+              <label class="flex items-center justify-between p-2 bg-white border border-black cursor-pointer hover:bg-stone-100">
+                <span>[ ] 02. NOCTURNE LACE & EVENING GOWNS</span>
+                <span class="text-stone-400">22 QTY</span>
+              </label>
+              <label class="flex items-center justify-between p-2 bg-white border border-black cursor-pointer hover:bg-stone-100">
+                <span>[ ] 03. TRADITIONAL FESTIVE LEHENGAS</span>
+                <span class="text-stone-400">31 QTY</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="mt-8 pt-4 border-t border-black text-[11px] text-stone-500">
+            BARCODE: |||||| | |||| ||| ||||||| 2026-WDL
+          </div>
+        </div>
+      </section>
+
+      <!-- Technical Spec Garment Grid -->
+      <section class="p-8 lg:p-12 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Spec Item 1 -->
+          <div class="border border-black bg-white p-4 group">
+            <div class="flex justify-between items-center text-[10px] pb-2 border-b border-stone-200">
+              <span class="font-bold text-plum">SPEC #WDL-201</span>
+              <span>GRADE: EXCELLENT (A+)</span>
+            </div>
+            <div class="aspect-[4/3] my-3 overflow-hidden bg-stone-100 border border-stone-200">
+              <img src="assets/images/photo-1515886657613-9f3515b0c78f-1.jpg" alt="Spec 1" class="w-full h-full object-cover">
+            </div>
+            <div class="space-y-1.5 text-xs">
+              <div class="font-bold text-base">PARISIAN CAFÉ CHIC SET</div>
+              <div class="text-stone-500 text-[11px]">CORSET: BONED SILK · SKIRT: TIERED CREPE</div>
+              <div class="flex justify-between pt-2 border-t border-stone-200 text-sm font-bold">
+                <span class="text-plum">₹299 / EVENT</span>
+                <span class="text-stone-400 font-normal text-xs">DEPOSIT: ₹400</span>
+              </div>
+            </div>
+            <button class="w-full mt-3 py-2 bg-black text-white hover:bg-plum text-xs uppercase font-bold transition-colors">
+              INSPECT SPECIFICATION ↗
+            </button>
+          </div>
+
+          <!-- Spec Item 2 -->
+          <div class="border border-black bg-white p-4 group">
+            <div class="flex justify-between items-center text-[10px] pb-2 border-b border-stone-200">
+              <span class="font-bold text-plum">SPEC #WDL-208</span>
+              <span>GRADE: MINT (AAA)</span>
+            </div>
+            <div class="aspect-[4/3] my-3 overflow-hidden bg-stone-100 border border-stone-200">
+              <img src="assets/images/photo-1524504388940-b1c1722653e1.jpg" alt="Spec 2" class="w-full h-full object-cover">
+            </div>
+            <div class="space-y-1.5 text-xs">
+              <div class="font-bold text-base">MIDNIGHT GOTHIC LOOK</div>
+              <div class="text-stone-500 text-[11px]">BLACK LACE STATEMENT · SHEER ACCENTS</div>
+              <div class="flex justify-between pt-2 border-t border-stone-200 text-sm font-bold">
+                <span class="text-plum">₹329 / EVENT</span>
+                <span class="text-stone-400 font-normal text-xs">DEPOSIT: ₹450</span>
+              </div>
+            </div>
+            <button class="w-full mt-3 py-2 bg-black text-white hover:bg-plum text-xs uppercase font-bold transition-colors">
+              INSPECT SPECIFICATION ↗
+            </button>
+          </div>
+
+          <!-- Spec Item 3 -->
+          <div class="border border-black bg-white p-4 group">
+            <div class="flex justify-between items-center text-[10px] pb-2 border-b border-stone-200">
+              <span class="font-bold text-plum">SPEC #WDL-210</span>
+              <span>GRADE: VERY GOOD (A)</span>
+            </div>
+            <div class="aspect-[4/3] my-3 overflow-hidden bg-stone-100 border border-stone-200">
+              <img src="assets/images/photo-1509631179647-0177331693ae.jpg" alt="Spec 3" class="w-full h-full object-cover">
+            </div>
+            <div class="space-y-1.5 text-xs">
+              <div class="font-bold text-base">SOFT GOTH LAYERED LOOK</div>
+              <div class="text-stone-500 text-[11px]">OVERSIZED TEXTURED KNIT & LACE SKIRT</div>
+              <div class="flex justify-between pt-2 border-t border-stone-200 text-sm font-bold">
+                <span class="text-plum">₹279 / EVENT</span>
+                <span class="text-stone-400 font-normal text-xs">DEPOSIT: ₹350</span>
+              </div>
+            </div>
+            <button class="w-full mt-3 py-2 bg-black text-white hover:bg-plum text-xs uppercase font-bold transition-colors">
+              INSPECT SPECIFICATION ↗
+            </button>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+
+    <!-- ########################################################
+         CONCEPT 04: "THE TACTILE COLLAGE" (Ref: Rino & Pelle)
+         Sensual fabrics, asymmetric overlaps, layered depth, sticker badges
+         ######################################################## -->
+    <div id="concept-4" class="concept-screen hidden bg-[#f6efe9] text-ink overflow-hidden">
+      <!-- Rino & Pelle Style Floating Nav -->
+      <nav class="max-w-6xl mx-auto px-6 pt-6">
+        <div class="bg-white/80 backdrop-blur-xl border border-stone-300/80 rounded-full py-3.5 px-8 flex items-center justify-between shadow-sm">
+          <div class="flex items-center gap-6 text-xs uppercase tracking-widest font-semibold text-stone-600">
+            <a href="#" class="hover:text-plum">The Stories</a>
+            <a href="#" class="hover:text-plum">Touch & Texture</a>
+          </div>
+          <img src="assets/logo.svg" alt="Wedelia" class="h-8 w-auto">
+          <div class="flex items-center gap-4">
+            <span class="text-xs uppercase font-bold text-plum">Borrow Look</span>
+            <div class="w-2 h-2 rounded-full bg-red animate-ping"></div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Asymmetrical Overlapping Hero -->
+      <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 lg:py-24 relative">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          
+          <!-- Left Text Block -->
+          <div class="lg:col-span-6 space-y-6 lg:pr-8">
+            <span class="inline-block px-3 py-1 bg-gold text-plum-dark font-sans font-bold text-xs uppercase tracking-[2px] rounded-full shadow-sm">
+              Sense of Occasion 2026
+            </span>
+            <h1 class="font-cormorant text-5xl lg:text-7xl font-normal leading-[1.08] text-ink">
+              Feel the silk.<br>
+              <em class="font-light italic text-plum">Wear the feeling.</em><br>
+              Pass it on.
+            </h1>
+            <p class="text-stone-600 text-sm lg:text-base leading-relaxed">
+              Why let luxury gather dust in a wardrobe? WEDELIA turns occasion dressing into a tactile, shared sensory experience. Handcrafted textures, velvet bodices, and floral chiffons available for your next defining moment.
+            </p>
+            <div class="pt-4 flex items-center gap-4">
+              <a href="#c4-collection" class="px-8 py-3.5 bg-plum text-gold font-bold text-xs uppercase tracking-widest rounded-full shadow-lg hover:bg-plum-dark transition-all">
+                Touch The Collection ↗
+              </a>
+              <span class="text-xs text-stone-500 font-serif italic">Free trial returns on campus</span>
+            </div>
+          </div>
+
+          <!-- Right Overlapping Collage Visual -->
+          <div class="lg:col-span-6 relative mt-8 lg:mt-0">
+            <!-- Background Layer Image -->
+            <div class="w-4/5 aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative z-10 ml-auto">
+              <img src="assets/images/photo-1515886657613-9f3515b0c78f.jpg" alt="Tactile Model" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Overlapping Foreground Card -->
+            <div class="absolute -bottom-8 -left-4 lg:-left-8 w-3/5 bg-white p-6 rounded-2xl shadow-xl z-20 border border-stone-200 space-y-3">
+              <span class="text-[10px] font-mono text-plum uppercase tracking-wider font-bold">GARMENT PROFILE #04</span>
+              <h4 class="font-cormorant text-2xl text-ink font-bold">Romantic Sunset Corset</h4>
+              <p class="text-xs text-stone-500">Curated from St. Stephen's Wardrobe Archive. Worn twice. Dry cleaned yesterday.</p>
+              <div class="flex justify-between items-center pt-2 border-t border-stone-100">
+                <span class="font-serif font-bold text-plum">₹349 / weekend</span>
+                <span class="w-6 h-6 rounded-full bg-gold/30 text-plum flex items-center justify-center text-xs">↗</span>
+              </div>
+            </div>
+
+            <!-- Floating Stamp Sticker -->
+            <div class="absolute -top-6 right-8 w-24 h-24 rounded-full bg-red text-white flex flex-col items-center justify-center text-center p-2 text-[10px] font-bold tracking-wider uppercase rotate-12 shadow-lg z-30">
+              <span>ZERO</span>
+              <span class="text-gold font-serif text-base">WASTE</span>
+              <span>RENTAL</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+
+    <!-- ########################################################
+         CONCEPT 05: "THE MIDNIGHT VELVET"
+         Dark mode, after-dark gala, shimmering gold foil typography
+         ######################################################## -->
+    <div id="concept-5" class="concept-screen hidden bg-plum-deep text-white min-h-screen">
+      <!-- Dark Gala Nav -->
+      <nav class="border-b border-plum/30 bg-black/40 backdrop-blur-xl px-8 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-6 text-xs uppercase tracking-[2px] text-stone-400">
+          <a href="#" class="text-gold hover:text-white">After-Dark Vault</a>
+          <a href="#" class="hover:text-gold hidden md:inline">Cocktails & Balls</a>
+        </div>
+        <img src="assets/logo.svg" alt="Wedelia" class="h-9 w-auto filter drop-shadow-[0_0_12px_rgba(242,217,92,0.3)]">
+        <div class="flex items-center gap-4 text-xs font-mono">
+          <span class="px-3 py-1 rounded bg-gold/15 text-gold border border-gold/40">VIP PASS</span>
+        </div>
+      </nav>
+
+      <!-- Dramatic Nocturne Hero -->
+      <section class="max-w-6xl mx-auto px-6 py-24 text-center relative">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-plum/40 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <span class="text-gold font-mono text-xs uppercase tracking-[4px] block mb-4">THE AFTER-HOURS CLOSET // WEDELIA NOCTURNE</span>
+        <h1 class="font-serif text-5xl lg:text-8xl font-normal text-white tracking-tight leading-[1.05] mb-6">
+          Dressed for the<br>
+          <em class="font-cormorant italic text-gold font-light">2:00 AM applause.</em>
+        </h1>
+        <p class="max-w-xl mx-auto text-stone-300 text-sm lg:text-base leading-relaxed mb-10">
+          When the lights drop and the champagne opens. Black-tie statement gowns, midnight lace, and dramatic velvet pieces ready for your most electric evenings.
+        </p>
+
+        <div class="inline-flex gap-4">
+          <button class="px-8 py-4 rounded-full bg-gold text-plum-deep font-bold text-xs uppercase tracking-widest hover:bg-gold-light transition-all shadow-[0_0_30px_rgba(242,217,92,0.3)]">
+            Open The Midnight Locker ↗
+          </button>
+        </div>
+
+        <!-- 3 Spotlight Night Outfits -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 text-left">
+          <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-gold/50 transition-colors group">
+            <div class="aspect-[3/4] rounded-lg overflow-hidden bg-black mb-4">
+              <img src="assets/images/photo-1524504388940-b1c1722653e1.jpg" alt="Night 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <h4 class="font-serif text-lg text-white">Midnight Gothic Noir</h4>
+            <p class="text-xs text-stone-400 mt-1">Concert & Theme Ball · ₹329</p>
+          </div>
+
+          <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-gold/50 transition-colors group">
+            <div class="aspect-[3/4] rounded-lg overflow-hidden bg-black mb-4">
+              <img src="assets/images/photo-1529139574466-a303027c1d8b.jpg" alt="Night 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <h4 class="font-serif text-lg text-white">Dark Romance Lace Crop</h4>
+            <p class="text-xs text-stone-400 mt-1">After-Dark Edition · ₹249</p>
+          </div>
+
+          <div class="bg-white/5 border border-white/10 rounded-xl p-4 hover:border-gold/50 transition-colors group">
+            <div class="aspect-[3/4] rounded-lg overflow-hidden bg-black mb-4">
+              <img src="assets/images/photo-1509631179647-0177331693ae.jpg" alt="Night 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            </div>
+            <h4 class="font-serif text-lg text-white">Soft Goth Layered Set</h4>
+            <p class="text-xs text-stone-400 mt-1">Winter Fest & Gala · ₹279</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- ########################################################
+         CONCEPT 06: "THE CAMPUS ATELIER"
+         Gen-Z high-fashion peer exchange, vibrant community, fest wardrobe
+         ######################################################## -->
+    <div id="concept-6" class="concept-screen hidden bg-stone-50 text-ink">
+      <!-- Campus Ticker -->
+      <div class="bg-plum text-gold text-xs font-mono py-2 px-6 overflow-hidden border-b border-plum-dark">
+        <div class="animate-marquee whitespace-nowrap flex gap-12 font-bold uppercase tracking-wider">
+          <span>DELHI UNIVERSITY CAMPUS CLOSET RUNNING LIVE</span>
+          <span>✳</span>
+          <span>OVER ₹4,20,000 SAVED ON FRESHERS & FAREWELL FITS</span>
+          <span>✳</span>
+          <span>LEND YOUR ETHNIC WEAR & EARN ₹3,000/MONTH</span>
+          <span>✳</span>
+          <span>DELHI UNIVERSITY CAMPUS CLOSET RUNNING LIVE</span>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <nav class="bg-white border-b border-stone-200 px-6 lg:px-12 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src="assets/logo.svg" alt="Wedelia" class="h-8 w-auto">
+          <span class="px-2 py-0.5 rounded bg-red text-white text-[10px] font-bold uppercase">Campus Peer</span>
+        </div>
+        <div class="hidden md:flex items-center gap-6 text-xs font-bold uppercase text-stone-700">
+          <a href="#" class="text-plum">Browse Campus Wardrobe</a>
+          <a href="#" class="hover:text-plum">Host Your Closet</a>
+          <a href="#" class="hover:text-plum">How Peer Renting Works</a>
+        </div>
+        <button class="px-4 py-2 bg-plum text-gold text-xs font-bold uppercase tracking-wider rounded">
+          List Your Outfit ↗
+        </button>
+      </nav>
+
+      <!-- Campus Hero -->
+      <section class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-gold/30 text-plum-dark text-xs font-mono font-bold rounded-full">
+            🎓 St. Stephen's · LSR · SRCC · Miranda House Hub
+          </div>
+          <h1 class="font-syne text-4xl lg:text-6xl font-extrabold uppercase tracking-tight text-ink leading-none">
+            Why buy a ₹15,000 dress for 3 hours of fest photos?
+          </h1>
+          <p class="text-stone-600 text-sm lg:text-base leading-relaxed">
+            Borrow high-fashion corsets, dresses, and lehengas directly from verified students on your campus. Return unwashed—we handle professional ozone eco-cleaning and handover.
+          </p>
+          <div class="flex flex-wrap gap-4 pt-2">
+            <button class="px-6 py-3.5 bg-plum text-white font-bold text-xs uppercase tracking-wider rounded shadow hover:bg-plum-dark">
+              Rent Today from ₹199
+            </button>
+            <button class="px-6 py-3.5 bg-white border border-stone-300 font-bold text-xs uppercase tracking-wider rounded hover:bg-stone-50">
+              Calculate Lender Earnings
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-stone-200 shadow-xl space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-stone-100">
+            <span class="text-xs font-bold text-plum">TRENDING ON CAMPUS THIS WEEK</span>
+            <span class="text-xs text-red font-mono font-bold">● LIVE DEMAND</span>
+          </div>
+          <div class="flex items-center gap-4 p-2 rounded bg-stone-50">
+            <img src="assets/images/photo-1490481651871-ab68de25d43d.jpg" class="w-16 h-16 rounded object-cover">
+            <div>
+              <div class="text-xs font-bold">Sage Garden Co-ord</div>
+              <div class="text-[11px] text-stone-500">Lender: Ria (SRCC '25)</div>
+              <div class="text-xs font-mono font-bold text-plum mt-1">₹279 / Fest Weekend</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 p-2 rounded bg-stone-50">
+            <img src="assets/images/photo-1525507119028-ed4c629a60a3.jpg" class="w-16 h-16 rounded object-cover">
+            <div>
+              <div class="text-xs font-bold">Vintage Band Tee & Cheetah Set</div>
+              <div class="text-[11px] text-stone-500">Lender: Tanya (LSR '26)</div>
+              <div class="text-xs font-mono font-bold text-plum mt-1">₹249 / Concert Day</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- ########################################################
+         CONCEPT 07: "THE CINEMA HORIZON"
+         Widescreen 2.39:1 aspect ratio, cinematic subtitles, filmstrip runway
+         ######################################################## -->
+    <div id="concept-7" class="concept-screen hidden bg-black text-white min-h-screen">
+      <!-- Cinema Bar -->
+      <header class="p-6 flex justify-between items-center border-b border-white/10 text-xs font-mono">
+        <div class="flex items-center gap-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-red animate-ping"></span>
+          <span>REC [●] 24FPS // 4K DCI</span>
+        </div>
+        <img src="assets/logo.svg" alt="Wedelia" class="h-8 w-auto">
+        <span>FRAME-BY-FRAME ARCHIVE</span>
+      </header>
+
+      <!-- 2.39:1 Cinematic Widescreen Viewport -->
+      <section class="max-w-7xl mx-auto px-6 py-12">
+        <div class="relative aspect-[21/9] rounded-xl overflow-hidden border border-white/20 shadow-2xl group">
+          <img src="assets/images/photo-1515886657613-9f3515b0c78f.jpg" alt="Cinema Horizon" class="w-full h-full object-cover object-center filter brightness-90 contrast-105">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 p-8 lg:p-12 flex flex-col justify-between">
+            <div class="flex justify-between items-start text-xs font-mono text-gold">
+              <span>SCENE 01: THE FESTIVAL ARRIVAL</span>
+              <span>TIME: 20:45 HRS</span>
+            </div>
+            
+            <div class="max-w-2xl">
+              <span class="text-xs uppercase tracking-[3px] font-mono text-white/70 block mb-2">CINEMATIC OCCASION WEAR</span>
+              <h2 class="font-cormorant text-3xl lg:text-6xl text-white font-light italic">
+                “Every entrance is a scene. We provide the costume.”
+              </h2>
+              <div class="mt-4 flex items-center gap-4">
+                <span class="px-3 py-1 bg-gold text-black text-xs font-bold font-mono">RENT LOOK: ₹299</span>
+                <span class="text-xs text-stone-300 font-mono">Audio: Silk Organza Rustle</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cinema Frame Reel Strips -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+          <div class="border border-white/20 p-2 bg-stone-950">
+            <div class="aspect-video overflow-hidden mb-2">
+              <img src="assets/images/photo-1539109136881-3be0616acf4b.jpg" class="w-full h-full object-cover">
+            </div>
+            <div class="text-[10px] font-mono text-stone-400">CUT 02 // BOHO SUNSET SET</div>
+          </div>
+          <div class="border border-white/20 p-2 bg-stone-950">
+            <div class="aspect-video overflow-hidden mb-2">
+              <img src="assets/images/photo-1496747611176-843222e1e57c.jpg" class="w-full h-full object-cover">
+            </div>
+            <div class="text-[10px] font-mono text-stone-400">CUT 03 // CRIMSON GARDEN DRESS</div>
+          </div>
+          <div class="border border-white/20 p-2 bg-stone-950">
+            <div class="aspect-video overflow-hidden mb-2">
+              <img src="assets/images/photo-1483985988355-763728e1935b.jpg" class="w-full h-full object-cover">
+            </div>
+            <div class="text-[10px] font-mono text-stone-400">CUT 04 // OLIVE TIE-FRONT TOP</div>
+          </div>
+          <div class="border border-white/20 p-2 bg-stone-950">
+            <div class="aspect-video overflow-hidden mb-2">
+              <img src="assets/images/photo-1617627143750-d86bc21e42bb.jpg" class="w-full h-full object-cover">
+            </div>
+            <div class="text-[10px] font-mono text-stone-400">CUT 05 // ATELIER OWNER PIECE</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- ########################################################
+         CONCEPT 08: "THE MONOLITH GAZETTE"
+         Editorial broadsheet newspaper, drop caps, Roman numerals
+         ######################################################## -->
+    <div id="concept-8" class="concept-screen hidden bg-[#f4eee6] text-ink font-serif min-h-screen">
+      <!-- Broadsheet Masthead -->
+      <header class="max-w-7xl mx-auto px-8 pt-8 pb-4 text-center border-b-4 border-ink">
+        <div class="flex justify-between items-center text-[10px] uppercase font-mono tracking-widest text-stone-600 border-b border-ink/40 pb-2 mb-3">
+          <span>THE OCCASION CHRONICLE</span>
+          <span>ISSUE NO. IV · MMXXVI</span>
+          <span>PRICE: ₹0.00 (CIRCULAR)</span>
+        </div>
+        <div class="py-4">
+          <h1 class="text-6xl lg:text-9xl font-cinzel font-black tracking-tight text-ink leading-none">
+            WEDELIA
+          </h1>
+          <p class="text-xs lg:text-sm italic font-cormorant text-stone-700 tracking-wider mt-1">
+            The Journal of Responsible Luxury, Circular Wardrobes, and Occasion Elegance
+          </p>
+        </div>
+      </header>
+
+      <!-- Broadsheet News Layout -->
+      <section class="max-w-7xl mx-auto px-8 py-12 grid grid-cols-1 lg:grid-cols-12 gap-8 border-b-2 border-ink">
+        
+        <!-- Left Story Column (Lead Article) -->
+        <div class="lg:col-span-5 lg:border-r border-ink/30 pr-0 lg:pr-8 space-y-4">
+          <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-red">EDITORIAL ESSAY</span>
+          <h2 class="text-3xl lg:text-4xl font-normal leading-tight">
+            The End of Single-Wear Guilt in Modern Celebrations.
+          </h2>
+          <p class="text-xs leading-relaxed text-stone-700 first-letter:text-5xl first-letter:font-bold first-letter:float-left first-letter:mr-2 first-letter:text-plum font-sans">
+            It is an open secret of the modern closet: thousands of exquisite celebratory garments languish in darkness, condemned to a solitary evening of light before being forgotten in cupboards. WEDELIA breaks this cycle. By providing a curated peer-to-peer exchange for festive nightwear, campus balls, and weddings, we liberate both the garment and the wearer.
+          </p>
+          <div class="p-4 bg-stone-200/60 border-l-2 border-plum text-xs italic">
+            “To truly love a beautiful garment is to let it be witnessed again and again.”
+          </div>
+        </div>
+
+        <!-- Center Image Showcase -->
+        <div class="lg:col-span-4 flex flex-col justify-between">
+          <div class="border-2 border-ink p-2 bg-white">
+            <img src="assets/images/photo-1515886657613-9f3515b0c78f.jpg" class="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700">
+            <p class="text-[10px] font-mono text-stone-500 mt-2 text-center uppercase">
+              Fig. 1 — The Parisian Café Chic ensemble in Ivory and Espresso.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Classifieds Column -->
+        <div class="lg:col-span-3 space-y-4 font-sans text-xs">
+          <h4 class="font-serif font-bold text-base border-b border-ink pb-1 uppercase tracking-widest">
+            Gazette Classifieds
+          </h4>
+          <div class="space-y-3">
+            <div class="p-2 border-b border-stone-300">
+              <strong class="font-serif block text-sm">WANTED: Saree Lovers</strong>
+              <p class="text-stone-600 text-[11px] mt-0.5">Lend your heirloom silks for cultural evenings. 70% revenue share.</p>
+            </div>
+            <div class="p-2 border-b border-stone-300">
+              <strong class="font-serif block text-sm">RESERVE: Corset Outfits</strong>
+              <p class="text-stone-600 text-[11px] mt-0.5">Booking open for upcoming college freshers weeks.</p>
+            </div>
+            <div class="p-3 bg-plum text-gold text-center font-bold uppercase text-[10px]">
+              Apply To List Wardrobe ↗
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </div>
+
+
+    <!-- ########################################################
+         CONCEPT 09: "THE NEO-LUXE BENTO"
+         Modular interactive bento architecture, live availability matrix
+         ######################################################## -->
+    <div id="concept-9" class="concept-screen hidden bg-[#f0eaf1] text-ink min-h-screen p-6 lg:p-12">
+      <div class="max-w-7xl mx-auto space-y-6">
+        
+        <!-- Bento Top Header -->
+        <div class="bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-plum/10 shadow-sm flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <img src="assets/logo.svg" alt="Wedelia" class="h-8 w-auto">
+            <span class="text-xs font-mono text-plum font-bold bg-plum/5 px-3 py-1 rounded-full">BENTO MATRIX 2026</span>
+          </div>
+          <div class="text-xs font-mono">LIVE OCCASION RADAR: <span class="text-red font-bold">14 ACTIVE RESERVATIONS</span></div>
+        </div>
+
+        <!-- Bento Grid System -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+          
+          <!-- Bento Tile 1: Massive Hero Showcase (7 cols) -->
+          <div class="md:col-span-7 bg-white p-8 rounded-3xl border border-plum/10 shadow-lg flex flex-col justify-between min-h-[480px]">
+            <div>
+              <span class="text-xs font-mono text-red font-bold uppercase">✦ FEATURED DROP</span>
+              <h2 class="font-cormorant text-4xl lg:text-6xl text-ink font-light mt-2 mb-4 leading-tight">
+                Celebrate in what you love.<br>
+                <em class="font-normal italic text-plum">Without buying forever.</em>
+              </h2>
+              <p class="text-stone-600 text-sm max-w-md">
+                A modern bento wardrobe platform connecting occasion wear lenders with event goers.
+              </p>
+            </div>
+            <div class="flex items-center gap-4 mt-8">
+              <button class="px-6 py-3 bg-plum text-gold font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-plum-dark">
+                Reserve Look ₹299
+              </button>
+              <span class="text-xs font-mono text-stone-500">Pick up in 3 hours at North Campus</span>
+            </div>
+          </div>
+
+          <!-- Bento Tile 2: Live Outfit Preview (5 cols) -->
+          <div class="md:col-span-5 bg-plum-dark text-white p-6 rounded-3xl relative overflow-hidden flex flex-col justify-end">
+            <img src="assets/images/photo-1515886657613-9f3515b0c78f.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60">
+            <div class="relative z-10 bg-black/60 backdrop-blur-md p-4 rounded-2xl border border-white/20">
+              <span class="text-[10px] font-mono text-gold uppercase">LENDER SPOTLIGHT</span>
+              <h4 class="font-serif text-lg font-bold">Parisian Chic Two-Piece</h4>
+              <p class="text-xs text-stone-300">Available this Saturday for Campus Fêtes</p>
+            </div>
+          </div>
+
+          <!-- Bento Tile 3: Stats Matrix (4 cols) -->
+          <div class="md:col-span-4 bg-white p-6 rounded-3xl border border-plum/10 shadow-sm space-y-4">
+            <span class="text-xs font-mono text-plum font-bold">CIRCULAR METRICS</span>
+            <div class="text-3xl font-serif font-bold text-ink">940 kg</div>
+            <p class="text-xs text-stone-500">Textile consumption prevented by peer borrowing during the 2025-2026 fest term.</p>
+          </div>
+
+          <!-- Bento Tile 4: Campus Map Radar (4 cols) -->
+          <div class="md:col-span-4 bg-white p-6 rounded-3xl border border-plum/10 shadow-sm space-y-4">
+            <span class="text-xs font-mono text-red font-bold">CAMPUS LOCKERS</span>
+            <div class="text-3xl font-serif font-bold text-ink">4 Locations</div>
+            <p class="text-xs text-stone-500">Zero-contact safe exchange lockers located at key university common hubs.</p>
+          </div>
+
+          <!-- Bento Tile 5: Quick Lend CTA (4 cols) -->
+          <div class="md:col-span-4 bg-gold p-6 rounded-3xl text-plum-dark space-y-4 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-mono font-bold uppercase">MONETIZE WARDROBE</span>
+              <h3 class="font-serif text-2xl font-bold mt-1">Earn from your closet</h3>
+            </div>
+            <button class="w-full py-3 bg-plum text-white font-bold text-xs uppercase tracking-wider rounded-xl">
+              List Outfit in 2 Mins ↗
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ########################################################
+         CONCEPT 10: "THE ZEN VOID"
+         Whispering quiet luxury, 90% deliberate whitespace, kinetic cursor
+         ######################################################## -->
+    <div id="concept-10" class="concept-screen hidden bg-[#faf7f2] text-ink min-h-screen">
+      <!-- Minimalist Void Header -->
+      <nav class="max-w-5xl mx-auto px-8 py-8 flex items-center justify-between text-xs font-serif tracking-widest text-stone-500">
+        <span>ARCHIVE</span>
+        <img src="assets/logo.svg" alt="Wedelia" class="h-7 w-auto opacity-90">
+        <span>BORROW</span>
+      </nav>
+
+      <!-- Whispering Hero -->
+      <section class="max-w-3xl mx-auto px-8 py-28 text-center space-y-12">
+        <span class="text-[11px] uppercase tracking-[6px] text-plum/70 font-mono block">
+          WEDELIA // TEMPORAL SILHOUETTE
+        </span>
+
+        <h1 class="font-cormorant text-5xl lg:text-7xl font-light tracking-tight text-ink leading-tight">
+          Nothing possessed.<br>
+          <em class="italic text-plum font-normal">Everything experienced.</em><br>
+          The memory remains.
+        </h1>
+
+        <div class="max-w-md mx-auto aspect-[3/4] bg-stone-200/60 rounded overflow-hidden shadow-2xl relative group my-8">
+          <img src="assets/images/photo-1515886657613-9f3515b0c78f.jpg" class="w-full h-full object-cover filter contrast-[1.02]">
+          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center text-white">
+            <span class="font-serif italic text-lg tracking-widest">Reserve for an evening</span>
+          </div>
+        </div>
+
+        <p class="text-stone-500 text-xs font-mono max-w-sm mx-auto leading-relaxed">
+          Curated dresses & occasion wear. Zero clutter. Sustainable luxury.
+        </p>
+
+        <div class="pt-4">
+          <a href="#concept-1" onclick="switchConcept(1)" class="text-xs uppercase tracking-[3px] border-b border-plum pb-1 text-plum font-bold hover:text-plum-dark">
+            Explore All 10 Concept Paradigms ↑
+          </a>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- ========================================================
+       INTERACTIVE LOGIC & ARCHITECTURAL SPECS RUNTIME
+       ======================================================== -->
+  <script>
+    const conceptSpecs = {
+      1: {
+        name: "01. The SIR Edit (Resort & Gala)",
+        ref: "Inspired by SIR The Label (Australia)",
+        philosophy: "Airy 50/50 split-screen layout pairing a serene editorial manifesto on the left with a scrollable fashion canvas on the right. Incorporates date-first rental filtering for occasions.",
+        palette: "Linen Cream (#fbf8f2), Deep Plum (#56325f), Accent Red (#ed2d23)",
+        grid: "12-Column Responsive Split (5-col sticky copy / 7-col visual portrait)"
+      },
+      2: {
+        name: "02. The Architectural Atelier",
+        ref: "Inspired by Roland Mouret (Paris / London)",
+        philosophy: "Haute couture ready-to-wear discipline with an exact 3-column architectural grid, hair-thin divider lines, and floating technical certification chips (ozone-cleaning, deposit terms).",
+        palette: "Stark Paper White, Monochromatic Stone, Deep Plum, Hairline Gold",
+        grid: "3-Column Rigid Architectural Matrix (Roland Mouret grid=3)"
+      },
+      3: {
+        name: "03. The Tokyo Spec Sheet",
+        ref: "Inspired by United Athle (Japan)",
+        philosophy: "Heavy-type Japanese brutalist craftsmanship. Treats each garment as a certified engineering specimen with catalog numbers, GSM fabric weight, and ozone dry-clean logs.",
+        palette: "Stark White, Technical Black, Space Mono Typography, Crimson Stamp",
+        grid: "High-density Modular Tabular Quadrants with Barcodes"
+      },
+      4: {
+        name: "04. The Tactile Collage",
+        ref: "Inspired by Rino & Pelle (Netherlands)",
+        philosophy: "Layered sensory depth with overlapping z-indices, rounded floating cards, warm textiles, and circular sticker badges rotated at 12 degrees.",
+        palette: "Soft Sand (#f6efe9), Warm Textures, Gold Pill Badges, Plum Shadows",
+        grid: "Asymmetrical Staggered Mosaic & Overlapping Cards"
+      },
+      5: {
+        name: "05. The Midnight Velvet",
+        ref: "Nocturne Gala & Nightclub Editorial",
+        philosophy: "Dramatic high-contrast nocturnal palette with glowing plum ambient halos, shimmering gold typography, and after-hours VIP drop lockers.",
+        palette: "Midnight Deep Plum (#1d0f22), Gilded Foil Gold (#f2d95c), Obsidian",
+        grid: "Spotlight Theater Grid with Glassmorphic Shimmer Overlays"
+      },
+      6: {
+        name: "06. The Campus Atelier",
+        ref: "Gen-Z High-Fashion Circular Peer Exchange",
+        philosophy: "Vibrant community-first fashion sharing built for university fest seasons. Features peer lender profiles, live savings counters, and 3-tap rental flows.",
+        palette: "Bright Campus White, Plum Accents, Gold Starbursts (#f2d95c), Red Badges",
+        grid: "Social Commerce Feed with Live Demand Tickers & Lender Cards"
+      },
+      7: {
+        name: "07. The Cinema Horizon",
+        ref: "2.39:1 Anamorphic Fashion Film Runway",
+        philosophy: "Widescreen cinematic viewport with on-screen camera metadata (24FPS, 4K DCI, shutter angle), subtitles, and horizontal filmstrip cut-reels.",
+        palette: "True Film Black (#050505), Cinematic Amber, Subtitle White",
+        grid: "Panoramic 21:9 Widescreen Hero with Horizontal Filmstrip Trays"
+      },
+      8: {
+        name: "08. The Monolith Gazette",
+        ref: "High-Fashion Editorial Broadsheet Newspaper",
+        philosophy: "Grand historical print journal aesthetic featuring a massive condensed masthead, drop caps, Roman numerals (MMXXVI), and classified columns.",
+        palette: "Aged Broadsheet Paper (#f4eee6), Ink Black, Drop-cap Plum, Red Ribbons",
+        grid: "Authentic 3-Column Broadsheet Newspaper Grid with Rule Dividers"
+      },
+      9: {
+        name: "09. The Neo-Luxe Bento",
+        ref: "Linear & Apple-grade Modular Luxury Bento",
+        philosophy: "Modular responsive bento tiles combining outfit hero spotlights, live campus proximity radar, sustainability counters, and instant checkout drawers.",
+        palette: "Lilac Mist (#f0eaf1), Card White, Accent Gold, Deep Plum Borders",
+        grid: "12-Column Asymmetric Bento Architecture"
+      },
+      10: {
+        name: "10. The Zen Void",
+        ref: "Pure Floating Silence & Kinetic Cursor",
+        philosophy: "90% deliberate whitespace, whispering quiet luxury, centered single silhouette, and hovering micro-metadata that emerges on proximity.",
+        palette: "Alabaster Void (#faf7f2), Soft Plum (#56325f), Hairline Gold",
+        grid: "Monastic Single-Column Breathing Void with 150px Gaps"
+      }
+    };
+
+    let currentConcept = 1;
+
+    function switchConcept(id) {
+      currentConcept = id;
+      
+      // Hide all concept screens
+      document.querySelectorAll('.concept-screen').forEach(el => {
+        el.classList.add('hidden');
+        el.classList.remove('block');
+      });
+
+      // Show target screen
+      const target = document.getElementById(`concept-${id}`);
+      if (target) {
+        target.classList.remove('hidden');
+        target.classList.add('block');
+      }
+
+      // Update button active state in switcher bar
+      document.querySelectorAll('.concept-btn').forEach(btn => {
+        const isCurrent = btn.dataset.concept == id;
+        btn.classList.toggle('bg-plum', isCurrent);
+        btn.classList.toggle('text-gold', isCurrent);
+        btn.classList.toggle('border-gold/40', isCurrent);
+        btn.classList.toggle('text-gray-300', !isCurrent);
+      });
+
+      // Update Drawer content
+      updateDrawerContent(id);
+
+      // Scroll smoothly to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Update URL hash
+      history.replaceState(null, null, `#concept-${id}`);
+    }
+
+    function prevConcept() {
+      const prev = currentConcept === 1 ? 10 : currentConcept - 1;
+      switchConcept(prev);
+    }
+
+    function nextConcept() {
+      const next = currentConcept === 10 ? 1 : currentConcept + 1;
+      switchConcept(next);
+    }
+
+    function toggleInfoDrawer() {
+      const drawer = document.getElementById('infoDrawer');
+      drawer.classList.toggle('translate-x-full');
+    }
+
+    function updateDrawerContent(id) {
+      const spec = conceptSpecs[id];
+      const container = document.getElementById('drawerContent');
+      if (!spec || !container) return;
+
+      container.innerHTML = `
+        <div class="space-y-4">
+          <div>
+            <span class="text-[10px] font-mono text-gold uppercase tracking-wider block">CONCEPT IDENTIFIER</span>
+            <h4 class="text-xl font-serif text-white font-bold">${spec.name}</h4>
+            <p class="text-xs text-red font-mono mt-0.5">${spec.ref}</p>
+          </div>
+
+          <div class="p-3.5 bg-white/5 rounded border border-white/10 space-y-2">
+            <span class="text-[10px] font-mono text-stone-400 uppercase tracking-widest block">Design Philosophy</span>
+            <p class="text-xs text-stone-200 leading-relaxed">${spec.philosophy}</p>
+          </div>
+
+          <div class="space-y-3 pt-2 text-xs">
+            <div>
+              <span class="text-stone-400 font-mono text-[10px] uppercase block">Color System Harmony</span>
+              <span class="text-gold font-mono">${spec.palette}</span>
+            </div>
+            <div>
+              <span class="text-stone-400 font-mono text-[10px] uppercase block">Layout & Grid Structure</span>
+              <span class="text-stone-300 font-mono">${spec.grid}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Interactive Custom Cursor Ball
+    const ball = document.getElementById('cursorBall');
+    if (ball) {
+      window.addEventListener('mousemove', e => {
+        ball.style.left = `${e.clientX}px`;
+        ball.style.top = `${e.clientY}px`;
+      });
+      document.querySelectorAll('button, a, input, select').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          ball.classList.add('scale-150', 'bg-gold/60', 'border-plum');
+        });
+        el.addEventListener('mouseleave', () => {
+          ball.classList.remove('scale-150', 'bg-gold/60', 'border-plum');
+        });
+      });
+    }
+
+    // Keyboard Shortcuts (1-9, 0 for 10, and Left/Right arrows)
+    window.addEventListener('keydown', e => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key >= '1' && e.key <= '9') {
+        switchConcept(parseInt(e.key));
+      } else if (e.key === '0') {
+        switchConcept(10);
+      } else if (e.key === 'ArrowRight') {
+        nextConcept();
+      } else if (e.key === 'ArrowLeft') {
+        prevConcept();
+      }
+    });
+
+    // Handle initial hash routing
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash;
+      const match = hash.match(/concept-(\d+)/);
+      if (match && match[1]) {
+        switchConcept(parseInt(match[1]));
+      } else {
+        switchConcept(1);
+      }
+    });
+  </script>
+</body>
+</html>

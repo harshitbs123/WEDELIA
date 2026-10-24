@@ -27,7 +27,7 @@
   <link rel="icon" href="assets/girl.png" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,100..800;1,9..40,100..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,100..800;1,9..40,100..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@500;700;800&family=Reenie+Beanie&family=Herr+Von+Muellerhoff&family=Alex+Brush&display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -70,7 +70,8 @@
             cinzel: ['"Cinzel"', 'serif'],
             playfair: ['"Playfair Display"', 'serif'],
             mono: ['"Space Mono"', 'monospace'],
-            syne: ['"Syne"', 'sans-serif']
+            syne: ['"Syne"', 'sans-serif'],
+            signature: ['"Herr Von Muellerhoff"', '"Reenie Beanie"', 'cursive']
           },
           letterSpacing: {
             monastic: '0.25em',
@@ -1382,7 +1383,7 @@
       </div>
 
       <!-- Sanctuary Hubs Column -->
-      <div class="md:col-span-3 space-y-2 font-mono">
+      <div class="md:col-span-3 space-y-3 font-mono">
         <strong class="text-gold uppercase text-[11px] block tracking-wider">Concierge Studios</strong>
         <p class="text-stone-400 text-[11px] leading-relaxed font-light">
           Delhi NCR: Hauz Khas &amp; Central Delhi Studios<br>
@@ -1390,6 +1391,18 @@
           Bangalore: Koramangala Hub<br>
           White-Glove Hostel Gate &amp; Doorstep Courier Delivery.
         </p>
+
+        <!-- Created by Srijani Singha Signature Block -->
+        <div class="pt-3 border-t border-white/5">
+          <span class="text-[10px] tracking-widest text-stone-500 uppercase block font-sans">Created by</span>
+          <div class="relative inline-block mt-0.5">
+            <span class="font-signature text-3xl sm:text-4xl text-gold/90 dark:text-gold block tracking-wide select-none transform -rotate-2 origin-left hover:scale-105 transition-transform">
+              Srijani Singha
+            </span>
+            <!-- Subtle Signature Underscore flourish -->
+            <div class="h-[1px] w-full bg-gradient-to-r from-gold/70 via-gold/40 to-transparent mt-[-4px]"></div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -2107,11 +2120,34 @@
       renderCities(filtered);
     }
 
+    let isSrijaniOfferActive = false;
+
+    // Cache original prices on initialization
+    let originalCardPrices = [];
+    function captureOriginalPrices() {
+      if (originalCardPrices.length > 0) return;
+      const garmentCards = document.querySelectorAll('.garment-card');
+      garmentCards.forEach(card => {
+        const priceEl = card.querySelector('.font-mono.font-bold.text-base');
+        const clickAttr = card.getAttribute('onclick') || '';
+        originalCardPrices.push({
+          card: card,
+          priceText: priceEl ? priceEl.innerText : '₹299',
+          onclick: clickAttr
+        });
+      });
+    }
+
     function selectCity(city) {
       if (city.toLowerCase() === 'howrah') {
         closeLocationModal();
         openIiestModal();
         return;
+      }
+
+      // If switching away from Howrah and offer was active, restore normal prices
+      if (isSrijaniOfferActive) {
+        restoreOriginalPrices();
       }
 
       applyCitySelection(city);
@@ -2161,6 +2197,8 @@
           openSrijaniModal();
           applySrijaniFreePass();
         }, 220);
+      } else if (isSrijaniOfferActive) {
+        restoreOriginalPrices();
       }
     }
 
@@ -2189,6 +2227,9 @@
     }
 
     function applySrijaniFreePass() {
+      captureOriginalPrices();
+      isSrijaniOfferActive = true;
+
       // 1. Update Hero featured card price
       const heroPrice = document.querySelector('#home .font-mono.text-gold.font-bold');
       if (heroPrice) heroPrice.innerText = '₹0';
@@ -2225,6 +2266,31 @@
       }
 
       showToast('VIP Privilege Applied: All Products ₹0 for Ms. Srijani 🎉');
+    }
+
+    function restoreOriginalPrices() {
+      isSrijaniOfferActive = false;
+
+      // 1. Restore Hero featured card price
+      const heroPrice = document.querySelector('#home .font-mono.text-gold.font-bold');
+      if (heroPrice) heroPrice.innerText = '₹299';
+
+      // 2. Restore all garment cards price displays and click events
+      if (originalCardPrices.length > 0) {
+        originalCardPrices.forEach(item => {
+          const priceEl = item.card.querySelector('.font-mono.font-bold.text-base');
+          if (priceEl) priceEl.innerText = item.priceText;
+          item.card.setAttribute('onclick', item.onclick);
+        });
+      }
+
+      // 3. Restore drawer if active
+      const drawerPrice = document.getElementById('drawerPrice');
+      if (drawerPrice && currentGarment) {
+        drawerPrice.innerText = currentGarment.price;
+      }
+
+      showToast('Standard regional pricing restored 🏷️');
     }
 
     function openContactModal() {
